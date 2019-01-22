@@ -30,7 +30,7 @@ paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 # If you have timezone issue (e.g. #68) in China, uncomment to use this:
-#timezone: CN  
+timezone: CN  
 
 
 
@@ -60,7 +60,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+disqus_username: false
 
 # Netease settings
 netease_comment: false
@@ -85,7 +85,7 @@ sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used
 
 
 # Featured Tags
-featured-tags: false                     # whether or not using Feature-Tags
+featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
 
