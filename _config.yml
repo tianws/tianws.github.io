@@ -67,8 +67,12 @@ disqus_username: false
 netease_comment: false
 
 #来必力
-livere_username: tianws
+# livere_username: tianws
 
+#valine
+# valine_comment: true
+# valine_appId: Xbvg1tGzVJpqiRhBklglls2Q-gzGzoHsz
+# valine_appKey: DQnF94eU0h7fDx9jKiC10jUm
 
 
 # Analytics settings
