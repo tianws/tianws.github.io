@@ -1,9 +1,8 @@
 ---
 layout: page
-title: "About"
-description: "你是我的梦想"
+title: "ABOUT"
+description: "Hey, this is Tian Wenshan."
 header-img: "img/about-bg.jpg"
-multilingual: true
 ---
 
 <!-- Language Selector -->
@@ -14,15 +13,147 @@ multilingual: true
 
 <!-- Chinese Version -->
 <div class="zh post-container">
-    {% capture about_zh %}{% include about/zh.md %}{% endcapture %}
-    {{ about_zh | markdownify }}
+
+    <!--copied from markdown -->
+    <blockquote>
+        <p>
+            {% assign count = 0 %}
+            {% assign artcle_count = 0 %}
+            {% for post in site.posts %}
+            {% assign single_count = post.content | strip_html | strip_newlines | size %}
+            {% assign count = count | plus: single_count %}
+            {% assign artcle_count = artcle_count | plus: 1 %}
+            {% endfor %}
+            本博客自2017年9月24日起开始运行至今，共{{artcle_count}}篇文章，总字数
+            {% if count > 10000 %}
+            {{ count | divided_by: 10000 }}万{{ count | modulo: 10000 }}
+            {% else %}
+            {{ count }}
+            {% endif %}。</p>
+    </blockquote>
+
+    <p>Hey，我是Wenshan，帝都程序猿一枚，方向是人工智能。  </p>
+
+    <p>业余时我喜欢吉他和摄影。</p>
+
+    <p>这是我的博客，主要用来记录一些感悟。有技术上的，也有生活上的。</p>
+
+    <p>如果你感兴趣，欢迎留言；你也可以通过右边的联系方式联系到我。</p>
+
+    <p>本博客的主题来自<a href="https://github.com/Huxpro/huxpro.github.io" target="_blank">Hux</a>，感谢。也感谢Jekll、Github Pages。</p>
+
+    <hr />
+   
+    <h5>Talks</h5>
+
 </div>
 
 <!-- English Version -->
 <div class="en post-container">
-    {% capture about_en %}{% include about/en.md %}{% endcapture %}
-    {{ about_en | markdownify }}
+
+    <blockquote>
+        <p>
+            {% assign count = 0 %}
+            {% assign artcle_count = 0 %}
+            {% for post in site.posts %}
+            {% assign single_count = post.content | strip_html | strip_newlines | size %}
+            {% assign count = count | plus: single_count %}
+            {% assign artcle_count = artcle_count | plus: 1 %}
+            {% endfor %}
+            This blog has been running since September 24, 2017. There are {{artcle_count}} articles in total, with a total of
+            {{ count }}
+             words.</p>
+    </blockquote>
+
+    <p>Hi, I&#39;m @tianws(Tian Wenshan), a computer vision engineer, mainly in charge of &#39;LaneDetection&#39;.</p>
+
+    <p>My hobbies are playing the guitar and taking photographs.</p>
+
+    <p>Welcome to my blog.</p>
+
+    <hr />
+
+    <h5>Talks</h5>
+
 </div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    var $select = document.querySelector("select");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+        var _hash = window.location.hash;
+        // en
+        if(_hash == "#en"){
+            $select.selectedIndex = 1;
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        // zh by default
+        }else{
+            // not trigger onChange, otherwise cause a loop call.
+            $select.selectedIndex = 0;
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }
+    }
+
+    // handle select change
+    function onLanChange(index){
+        if(index == 0){
+            window.location.hash = "#zh"
+        }else{
+            window.location.hash = "#en"
+        }
+    }
+
+    // init
+    _render();
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <!-- This id is used for indexing my loss comments forcedly -->
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "tianws" %}
+        data-thread-id="0ee040117ec56f17aa7e2523d1eae19b"
+    {% else %}
+    <!-- U can just use this key generated to index comments at page about -->
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = '{{site.duoshuo_username}}';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
 
 
 {% if site.disqus_username %}
@@ -48,4 +179,25 @@ multilingual: true
     })();
 </script>
 <!-- disqus 公共JS代码 end -->
+{% endif %}
+
+{% if site.livere_username %}
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMTU4OS84MTUz">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 {% endif %}
