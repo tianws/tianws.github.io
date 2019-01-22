@@ -1,22 +1,23 @@
 # Site settings
-title: Hux Blog
-SEOTitle: 黄玄的博客 | Hux Blog
+title: Wenshan's Blog
+SEOTitle: Tian Wenshan | Wenshan's Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: "关于程序与设计、黑客与画家 | 黄玄，Web & Mobile Lover，Software Engineer，UX Designer | 这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界。"
-keyword: "黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
-url: "https://huangxuan.me"              # your host, for absolute URL
+email: tianwenshan@foxmail.com
+description: "欢迎来到我的个人博客"
+keyword: "Wenshan, Wenshan Blog, 文善的博客, 田文善, CV, DL"
+url: "https://tianws.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+github_repo: "https://github.com/tianws/tianws.github.io.git" # you code repository
 
 # Publish posts or collection documents with a future date.
 future: true
 
 # SNS settings
 RSS: false
-weibo_username:     huxpro
-zhihu_username:     huxpro
-github_username:    huxpro
-twitter_username:   huxpro
+weibo_username:     MrTian92
+# zhihu_username:     huxpro
+github_username:    tianws
+# twitter_username:   huxpro
 #facebook_username:  huxpro
 #linkedin_username:  firstname-lastname-idxxxx
 
@@ -69,18 +70,18 @@ netease_comment: false
 
 # Analytics settings
 # Baidu Analytics 
-# ba_track_id: [your track id]
+ba_track_id: ea730223e4d6af3295e04e0f6e005c03
 
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
+ga_track_id: 'UA-106936117-1'            # Format: UA-xxxxxx-xx
+ga_domain: auto
 
 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
-sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "Hey! Nice to meet you. "
+sidebar-avatar: /img/avatar_m.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -107,34 +108,7 @@ friends: [
     #     title: "Su",
     #     href: "http://su.gallery/"
     # },{
-        title: "乱序",
-        href: "http://mida.re/"
-    },{
-        title: "前端外刊评论",
-        href: "http://qianduan.guru/"
-    },{
-        title: "天镶的博客",
-        href: "http://lingyu.wang/"
-    },{
-        title: "Luke 的自留地",
-        href: "http://hmqk1995.github.io"
-    },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
-    },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
-    },{
-        title: "解旻的博客",
-        href: "http://xieminis.me/"
+        title: "qinjian",
+        href: "http://blog.qinjian.me/"
     }
 ]
