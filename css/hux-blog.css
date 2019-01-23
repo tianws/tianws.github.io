@@ -1651,3 +1651,19 @@ img::-moz-selection {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+/* add by tianws on 2019.01.23 */
+.vid-wrap{
+  width:100%;background: #000;
+  position:relative;
+  padding-bottom:56.25%;   
+  /*需要用padding来维持16:9比例,也就是9除以16*/
+  height: 0;
+  }
+  .vid-wrap video{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%
+  }
