@@ -19,9 +19,11 @@ tags:
 
 顶着压力，我被借调到自动驾驶部，天天加班，终于在三月完成了新版车道线识别的开发工作，经过各种优化，在七月得到了自动驾驶部的认可。
 
-{% include youku_video.html youku_id='XMzI3MTYyNDE4OA==' %}
+{% include local_video.html src="201704_version3.mp4" poster="201704_version3.png" %}
 
-*博客加载视频有时候会出问题，看不到视频的可以戳[这里](http://v.youku.com/v_show/id_XMzI3MTYyNDE4OA==.html?spm=a2hzp.8244740.0.0) 。*
+<!-- {% include youku_video.html youku_id='XMzI3MTYyNDE4OA==' %}
+
+*博客加载视频有时候会出问题，看不到视频的可以戳[这里](http://v.youku.com/v_show/id_XMzI3MTYyNDE4OA==.html?spm=a2hzp.8244740.0.0) 。* -->
 
 单独提这个项目，是因为这个是让我学习到东西最多的项目。
 
