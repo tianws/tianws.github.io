@@ -6,7 +6,6 @@ date:       2017-12-29 10:57:00
 author:     "Tian"
 categories: Life
 header-img: "img/post_2017-12-20.jpg"
-youku_id: XMzI3MTYyNDE4OA==
 catalog: true
 tags:
     - 随笔
@@ -20,7 +19,7 @@ tags:
 
 顶着压力，我被借调到自动驾驶部，天天加班，终于在三月完成了新版车道线识别的开发工作，经过各种优化，在七月得到了自动驾驶部的认可。
 
-{% include video.html %}
+{% include youku_video.html youku_id='XMzI3MTYyNDE4OA==' %}
 
 *博客加载视频有时候会出问题，看不到视频的可以戳[这里](http://v.youku.com/v_show/id_XMzI3MTYyNDE4OA==.html?spm=a2hzp.8244740.0.0) 。*
 
