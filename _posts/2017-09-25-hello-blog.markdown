@@ -105,3 +105,9 @@ Thanks to [*BruceZhaoR*](https://github.com/BruceZhaoR/brucezhaor.github.io)，�
 *增加了外链视频和外链音乐的功能，增加了video.html，修改了 post.html。视频自适应页面大小，移动端PC端都支持。*
 
 <p align="right">—— 2017.12.17，北京</p>
+
+---
+
+*增加播放本地视频的功能，整理了代码。*
+
+<p align="right">—— 2019.01.23，北京</p>
