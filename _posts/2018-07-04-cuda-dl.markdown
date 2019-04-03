@@ -150,9 +150,11 @@ sudo apt-get install cuda # Install CUDA
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}} # 添加环境变量到.bashrc
 # 如果用runfile安装，还需要添加LD_LIBRARY_PATH
 ## 64位系统
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64\                				    ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64\
+${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ## 32位系统
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib\                          ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib\
+${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 
 （2）建议
