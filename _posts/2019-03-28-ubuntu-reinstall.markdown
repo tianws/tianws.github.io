@@ -122,5 +122,5 @@ done
 
 ## 六、系统以及软件配置
 
-见[ubuntu软件和系统配置](<http://https://tianws.github.io/skill/2019/04/03/software-ubuntu/>)
+见[ubuntu软件和系统配置](<https://tianws.github.io/skill/2019/04/03/software-ubuntu/>)
 

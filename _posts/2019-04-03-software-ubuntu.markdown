@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "ubuntu软件和系统配置"
+title:      "Ubuntu软件和系统配置"
 subtitle:   ""
 date:       2019-04-03 10:00:00
 author:     "Tian"
@@ -23,7 +23,7 @@ tags:
 
    `brew cask install v2rayx`
 
-- Linux：[v2ray](<https://www.v2ray.com/>):
+- Linux：[v2ray](<https://www.v2ray.com/>)：
 
 ```bash
 sudo bash go.sh -p "socks5://192.168.146.204:1080" (更新脚本 sudo bash <(curl -L -s https://install.direct/go.sh))
