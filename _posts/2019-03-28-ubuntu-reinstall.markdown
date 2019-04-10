@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "ubuntu系统重装"
+title:      "Ubuntu系统重装"
 subtitle:   ""
 date:       2019-03-28 10:00:00
 author:     "Tian"

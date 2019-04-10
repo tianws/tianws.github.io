@@ -9,6 +9,7 @@ header-img: "img/post_2018_01_27.jpg"
 catalog: true
 tags:
     - 环境配置
+    - MacOS
 ---
 
 macbook用了一年多了，之前安装软件没注意，现在发现系统的环境很乱，作为有系统洁癖的人，肯定不能忍啊，重装了系统，重配了环境。
