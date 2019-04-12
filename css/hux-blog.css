@@ -506,7 +506,7 @@ pre.highlight {
 }
 .highlighter-rouge .highlight {
   margin-bottom: 10px;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 .highlighter-rouge .highlight pre {
   font-size: 14px;
@@ -538,7 +538,7 @@ pre.highlight {
   padding: 14px;
 }
 .highlighter-rouge .highlight td.rouge-gutter {
-  width: 56px;
+  width: 48px;
 }
 .highlighter-rouge .highlight .lineno {
   text-align: right;
