@@ -291,4 +291,6 @@ $ sudo chkconfig docker on
 
 ## 参考
 
-[官方文档](<https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [官方文档](<https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [用下载deb的方式来安装docker](<http://note.qidong.name/2018/07/install-docker-with-deb/>)
+

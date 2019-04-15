@@ -50,7 +50,7 @@ sudo vim /etc/proxychains.conf # 编辑最后一行，其他按需编辑
 # 卸载
 sudo make install DESTDIR=foo
 sudo make install-config DESTDIR=foo
-# 根据foo路径删除对应文件
+## 根据foo路径删除对应文件
 ```
 
 **（3）PAC**
@@ -113,7 +113,6 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
   gem install jekyll-paginate
   ```
 
-  
 
 
 ## 四、zsh
@@ -257,3 +256,13 @@ pavucontrol
 三、其它
 
 - 网易云音乐禁用全局设置
+
+## 八、禁用访客登录
+
+```bash
+sudo vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+# 追加
+allow-guest=false
+reboot
+```
+

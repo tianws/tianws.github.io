@@ -170,7 +170,29 @@ alias dockerrun='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) -v $(
 # -i 让容器的标准输入保持打开
 ```
 
-docker run 命令参数：
+### 3. 运行程序
+
+```bash
+dockerrun cmd args
+```
+
+### 4. 常用命令
+
+**docker 查找和删除镜像和容器：**
+
+```bash
+docker ps # 常看当前运行的容器
+docker ps -a # 查看所有容器
+docker stop $(docker ps -a -q) # 停止所有容器
+docker rm $(docker ps -a -q) # 删除所有未运行的容器
+docker container prune # 删除所有未运行的容器
+docker images # 查看所有镜像
+docker image ls # 查看所有镜像
+docker rmi $(docker images -q) # 移除所有本地镜像
+docker rmi -f $(docker images -q) # 强制移除所有镜像
+```
+
+**docker run 命令参数：**
 
 ```bash
 Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]    
@@ -219,18 +241,54 @@ Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 							   host：用host的ipc命名空间
 ```
 
-### 3. 运行程序
+**docker tag的最佳实践：**
+
+假设我们现在发布了一个镜像 myimage，版本为 v1.9.1。那么我们可以给镜像打上四个 tag：1.9.1、1.9、1 和 latest。
+
+我们可以通过 docker tag 命令方便地给镜像打 tag。
 
 ```bash
-dockerrun cmd args
+docker tag myimage-v1.9.1 myimage:1
+docker tag myimage-v1.9.1 myimage:1.9
+docker tag myimage-v1.9.1 myimage:1.9.1
+docker tag myimage-v1.9.1 myimage:latest
 ```
+
+过了一段时间，我们发布了 v1.9.2。这时可以打上 1.9.2 的 tag，并将 1.9、1 和 latest 从 v1.9.1 移到 v1.9.2。
+
+命令为：
+
+```bash
+docker tag myimage-v1.9.2 myimage:1
+docker tag myimage-v1.9.2 myimage:1.9
+docker tag myimage-v1.9.2 myimage:1.9.2
+docker tag myimage-v1.9.2 myimage:latest
+```
+
+之后，v2.0.0 发布了。这时可以打上 2.0.0、2.0 和 2 的 tag，并将 latest 移到 v2.0.0。
+
+命令为：
+
+```bash
+docker tag myimage-v2.0.0 myimage:2
+docker tag myimage-v2.0.0 myimage:2.0
+docker tag myimage-v2.0.0 myimage:2.0.0
+docker tag myimage-v2.0.0 myimage:latest
+```
+
+这种 tag 方案使镜像的版本很直观，用户在选择非常灵活：
+
+1. myimage:1 始终指向 1 这个分支中最新的镜像。
+2. myimage:1.9 始终指向 1.9.x 中最新的镜像。
+3. myimage:latest 始终指向所有版本中最新的镜像。
+4. 如果想使用特定版本，可以选择 myimage:1.9.1、myimage:1.9.2 或 myimage:2.0.0。
 
 ## 参考
 
 - [当Docker遇见Deep Learning](<https://cloud.tencent.com/developer/news/273473>)
-
 - [使用 Docker 安装深度学习环境](<https://zhuanlan.zhihu.com/p/31772428>)
-
 - [docker docs](<https://docs.docker.com/get-started/>)
 - [Docker — 从入门到实践](<https://yeasy.gitbooks.io/docker_practice/>)
+- [tag 使用最佳实践](<https://www.ibm.com/developerworks/community/blogs/132cfa78-44b0-4376-85d0-d3096cd30d3f/entry/%E9%95%9C%E5%83%8F%E5%91%BD%E5%90%8D%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5_%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%AC_Docker_%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF_18?lang=en>)
+- [Docker 常用命令与操作](<https://www.jianshu.com/p/adaa34795e64>)
 
