@@ -166,13 +166,19 @@ If you are in you are in your $HOME, this will be replaced by ~.
 powerlevel9k主题也不错，如果屏幕大可以尝试。
 
 ```bash
-## 插件
-# zsh-autosuggestions 命令提示 ctrl + f 采纳
+# 插件
+## zsh-autosuggestions 命令提示 ctrl + f 采纳
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 plugins=(.. zsh-autosuggestions)
-# colored-man-pages
+## zsh-syntax-highlighting 命令高亮
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+plugins=(.. zsh-syntax-highlighting)
+## colored-man-pages
 plugins=(.. colored-man-pages)
-## 设置
+## z
+plugins=(.. z)
+
+# 设置
 vim ~/.zshrc
 ## 最后添加下面几行
 unsetopt correct_all # 关闭自动修正
