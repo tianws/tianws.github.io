@@ -261,8 +261,7 @@ pavucontrol
 
 ```bash
 sudo vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
-# 追加
-allow-guest=false
+# 追加 allow-guest=false
 reboot
 ```
 
