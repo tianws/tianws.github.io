@@ -113,8 +113,6 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
   gem install jekyll-paginate
   ```
 
-
-
 ## 四、zsh
 
 ```bash
@@ -177,6 +175,7 @@ plugins=(.. zsh-syntax-highlighting)
 plugins=(.. colored-man-pages)
 ## z
 plugins=(.. z)
+z -x ## 删除无效路径
 
 # 设置
 vim ~/.zshrc
@@ -185,23 +184,22 @@ unsetopt correct_all # 关闭自动修正
 unsetopt AUTO_CD # 关闭自动cd
 setopt noautomenu  # 关闭选择模式，选择模式下ctrl + f(forward) / b(backward) / p(previous) / n(next)左右上下
 setopt nomenucomplete
-
 ```
 
 ## 五、PT站
 
 ```bash
-## 买的vps有ipv6地址，可以登录一些高校PT站
+# 买的vps有ipv6地址，可以登录一些高校PT站
 ## 比如北邮PT站 https://bt.byr.cn/
 ##　用学校邮箱可以申请
 
-## vps开启ipv6
-# ssr开启ipv6
-# config里设置
+# vps开启ipv6
+## ssr开启ipv6
+## config里设置
 "server": "0.0.0.0",
 "server_ipv6": "::",
 
-## ubuntu下用Deluge
+# ubuntu下用Deluge
 sudo apt install deluge
 sudo apt install deluged # 程序提示报错，所以再安了这个
 ## 设置里面把DHT关掉，否则key容易被盗
@@ -269,5 +267,61 @@ pavucontrol
 sudo vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 # 追加 allow-guest=false
 reboot
+```
+
+## 九、apt找不到arm64源
+
+同事的笔记本安装了arm64架构的软件，导致`sudo apt update`的时候出现以下问题：
+
+```bash
+N: Skipping acquire of configured file 'non-free/binary-arm64/Packages' as repository 'http://repository.spotify.com stable InRelease' doesn't support architecture 'arm64'
+E: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial/main/binary-arm64/Packages  404  Not Found [IP: 91.189.88.161 80]
+E: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/binary-arm64/Packages  404  Not Found [IP: 91.189.88.161 80]
+E: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-backports/main/binary-arm64/Packages  404  Not Found [IP: 91.189.88.161 80]
+E: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-security/main/binary-arm64/Packages  404  Not Found [IP: 91.189.88.161 80]
+E: Some index files failed to download. They have been ignored, or old ones used instead.
+```
+
+解决方法：[参考](<https://askubuntu.com/questions/917081/how-to-get-rid-of-arm64-in-apt>)
+
+查看架构：
+
+```bash
+$dpkg --print-architecture
+amd64
+
+$dpkg --print-foreign-architectures
+i386
+arm64
+```
+
+我的正常的主机，第二条只有`i386`，没有`arm64`，这个是导致问题的原因。
+
+方法一：删除`arm64`架构（没有试过）
+
+```bash
+sudo dpkg --remove-architecture arm64
+# 如果有下面的error，说明有arm64的软件存在
+# dpkg: error: cannot remove architecture 'arm64' currently in use by the database
+## 可以查找并删除软件
+dpkg -l | grep arm64
+## 或者强制删除架构
+sudo dpkg --force-architecture --remove-architecture arm64
+## 接下来
+sudo rm -rf /var/lib/apt/lists/*
+sudo apt clean
+sudo apt update
+```
+
+方法二：修改apt源（推荐）
+
+```bash
+sudo vim /etc/apt/sources.list
+# 加上字段
+deb [arch=amd64,i386] <url>
+# 接下来
+sudo rm -rf /var/lib/apt/lists/*
+sudo apt clean
+sudo apt update
 ```
 
