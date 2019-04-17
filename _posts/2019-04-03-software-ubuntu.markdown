@@ -184,6 +184,7 @@ unsetopt correct_all # 关闭自动修正
 unsetopt AUTO_CD # 关闭自动cd
 setopt noautomenu  # 关闭选择模式，选择模式下ctrl + f(forward) / b(backward) / p(previous) / n(next)左右上下
 setopt nomenucomplete
+source /etc/zsh_command_not_found # zsh提示
 ```
 
 ## 五、PT站
