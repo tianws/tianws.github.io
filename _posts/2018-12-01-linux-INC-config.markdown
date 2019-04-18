@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "linux调整网卡工作模式"
-subtitle:   ""
+title:      "Linux调整网卡工作模式"
+subtitle:   "用ethtool命令设置网口速率"
 date:       2018-12-01 00:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2017_12_27.jpg"
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
+    - 开发环境
 ---
 
 ## 痛点

@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "linux目录监控与自动同步"
+title:      "Linux目录监控与自动同步"
 subtitle:   "rsync、inotify的介绍与使用"
 date:       2018-10-27 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2017_12_27.jpg"
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
+    - 开发环境
 ---
 
 ## 需求

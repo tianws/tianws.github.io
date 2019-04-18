@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "pycharm远程编程配置方法"
+title:      "Pycharm远程编程配置方法"
 subtitle:   "本地编码，远程服务器自动同步执行"
 date:       2017-12-27 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2017_12_27.jpg"
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
+    - 开发环境
 ---
 
 一个好的IDE能使编程事半功倍，而往往运行环境上没有条件装IDE。我们常常在本机用IDE编程完毕后，scp到服务器上运行，要做小的调试再用vim等编辑器来改代码。这样做很容易使本地和服务器上的代码不同步，虽然可以通过git等工具解决，但步骤太过繁琐。

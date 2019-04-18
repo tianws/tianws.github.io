@@ -5,7 +5,8 @@ subtitle:   "重装MacBook系统"
 date:       2018-01-27 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-mac.jpg"
+header-mask: 0.6
 catalog: true
 tags:
     - 环境配置

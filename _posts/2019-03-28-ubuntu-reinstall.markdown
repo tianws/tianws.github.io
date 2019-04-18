@@ -1,14 +1,16 @@
 ---
 layout:     post
 title:      "Ubuntu系统重装"
-subtitle:   ""
+subtitle:   "新Ubuntu系统安装步骤"
 date:       2019-03-28 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-ubuntu.jpg"
+header-mask: 0.4
 catalog: true
 tags:
     - 环境配置
+    - Ubuntu
 ---
 
 ## 一、制作系统盘

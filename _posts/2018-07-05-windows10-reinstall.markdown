@@ -5,10 +5,12 @@ subtitle:   "重装Windows10，并保留正版系统和正版office"
 date:       2018-07-05 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-windows.jpg"
+header-mask: 0.5
 catalog: true
 tags:
     - 环境配置
+    - Windows
 ---
 
 ## 一、重置电脑

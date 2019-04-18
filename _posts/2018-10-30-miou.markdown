@@ -5,7 +5,8 @@ subtitle:   "TensorFlow和Pytorch源码解析"
 date:       2018-10-30 00:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2017_12_27.jpg"
+header-img: "img/post-bg-code.jpg"
+header-mask: 0.4
 mathjax: true
 catalog: true
 tags:

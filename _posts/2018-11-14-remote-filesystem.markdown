@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "linux挂载远程目录"
+title:      "Linux挂载远程目录"
 subtitle:   "sshfs、NFS的介绍与使用"
 date:       2018-11-14 00:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2017_12_27.jpg"
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
+    - 开发环境
 ---
 
 ## 需求

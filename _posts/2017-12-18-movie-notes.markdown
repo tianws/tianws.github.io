@@ -6,9 +6,11 @@ date:       2019-02-16 00:57:00
 author:     "Tian"
 categories: Life
 header-img: "img/post-2017_12_18-movie.jpg"
+header-mask: 0.4
 catalog: true
 tags:
     - 观影笔记
+    - 随笔
 ---
 
 ## ★★★★★ - 相见恨晚

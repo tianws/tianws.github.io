@@ -1,18 +1,19 @@
 ---
 layout:     post
-title:      "NVIDIA-Docker的使用"
-subtitle:   ""
+title:      "Docker的使用"
+subtitle:   "安装示例和常用命令"
 date:       2019-04-11 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-docker.jpg"
+header-mask: 0.8
 catalog: true
 tags:
     - 环境配置
     - Docker
 ---
 
-## Requirements
+## 一、Install
 
 [docker CE的安装](<https://tianws.github.io/skill/2019/04/09/docker/>)和[nvidia-docker的安装](<https://tianws.github.io/skill/2019/04/10/nvidia-docker/>)见前述博文。
 
@@ -20,7 +21,7 @@ tags:
 
 ### 1. 安装docker
 
-下载[docker安装包](<https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/>)，经过测试的版本为`docker-ce_18.09.4_3-0_ubuntu-xenial_amd64.deb`
+下载[docker安装包](<https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/>)，经过测试的版本为`containerd.io_1.2.5-1_amd64.deb`、`docker-ce-cli_18.09.4~3-0~ubuntu-xenial_amd64.deb                                     `、`docker-ce_18.09.4_3-0_ubuntu-xenial_amd64.deb`
 
 ```bash
 sudo apt update
@@ -39,7 +40,7 @@ sudo systemctl enable docker
 
 >提速docker hub：
 >
->国内docker hub下载很慢，可以通过配置镜像的方式提速.[参考](<https://www.cnblogs.com/stulzq/p/8628019.html>)
+>国内docker hub下载很慢，可以通过配置镜像的方式提速。[参考](<https://www.cnblogs.com/stulzq/p/8628019.html>)
 >
 >本文使用[阿里云镜像加速服务](<https://cr.console.aliyun.com/>)
 >
@@ -75,10 +76,11 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
   sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 sudo apt-get update
 # 安装指定版本的nvidia-docker
+apt-cache madison nvidia-docker2 nvidia-container-runtime # 查看可用版本
 sudo apt-get install -y nvidia-docker2=2.0.3+docker18.09.4-1 nvidia-container-runtime=2.0.0+docker18.09.4-1
 ```
 
-## Usage
+## 二、Usage
 
 ### 1. 构建镜像
 

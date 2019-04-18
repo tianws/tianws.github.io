@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "Ubuntu软件和系统配置"
-subtitle:   ""
+title:      "Ubuntu设置"
+subtitle:   "Ubuntu常用软件和设置"
 date:       2019-04-03 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-ubuntu.jpg"
+header-mask: 0.4
 catalog: true
 tags:
     - 环境配置
+    - Ubuntu
 ---
 
 ## 一、科学上网
@@ -91,10 +93,22 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 #### 1、GUI软件
 
 - redshfit-gtk：护眼
+
 - 搜狗拼音：输入法
+
 - chrome：浏览器
+
 - typora：编辑器
+
 - pycharm：IDE
+
+- kazam：录屏软件
+
+- peek：gif录制软件
+
+- flameshot：截图软件 [安装方法](<https://mithun.co/software/install-flameshot-on-ubuntu-16-04/>)
+
+  设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
 
 #### 2、命令行软件
 

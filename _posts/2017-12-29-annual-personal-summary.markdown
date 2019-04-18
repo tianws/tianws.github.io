@@ -6,6 +6,7 @@ date:       2017-12-29 10:57:00
 author:     "Tian"
 categories: Life
 header-img: "img/post_2017-12-20.jpg"
+header-mask: 0.4
 catalog: true
 tags:
     - 随笔

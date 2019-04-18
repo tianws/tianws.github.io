@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "ssh环境配置"
+title:      "SSH环境配置"
 subtitle:   "ssh的安装与配置"
 date:       2018-06-26 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
+    - 开发环境
 ---
 
 ## 一、安装ssh-server端

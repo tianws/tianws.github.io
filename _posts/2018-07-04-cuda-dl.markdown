@@ -5,10 +5,12 @@ subtitle:   "driver、cuda、cudnn、tensorflow安装详细记录"
 date:       2018-07-04 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post_2018_01_27.jpg"
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
+    - 开发环境
 ---
 
 ##  一、安装driver、cuda
