@@ -129,6 +129,8 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 ## 四、zsh
 
+**安装**
+
 ```bash
 ## install zsh
 sudo apt install zsh # install zsh
@@ -143,7 +145,11 @@ $SHELL --version # Expected result: 'zsh 5.1.1' or similar
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # or
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
 
+**美化**
+
+```bash
 ## 自定义zsh主题
 cd ~/.oh-my-zsh
 mkdir custom/themes
@@ -151,9 +157,7 @@ cp themes/robbyrussell.zsh-theme custom/themes/
 vim custom/themes/robbyrussell.zsh-theme
 # 第二行改成下面的内容
 PROMPT='${ret_status}[%m] %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
-```
 
-```
 # 简单说明
 %n The username
 %m The computer's hostname(truncated to the first period)
@@ -173,9 +177,11 @@ If you are in you are in your $HOME, this will be replaced by ~.
 %{$fg[red]%}
 %{$fg_bold[red]%}　# 加粗
 %{$reset_color%}　# 重置颜色
+
+## powerlevel9k主题也不错，如果屏幕大可以尝试。
 ```
 
-powerlevel9k主题也不错，如果屏幕大可以尝试。
+**插件和设置**
 
 ```bash
 # 插件
