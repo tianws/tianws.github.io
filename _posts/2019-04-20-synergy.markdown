@@ -1,0 +1,87 @@
+---
+layout:     post
+title:      "Synergy软件下载和配置"
+subtitle:   "键鼠共享神器"
+date:       2019-04-20 10:00:00
+author:     "Tian"
+categories: Skill
+header-img: "img/post-bg-kvm.png"
+header-mask: 0.7
+catalog: true
+tags:
+    - 环境配置
+    - 开发环境
+---
+
+## 背景
+
+两台电脑，一台Ubuntu系统主机，一台Windows笔记本，只有一套键鼠，经常需要切换。这个需求又被称作KVM(Keyboard Video Mouse)。
+
+## 方案
+
+不完全统计如下：
+
+![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190421150544.png)
+
+推荐软件方案：
+
+- Windows之间：Mouse Without Borders
+- Windows和macOS之间：ShareMouse
+- Linux：Synergy或者它的免费版本Barrier
+
+推荐硬件方案：
+
+- 对拷线：JUC500、Smart KM Link等
+- KVM切换器：Aten
+- USB切换器
+- Logitech Flow
+
+用过罗技的双模鼠标，只有蓝牙刚连接的时候有一些延迟，别的没问题，算挺好用的。
+
+其他的硬件方案没试过，不发表意见。
+
+## Synergy
+
+因为我的环境是Ubuntu和Windows，所以我选择Synergy。
+
+#### Install
+
+Synergy是开源收费软件，自己编译使用免费，[官网](<https://symless.com/synergy>)下载收费。
+
+不过有其他人编译好的包供别人下载，不担心安全问题的的话可以试一试：[链接1](<https://brahma-dev.github.io/synergy-stable-builds/>)、[链接2](<https://sourceforge.net/projects/synergy-stable-builds/>)
+
+Ubuntu用`sudo apt install synergy`也可以安装1.6.2版本。
+
+也可以用Synergy别人fork出来的免费版本[Barrier](<https://github.com/debauchee/barrier>)，Windows和macOS可以直接下载安装包，Ubuntu还是需要编译安装。
+
+在这里，我选择Synergy的新版本（1.10.0），这里给个[资源链接](https://pan.baidu.com/s/12-vQLlVoIq89wV3d7nBS4A)，提取码`c79u`，激活码私信我领取。
+
+安装步骤和其他软件一样，不赘述。
+
+#### Usage
+
+配置很简单：
+
+1. 在Ubuntu主机上设置作为Server，记下IP地址
+2. 在笔记本上设置作为Client，服务端IP填Server的IP，并记下屏幕名
+3. 在Ubuntu主机上设置服务端，拖一个屏幕到想要放置的位置，设置屏幕名为刚刚笔记本的屏幕名
+4. 应用并启动两台机器的Synergy即可
+
+使用的时候，如果鼠标向另一台机器的方向移出显示屏之外，则鼠标和键盘自动切换控制另一台机器。
+
+还有一些热键和设置，可以根据自己的需要配置。
+
+如果还是连接不上，尝试一下关闭防火墙`sudo ufw disable`。
+
+## 参考
+
+- [多机共享键鼠软件横向测评](<http://blog.shrp.me/Multi-Computer-Mouse-and-Keyboard-sharing.html>)
+- [Kim工房：Mouse Without Borders，一套键鼠控制多台电脑的神器](<https://post.smzdm.com/p/642130/>)
+- [mac与windows共享键盘鼠标](<https://www.jianshu.com/p/f1da68ac5413>)
+- [synergy折腾日记](<https://www.52pojie.cn/thread-719088-1-1.html>)
+- [天降神器——Synergy](<https://blog.csdn.net/weixin_41995979/article/details/81990179>)
+- [共享键鼠神器 Synergy](<http://wulc.me/2018/03/31/%E5%85%B1%E4%BA%AB%E9%94%AE%E9%BC%A0%E7%A5%9E%E5%99%A8%20Synergy/>)
+- [键鼠共享方案总结与推荐：Smart KM Link 使用经验](<https://post.smzdm.com/p/343668/>)
+- [SynergyHowto](https://help.ubuntu.com/community/SynergyHowto)
+- [设置synergy开机自动启动](<http://guaneryu.com/blog/?p=379>)
+

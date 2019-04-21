@@ -106,6 +106,8 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - peek：gif录制软件
 
+- synergy：键鼠共享软件
+
 - flameshot：截图软件 [安装方法](<https://mithun.co/software/install-flameshot-on-ubuntu-16-04/>)
 
   设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
@@ -285,7 +287,7 @@ pavucontrol
 ## 八、禁用访客登录
 
 ```bash
-sudo vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+sudo vim /usr/share/lightdm/lightdm.conf.d/50-guest-wrapper.conf
 # 追加 allow-guest=false
 reboot
 ```
