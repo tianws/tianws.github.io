@@ -106,7 +106,15 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - peek：gif录制软件
 
-- synergy：键鼠共享软件
+- synergy：键鼠共享软件 [安装方法](<https://tianws.github.io/skill/2019/04/20/synergy/>)
+
+- motrix：下载软件
+
+- lepton：gist客户端
+
+- vlc：视频播放器
+
+- albert：快捷启动软件
 
 - flameshot：截图软件 [安装方法](<https://mithun.co/software/install-flameshot-on-ubuntu-16-04/>)
 
