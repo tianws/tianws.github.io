@@ -177,4 +177,4 @@ tags:
 - [受用一生的高效PyCharm使用技巧](https://mp.weixin.qq.com/s?__biz=MzI0ODcxODk5OA==&mid=2247503862&idx=6&sn=7c96a01a956de53f9e743ed291dd18a8&chksm=e99efc0fdee97519db74be861eb0b428dc5e1ebd8962d157cc706bb36c20524d278d0aebc208&mpshare=1&scene=1&srcid=#rd)
 - [受用一生的高效PyCharm使用技巧（二）](https://mp.weixin.qq.com/s?__biz=MzI0ODcxODk5OA==&mid=2247504394&idx=3&sn=504b2e440d5bb7ca7525f70542f886d6&chksm=e99ee1f3dee968e59c08f47bfd90b5c2d6ccc91ee9dd1c18b2e1c097bf4bb40dc5e38b662707&mpshare=1&scene=1&srcid=#rd)
 - [你有哪些想要分享的 PyCharm 使用技巧？](<https://www.zhihu.com/question/37787004>)
-
+- [IntelliJ IDEA 简体中文专题教程](<https://github.com/judasn/IntelliJ-IDEA-Tutorial>)

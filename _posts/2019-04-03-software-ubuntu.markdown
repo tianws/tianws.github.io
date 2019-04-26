@@ -128,6 +128,8 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - feh：图片查看
 
+- screenfetch：查看电脑信息工具
+
 - jekyll：博客
 
   ```bash
