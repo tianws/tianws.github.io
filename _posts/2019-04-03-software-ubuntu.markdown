@@ -116,9 +116,21 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - albert：快捷启动软件
 
+- tusk：印象笔记非官方客户端
+
+- Indicator Stickynotes：便签
+
 - flameshot：截图软件 [安装方法](<https://mithun.co/software/install-flameshot-on-ubuntu-16-04/>)
 
   设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
+  
+- pomodoro-indicator：番茄钟插件
+
+  ```bash
+  sudo add-apt-repository ppa:atareao/atareao
+  sudo apt-get update
+  sudo apt-get install pomodoro-indicator
+  ```
 
 #### 2、命令行软件
 
@@ -138,6 +150,11 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
   gem install jekyll bundler
   gem install jekyll-paginate
   ```
+
+#### 3、更多软件
+
+- [20 Must-Have Ubuntu Apps in 2019](<https://www.fossmint.com/best-ubuntu-apps/>)
+- [超赞的 Linux 软件](<https://alim0x.gitbooks.io/awesome-linux-software-zh_cn/content/>)
 
 ## 四、zsh
 

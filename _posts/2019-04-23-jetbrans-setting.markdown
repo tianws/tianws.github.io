@@ -82,6 +82,13 @@ tags:
    Setting -> IDE Setting Sync
 
    需要JetBrains账号，同步设置到服务器上。
+   
+8. 插件
+
+   - .ignore：生成.gitignore文件
+   - Key promoter X：提示快捷键
+
+   
 
 ## Usage
 
