@@ -120,6 +120,8 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - Indicator Stickynotes：便签
 
+- 网易云音乐：官方客户端 推荐[1.0.0版本](http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb)
+
 - flameshot：截图软件 [安装方法](<https://mithun.co/software/install-flameshot-on-ubuntu-16-04/>)
 
   设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
