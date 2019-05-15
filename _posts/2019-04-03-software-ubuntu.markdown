@@ -48,6 +48,7 @@ make
 
 # 配置
 sudo vim /etc/proxychains.conf # 编辑最后一行，其他按需编辑
+cp /etc/proxychains.conf ~/.proxychains/proxychains.conf # 如果没有root权限的话，可以把配置文件放在家目录
 
 # 卸载
 sudo make install DESTDIR=foo
