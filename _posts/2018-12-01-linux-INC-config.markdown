@@ -137,7 +137,7 @@ ethtool –s ethX [speed 10|100|1000]        ## 设置网口速率10/100/1000M
 
 原来要传输一个小时的文件，现在几分钟就搞定！ enjoy！
 
-![image](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181201/image.jpg)
+<img src="https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181201/image.jpg" width="40%" alt="AltText" />
 
 ## Tips
 
