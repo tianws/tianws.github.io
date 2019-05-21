@@ -87,7 +87,8 @@ tags:
 
    - .ignore：生成.gitignore文件
    - Key promoter X：提示快捷键
-
+- Git Commit Template：git commit message规范
+   
    
 
 ## Usage
