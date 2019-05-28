@@ -194,13 +194,19 @@ echo "nouveau" | sudo tee -a /etc/modules
 ### （2）安装
 
 ```bash
-# 方法一：
+# 方法一：（推荐）
 tar -xzvf cudnn-9.0-linux-x64-v7.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 
-# 方法二：（推荐）
+## 若sudo ldconfig提示不是符号链接，可用以下示例方法解决
+sudo ldconfig -v | grep cudnn
+sudo ln -sf /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so.7 /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so
+sudo ln -sf /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so.7.0.5 /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so.7
+
+
+# 方法二：
 sudo dpkg -i libcudnn7_7.0.3.11-1+cuda9.0_amd64.deb # Install the runtime library
 sudo dpkg -i libcudnn7-dev_7.0.3.11-1+cuda9.0_amd64.deb # Install the developer library
 sudo dpkg -i libcudnn7-doc_7.0.3.11-1+cuda9.0_amd64.deb # Install the code samples and the cuDNN Library User Guide

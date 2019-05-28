@@ -378,3 +378,34 @@ sudo apt clean
 sudo apt update
 ```
 
+## 十、apt-key删除
+
+添加私有apt源常常要如下操作：
+
+```bash
+echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+sudo apt-get update && sudo apt-get install bazel
+```
+
+如果要卸载：
+
+```bash
+sudo apt --purge bazel
+sudo rm /etc/apt/sources.list.d/bazel.list
+```
+
+关键是apt-key不好删除，可以安装下面的方法删除：
+
+```bash
+curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key --keyring /tmp/test add -
+sudo apt-key --keyring /tmp/test list
+## output
+---------
+pub   4096R/48457EE0 2016-05-24 [有效至：2020-05-23]
+uid                  Bazel Developer (Bazel APT repository key) <bazel-dev@googlegroups.com>
+sub   4096R/43FF45F9 2016-05-24 [有效至：2020-05-23]
+
+sudo apt-key del 48457EE0
+```
+
