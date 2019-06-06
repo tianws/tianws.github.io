@@ -409,3 +409,43 @@ sub   4096R/43FF45F9 2016-05-24 [有效至：2020-05-23]
 sudo apt-key del 48457EE0
 ```
 
+## 十一、将文件中的tab转换为空格
+
+1、使用sed:
+
+`sed -i 's/^I/    /g' filename`，其中`^I`是在命令行中输入`<Ctrl-V><Tab>`来键入，将所有tab替换为4个空格。
+
+2、使用expand和unexpand命令：
+
+```bash
+expand -t 4 filename > newfile    #将文件中的tab扩展为4个空格。
+unexpand -t 4 filename > newfile  #将文件中的空格还原为tab。
+```
+
+3、使用vim:
+
+（1）用vim替换命令：
+
+`:%s/^I/    /g`，同样是输入`<Ctrl-V><Tab>`来键入`^I`，同样将所有tab替换为4个空格。
+
+（2）用vim retab命令：
+
+```bash
+# tab替换为空格
+:set ts=4 # ts是tabstop的缩写，设TAB宽4个空格
+:set expandtab
+:%retab! #加!是用于处理非空白字符之后的tab，即替换所有的tab，不加!则只处理行首的tab
+
+# 空格替换为tab
+:set ts=4
+:set noexpandtab
+:%retab!
+```
+
+（3）对于新文件，在.vimrc中添加以下代码，重启vim即可按tab产生4个空格：
+
+```bash
+set ts=4
+set expandtab
+```
+
