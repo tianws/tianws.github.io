@@ -127,6 +127,8 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
   设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
   
+- station：网页聚合软件（同类型的还有franz和rambox）
+
 - pomodoro-indicator：番茄钟插件
 
   ```bash
