@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Shadowsocks多VPS负载均衡"
+title:      "多VPS线路负载均衡"
 subtitle:   "Haproxy的介绍与使用"
 date:       2019-07-11 00:00:00
 author:     "Tian"
@@ -19,7 +19,7 @@ tags:
 
 答案是肯定的，这就是今天的主角——Haproxy。
 
-有个前提，每个ss的服务器端口和密码必须一样。也就是说，如果你有A，B，C，D四个ss，这四个的密码和加密方式必须一致，才可以用haproxy。
+但是有个前提，每个ss的服务器端口和密码必须一样。也就是说，如果你有A，B，C，D四个ss，这四个的密码和加密方式必须一致，才可以用haproxy。
 
 ## 安装
 
@@ -81,15 +81,15 @@ backend shadowsocks-out
 
 配置分为五大部分：
 
-`global`：全局配置，这里主要是配置了日志
+- **global**：全局配置，这里主要是配置了日志
 
-`defaults`：默认配置，也是一些全局配置
+- **defaults**：默认配置，也是一些全局配置
 
-`listen`：监听配置，我在`1111`端口配置了http监控页面，访问`ip:1111/status`，认证用户名和密码都是`admin`，具体含义参考博客 - [haproxy监控页面和页面详细参数](https://www.centos.bz/2018/01/haproxy监控页面-和页面详细参数/)
+- **listen**：监听配置，我在`1111`端口配置了http监控页面，访问`ip:1111/status`，认证用户名和密码都是`admin`，具体含义参考博客  [haproxy监控页面和页面详细参数](https://www.centos.bz/2018/01/haproxy监控页面-和页面详细参数/)
 
-`frontend`：前端配置，Shadowsocks数据流从这里进入，流向指定后端，注意这里的端口号，即为ss客户端的输入端口
+- **frontend**：前端配置，Shadowsocks数据流从这里进入，流向指定后端，注意这里的端口号，即为ss客户端的输入端口
 
-`backend`：后端配置，`balance`指定负载平衡方式，每个服务器写为一个server行，server支持域名或IP。如果使用域名，重启服务出现问题，可以参考博客 - [解决 Haproxy 用 Systemd 启动失败的问题](https://www.solarck.com/systemd-wait-network-online.html)。
+- **backend**：后端配置，`balance`指定负载平衡方式，每个服务器写为一个server行，server支持域名或IP。如果使用域名，重启服务出现问题，可以参考博客  [解决 Haproxy 用 Systemd 启动失败的问题](https://www.solarck.com/systemd-wait-network-online.html)。
 
 > 负载平衡方式只有简单的几种，复杂的需要查文档，可以参考[关于haproxy负载均衡的算法整理](https://my.oschina.net/BambooLi/blog/506397)
 >
@@ -105,13 +105,9 @@ backend shadowsocks-out
 sudo service haproxy start|stop|status|reload|restart|force-reload # 控制haproxy的运行
 ```
 
-监控界面
-
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190711/2019-07-11-17-22-52.jpg)
-
 ## 使用
 
-修改ss的config.json
+修改ss的config.json：
 
 ```bash
 {
@@ -125,39 +121,22 @@ sudo service haproxy start|stop|status|reload|restart|force-reload # 控制hapro
 }
 ```
 
-haproxy会将多个ss线路进行负载均衡整合，也即用haproxy宿主机一个ss线路，代替了原来多个ss线路，这样就不用手动选择了。
+Haproxy会将多个ss线路进行负载均衡整合，也即用haproxy宿主机一个ss线路，代替了原来多个ss线路，这样就不用手动选择了。
 
 ## 客户端
 
-V2ray：
+各代理方式推荐的客户端：
 
->- 服务器：[一键安装脚本](<https://github.com/233boy/v2ray>)
->
->- Windows：[V2RayN](<https://github.com/233boy/v2ray/wiki/V2RayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B>)
->
->- MacOS：[V2RayX](<https://github.com/Cenmrev/V2RayX/releases>) :
->
->  `brew cask install v2rayx`
->
->- Linux：[v2ray官方程序](<https://www.v2ray.com/>)
+|             |                            V2ray                             |                         ShadowsocksR                         |                         Shadowsocks                          |
+| :---------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|   **VPS**   |      [V2ray配置脚本](<https://github.com/233boy/v2ray>)      | [ssr配置脚本](https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh) | [ssr配置脚本](https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh) |
+| **Windows** | [V2RayN](<https://github.com/233boy/v2ray/wiki/V2RayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B>) | [shadowsocksr-csharp](https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases) | [Shadowsocks Windows](https://github.com/shadowsocks/shadowsocks-windows/releases) |
+|  **MacOS**  |    [V2RayX](<https://github.com/Cenmrev/V2RayX/releases>)    | [ShadowsocksX-NG](https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases) | [ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG/releases) |
+|  **Linux**  |            [官方V2ray](<https://www.v2ray.com/>)             | [ssr一键使用脚本](https://github.com/the0demiurge/CharlesScripts/blob/master/charles/bin/ssr) | [Shadowsocks Qt5](https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation) |
+|   **iOS**   |                              -                               | [Potatso Lite](https://itunes.apple.com/app/potatso-lite/id1239860606)、[Shadowrocket](https://itunes.apple.com/app/shadowrocket/id932747118) | [Potatso Lite](https://itunes.apple.com/app/potatso-lite/id1239860606)、[Shadowrocket](https://itunes.apple.com/app/shadowrocket/id932747118) |
+| **Android** |                              -                               | [Shadowsocks Android](https://github.com/shadowsocks/shadowsocks-android/releases) | [Shadowsocks Android](https://github.com/shadowsocks/shadowsocks-android/releases) |
 
-ShadowsocksR：
 
->- 服务器：[ssr一键安装脚本](https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh)
->- Windows：[shadowsocksr-csharp](https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases)
->- MacOS：[ShadowsocksX-NG](https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases)
->- Linux：[ssr一键使用脚本](https://github.com/the0demiurge/CharlesScripts/blob/master/charles/bin/ssr)
->- iOS：[Potatso Lite](https://itunes.apple.com/app/potatso-lite/id1239860606)、[Shadowrocket](https://itunes.apple.com/app/shadowrocket/id932747118)、Wingy
->- Android：[Shadowsocks Android](https://github.com/shadowsocksr-backup/shadowsocksr-android/releases/download/3.4.0.8/shadowsocksr-release.apk)
-
-Shadowsocks：
-
->- 服务器：[ssr一键安装脚本](https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh)
->- Windows：[Shadowsocks Windows](https://github.com/shadowsocks/shadowsocks-windows/releases)
->- MacOS：[ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG/releases)
->- Linux：[Shadowsocks Qt5](https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation)
->- iOS：[Potatso Lite](https://itunes.apple.com/app/potatso-lite/id1239860606)、[Shadowrocket](https://itunes.apple.com/app/shadowrocket/id932747118)、Wingy
->- Android：[Shadowsocks Android](https://github.com/shadowsocks/shadowsocks-android/releases)
 
 ## 参考
 
