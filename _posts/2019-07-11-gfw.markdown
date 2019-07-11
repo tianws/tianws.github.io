@@ -1,0 +1,167 @@
+---
+layout:     post
+title:      "Shadowsocks多VPS负载均衡"
+subtitle:   "Haproxy的介绍与使用"
+date:       2019-07-11 00:00:00
+author:     "Tian"
+categories: Skill
+header-img: "img/post-bg-terminal.jpg"
+header-mask: 0.7
+catalog: true
+tags:
+    - 环境配置
+    - 开发环境
+---
+
+## 方案
+
+使用机场或者有多个小鸡的人，某个线路故障了，就得手动切换ss线路，实在太麻烦了，能不能自动负载均衡，使用可用的VPS呢？
+
+答案是肯定的，这就是今天的主角——Haproxy。
+
+有个前提，每个ss的服务器端口和密码必须一样。也就是说，如果你有A，B，C，D四个ss，这四个的密码和加密方式必须一致，才可以用haproxy。
+
+## 安装
+
+```bash
+sudo apt install haproxy
+```
+
+## 配置
+
+```bash
+sudo mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak # 备份
+sudo vim /etc/haproxy/haproxy.cfg # 编辑配置文件
+```
+
+输入配置
+
+```config
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    user root
+    group root
+    daemon
+
+defaults
+    log global
+    mode tcp
+    timeout connect 5s
+    timeout client 5s
+    timeout server 5s
+    option      dontlognull
+    option      redispatch
+    retries     3
+
+listen status
+  bind *:1111
+  mode  http
+  stats refresh 30s
+  stats uri /status
+  stats realm Haproxy  
+  stats auth admin:admin
+  stats hide-version
+  stats admin if TRUE
+
+frontend shadowsocks-in
+    mode tcp
+    bind *:8388
+    default_backend shadowsocks-out
+
+backend shadowsocks-out
+    mode tcp
+    option      tcp-check
+    balance roundrobin
+    server  servername1    xxxxx1.com:8088  check
+    server  servername2    xxxxx2.net:8080  check
+    server  servername3    12.34.56.78:9999  check
+    server  servername4    123.234.234.123:443  check
+```
+
+配置分为五大部分：
+
+`global`：全局配置，这里主要是配置了日志
+
+`defaults`：默认配置，也是一些全局配置
+
+`listen`：监听配置，我在`1111`端口配置了http监控页面，访问`ip:1111/status`，认证用户名和密码都是`admin`，具体含义参考博客 - [haproxy监控页面和页面详细参数](https://www.centos.bz/2018/01/haproxy监控页面-和页面详细参数/)
+
+`frontend`：前端配置，Shadowsocks数据流从这里进入，流向指定后端，注意这里的端口号，即为ss客户端的输入端口
+
+`backend`：后端配置，`balance`指定负载平衡方式，每个服务器写为一个server行，server支持域名或IP。如果使用域名，重启服务出现问题，可以参考博客 - [解决 Haproxy 用 Systemd 启动失败的问题](https://www.solarck.com/systemd-wait-network-online.html)。
+
+> 负载平衡方式只有简单的几种，复杂的需要查文档，可以参考[关于haproxy负载均衡的算法整理](https://my.oschina.net/BambooLi/blog/506397)
+>
+> roundrobin：简单轮询，该算法是动态的，对于实例启动慢的服务器权重会在运行中调整
+>
+> static-rr：根据权重分配，权重在后端server中设置
+>
+> leastconn：根据服务器最少连接分配，这个模式适合长连接应用
+
+## 启动
+
+```bash
+sudo service haproxy start|stop|status|reload|restart|force-reload # 控制haproxy的运行
+```
+
+监控界面
+
+![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190711/2019-07-11-17-22-52.jpg)
+
+## 使用
+
+修改ss的config.json
+
+```bash
+{
+    "server":"haproxy宿主机ip",
+    "server_port":8388,
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "password":"你密码",
+    "timeout":600,
+    "method":"aes-256-cfb"
+}
+```
+
+haproxy会将多个ss线路进行负载均衡整合，也即用haproxy宿主机一个ss线路，代替了原来多个ss线路，这样就不用手动选择了。
+
+## 客户端
+
+V2ray：
+
+>- 服务器：[一键安装脚本](<https://github.com/233boy/v2ray>)
+>
+>- Windows：[V2RayN](<https://github.com/233boy/v2ray/wiki/V2RayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B>)
+>
+>- MacOS：[V2RayX](<https://github.com/Cenmrev/V2RayX/releases>) :
+>
+>  `brew cask install v2rayx`
+>
+>- Linux：[v2ray官方程序](<https://www.v2ray.com/>)
+
+ShadowsocksR：
+
+>- 服务器：[ssr一键安装脚本](https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh)
+>- Windows：[shadowsocksr-csharp](https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases)
+>- MacOS：[ShadowsocksX-NG](https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases)
+>- Linux：[ssr一键使用脚本](https://github.com/the0demiurge/CharlesScripts/blob/master/charles/bin/ssr)
+>- iOS：[Potatso Lite](https://itunes.apple.com/app/potatso-lite/id1239860606)、[Shadowrocket](https://itunes.apple.com/app/shadowrocket/id932747118)、Wingy
+>- Android：[Shadowsocks Android](https://github.com/shadowsocksr-backup/shadowsocksr-android/releases/download/3.4.0.8/shadowsocksr-release.apk)
+
+Shadowsocks：
+
+>- 服务器：[ssr一键安装脚本](https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh)
+>- Windows：[Shadowsocks Windows](https://github.com/shadowsocks/shadowsocks-windows/releases)
+>- MacOS：[ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG/releases)
+>- Linux：[Shadowsocks Qt5](https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation)
+>- iOS：[Potatso Lite](https://itunes.apple.com/app/potatso-lite/id1239860606)、[Shadowrocket](https://itunes.apple.com/app/shadowrocket/id932747118)、Wingy
+>- Android：[Shadowsocks Android](https://github.com/shadowsocks/shadowsocks-android/releases)
+
+## 参考
+
+- [多Shadowsocks服务器负载均衡](https://www.solarck.com/haproxy-shadowsocks-balance.html)
+- [解决 Haproxy 用 Systemd 启动失败的问题](https://www.solarck.com/systemd-wait-network-online.html)
+- [利用haproxy做ss多线路的负载均衡](https://yuln.com/thread-14-1-1.html)
+- [Shadowsocks 客户端推荐](https://www.vpnto.net/posts/shadowsocks-client/)

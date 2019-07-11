@@ -129,6 +129,10 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
   
 - station：网页聚合软件（同类型的还有franz和rambox）
 
+- imagine：图片压缩软件
+
+- picGo：图片上传软件
+
 - pomodoro-indicator：番茄钟插件
 
   ```bash
