@@ -19,7 +19,7 @@ tags:
 
 答案是肯定的，这就是今天的主角——Haproxy。
 
-但是有个前提，每个ss的服务器端口和密码必须一样。也就是说，如果你有A，B，C，D四个ss，这四个的密码和加密方式必须一致，才可以用haproxy。
+但是有个前提，每个ss的密码和加密方式必须一样，才可以用haproxy。
 
 ## 安装
 
@@ -143,4 +143,5 @@ Haproxy会将多个ss线路进行负载均衡整合，也即用haproxy宿主机�
 - [多Shadowsocks服务器负载均衡](https://www.solarck.com/haproxy-shadowsocks-balance.html)
 - [解决 Haproxy 用 Systemd 启动失败的问题](https://www.solarck.com/systemd-wait-network-online.html)
 - [利用haproxy做ss多线路的负载均衡](https://yuln.com/thread-14-1-1.html)
+- [利用HAProxy实现ss-local多IP均衡负载](https://zhuanlan.zhihu.com/p/30559435)
 - [Shadowsocks 客户端推荐](https://www.vpnto.net/posts/shadowsocks-client/)

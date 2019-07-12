@@ -63,7 +63,7 @@ tags:
 
    - 字体：Setting -> Editor -> Font
 
-     字体推荐`DejaVu Sans Mono
+     字体推荐`DejaVu Sans Mono`
 
    - 编辑器样式：Setting -> Editor -> Color Scheme -> Scheme
 
@@ -87,9 +87,12 @@ tags:
 
    - .ignore：生成.gitignore文件
    - Key promoter X：提示快捷键
-- Git Commit Template：git commit message规范
-   
-   
+   - Git Commit Template：git commit message规范
+   - Statistic：代码统计
+   - Translation：翻译
+   - Rainbow Brackets：括号着色
+
+ 
 
 ## Usage
 
