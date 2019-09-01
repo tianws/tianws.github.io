@@ -133,6 +133,8 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - picGo：图片上传软件
 
+- gpick：取色工具（同类型还有gcolor2和pick）
+
 - pomodoro-indicator：番茄钟插件
 
   ```bash
