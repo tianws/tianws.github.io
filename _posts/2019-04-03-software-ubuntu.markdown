@@ -11,6 +11,7 @@ catalog: true
 tags:
     - 环境配置
     - Ubuntu
+    - 工具
 ---
 
 ## 一、科学上网
@@ -455,5 +456,42 @@ unexpand -t 4 filename > newfile  #将文件中的空格还原为tab。
 ```bash
 set ts=4
 set expandtab
+```
+
+## 十二、设置软件开机启动
+
+在命令行输入：
+
+```bash
+gnome-session-properties
+```
+
+然后设置即可。
+
+## 十三、终端光标不显示解决方法
+
+```bash
+echo -e "\033[?25l"  # 隐藏光标
+echo -e "\033[?25h"  # 显示光标
+```
+
+## 十四、为APPImage程序创建快捷方式
+
+```bash
+sudo vim /usr/share/applications/shoadowsocks.desktop # 以shoadowsocks举例
+
+# 编辑
+[Desktop Entry]
+Type=Application
+Version=V3.0.0alpha
+Encoding=UTF-8
+Name=shadowsocks-qt5
+Comment=shadowsocks qt application
+Icon=shadowsocks
+Exec=/Path/to/your/Shadowsocks-Qt5-v3.0.0alpha-amd64.AppImage
+Terminal=false
+StartupNotify=true
+Categories=Internet
+MimeType=application/shadowsocks
 ```
 

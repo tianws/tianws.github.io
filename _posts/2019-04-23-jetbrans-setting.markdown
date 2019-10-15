@@ -10,7 +10,7 @@ header-mask: 0.5
 catalog: true
 tags:
     - 环境配置
-    - 开发环境
+    - 工具
 ---
 
 我主要的开发语言是python和C++，一般写代码用的工具是Jetbrains家的PyCharm和CLion。这两个IDE快捷键和操作技巧都相似，这篇博客我用PyCharm作为例子，介绍下使用这些工具常用的一些技巧。

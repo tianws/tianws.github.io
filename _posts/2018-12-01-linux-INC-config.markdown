@@ -10,7 +10,7 @@ header-mask: 0.7
 catalog: true
 tags:
     - 环境配置
-    - 开发环境
+    - 工具
 ---
 
 ## 痛点
