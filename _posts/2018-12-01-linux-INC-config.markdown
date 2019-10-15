@@ -11,6 +11,7 @@ catalog: true
 tags:
     - 环境配置
     - 工具
+typora-root-url: ../
 ---
 
 ## 痛点
@@ -137,7 +138,7 @@ ethtool –s ethX [speed 10|100|1000]        ## 设置网口速率10/100/1000M
 
 原来要传输一个小时的文件，现在几分钟就搞定！ enjoy！
 
-<img src="https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181201/image.jpg" width="40%" alt="AltText" />
+<img src="https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/2018-12-01-linux-INC-config/image.jpg" width="40%" alt="AltText" />
 
 ## Tips
 

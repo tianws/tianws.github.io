@@ -11,6 +11,7 @@ catalog: true
 tags:
     - 环境配置
     - 工具
+typora-root-url: ../
 ---
 
 ## 背景
@@ -21,7 +22,7 @@ tags:
 
 不完全统计如下：
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190421150544.png)
+![01](/img/in-post/2019-04-20-synergy/01.png)
 
 推荐软件方案：
 

@@ -10,7 +10,8 @@ header-mask: 0.7
 catalog: true
 tags:
     - 工具
-    - 开发环境
+    - 环境配置
+typora-root-url: ../
 ---
 
 一个好的IDE能使编程事半功倍，而往往运行环境上没有条件装IDE。我们常常在本机用IDE编程完毕后，scp到服务器上运行，要做小的调试再用vim等编辑器来改代码。这样做很容易使本地和服务器上的代码不同步，虽然可以通过git等工具解决，但步骤太过繁琐。
@@ -39,7 +40,7 @@ sudo snap install [pycharm-professional|pycharm-community] --classic
 
 点选右边的齿轮，选择Add Remote...
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20171227/pycharm_settings.png)
+![pycharm_settings](/img/in-post/2017-12-27-pycharm-remote/pycharm_settings.png)
 
 填好ssh登录信息，选择需要的Python解释器路径，OK。
 
@@ -51,7 +52,7 @@ sudo snap install [pycharm-professional|pycharm-community] --classic
 
 然后添加我们需要指定的路径即可。
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20171227/path_settings.png)
+![path_settings](/img/in-post/2017-12-27-pycharm-remote/path_settings.png)
 
 现在我们的程序可以用远程服务器的环境和算力运行了。
 
@@ -76,7 +77,7 @@ echo $DISPLAY # 输出 localhost:13.0
 
 点选Run -> edit Configurations -> 添加 DISPLAY=localhost:13.0
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20171227/x11_settings.png)
+![x11_settings](/img/in-post/2017-12-27-pycharm-remote/x11_settings.png)
 
 现在运行程序，可以在本机实时显示图像了。
 

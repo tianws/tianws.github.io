@@ -11,6 +11,7 @@ catalog: true
 tags:
     - 训练技巧
     - Code
+typora-root-url: ../
 ---
 
 ## 需求
@@ -181,7 +182,7 @@ tmpfs /tmp tmpfs size=30G 0 0
 
 **实验一：**
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190901/1.png)
+![1](/img/in-post/2019-08-27-gpu-volatile/1.png)
 
 在hdd硬盘上，用同样的参数、同样的数据，分别用不同的优化方法，训练两个epoch，记录训练的时间。
 
@@ -201,7 +202,7 @@ tmpfs /tmp tmpfs size=30G 0 0
 
 **实验二：**
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190901/2.png)
+![2](/img/in-post/2019-08-27-gpu-volatile/2.png)
 
 用同样的参数、同样的数据，用默认的dataloader，数据分别在hdd、ssd和tmpfs内存上进行训练两个epoch，记录训练时间。
 
@@ -214,7 +215,7 @@ tmpfs /tmp tmpfs size=30G 0 0
 
 **实验三：**
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20190901/3.png)
+![3](/img/in-post/2019-08-27-gpu-volatile/3.png)
 
 优化数据预处理代码，尽量用向量化代码，缩减数据传输大小，分别在hdd上，用默认dataloader训练。
 

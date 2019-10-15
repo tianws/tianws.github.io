@@ -10,20 +10,21 @@ header-mask: 0.4
 mathjax: true
 catalog: true
 tags:
-    - 代码解析
+    - Code
+typora-root-url: ../
 ---
 
 ## mIOU定义
 
 Mean Intersection over Union(MIoU，均交并比)，为语义分割的标准度量。其计算两个集合的交集和并集之比，在语义分割问题中，这两个集合为真实值（ground truth）和预测值（predicted segmentation）。这个比例可以变形为TP（交集）比上TP、FP、FN之和（并集）。在每个类上计算IoU，然后取平均。
 
-$$MIoU=\frac{1}{k+1}\sum^{k}_{i=0}{\frac{p_{ii}}{\sum_{j=0}^{k}{p_{ij}+\sum_{j=0}^{k}{p_{ji}-p_{ii}}}}}​$$
+$$MIoU=\frac{1}{k+1}\sum^{k}_{i=0}{\frac{p_{ii}}{\sum_{j=0}^{k}{p_{ij}+\sum_{j=0}^{k}{p_{ji}-p_{ii}}}}}$$
 
 $p_{ij}$表示真实值为$i$，被预测为$j$的数量。
 
 #### 直观理解
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181030/mIoU.png)
+![mIoU](/img/in-post/2018-10-30-miou/mIoU.png)
 
 红色圆代表真实值，黄色圆代表预测值。橙色部分为两圆交集部分。
 
@@ -38,9 +39,9 @@ Tensorflow主要用`tf.metrics.mean_iou`来计算mIoU，下面解析源码：
 
 混淆矩阵例子
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181030/confusion_matrix_1.jpg)
+![confusion_matrix_1](/img/in-post/2018-10-30-miou/confusion_matrix_1.jpg)
 
-![](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181030/confusion_matrix.jpg)
+![confusion_matrix](/img/in-post/2018-10-30-miou/confusion_matrix.jpg)
 
 ```python
 # 主要代码

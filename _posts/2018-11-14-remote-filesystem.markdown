@@ -11,6 +11,7 @@ catalog: true
 tags:
     - 环境配置
     - 工具
+typora-root-url: ../
 ---
 
 ## 需求
@@ -19,7 +20,9 @@ tags:
 
 等？等是不可能等的。我一看，102服务器现在还空着，马不停蹄地开始往102服务器上拷贝数据和程序，因为数据量大，拷贝了几个小时，等我终于把102的数据、环境、程序都调试好，准备开始训练，发现102显卡又被占了。。。
 
-![images](https://raw.githubusercontent.com/tianws/tianws.github.io/master/img/in-post/20181114/images.jpeg)
+
+
+![images](/img/in-post/2018-11-14-remote-filesystem/images.jpeg)
 
 发现了吗，在这个过程中，有三点浪费：
 

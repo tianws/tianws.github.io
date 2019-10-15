@@ -9,7 +9,7 @@ header-img: "img/post_2017-12-20.jpg"
 header-mask: 0.4
 catalog: true
 tags:
-    - 随笔
+    - 生活
 ---
 
 ## 2017总结

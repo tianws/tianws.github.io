@@ -8,7 +8,7 @@ categories: Life
 header-img: "img/post_2017_10_09.jpg"
 catalog: false
 tags:
-    - 随笔
+    - 生活
 ---
 
 国庆节，回了趟家。
