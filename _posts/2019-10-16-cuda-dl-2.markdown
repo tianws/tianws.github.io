@@ -32,7 +32,7 @@ typora-root-url: ../
 
 **自己重装驱动前，一定一定要记得先卸载原驱动！否则后面可能会遇到各种各样的问题！**
 
-#### 1、查询显卡和驱动信息
+**1、查询显卡和驱动信息**
 
 查看显卡信息：
 
@@ -58,7 +58,7 @@ nvidia-settings --version
 cat /proc/driver/nvidia/version
 ```
 
-#### 2、卸载驱动
+**2、卸载驱动**
 
 驱动兼容性列表：
 
@@ -79,7 +79,7 @@ sudo apt-get autoremove
 
 确保驱动卸载干净后，可以安装我们的驱动了。（可用`nvidia-smi`测试驱动是否可调用）
 
-#### 3、安装驱动
+**3、安装驱动**
 
 [这篇文章](https://blog.csdn.net/tjuyanming/article/details/80862290)总结的很好，安装驱动有三种方法：
 
@@ -146,7 +146,7 @@ sudo apt install nvidia-340
 
 [官方文档](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)推荐用包管理器安装，但是为了解决前言中列出的问题，本文推荐用runfile包安装。
 
-#### 1、查询cuda信息
+**1、查询cuda信息**
 
 查询cuda版本：
 
@@ -178,7 +178,7 @@ sudo apt-get --purge remove cuda
 sudo apt-get autoremove
 ```
 
-#### 2、安装cuda
+**2、安装cuda**
 
 （1）下载cuda
 
@@ -195,7 +195,7 @@ sh cuda_xxx_linux.run
 1. 选择不安装驱动、安装cuda、不安装sample
 2. cuda安装目录自定义，但是如果安装到系统路径，需要sudo执行
 
-#### 3、设置环境变量
+**3、设置环境变量**
 
 将以下内容添加到`~/.bashrc`或者`~/.zshenv`中：
 
@@ -208,7 +208,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_
 
 `source`一下修改的文件，然后执行`nvcc -V`，看cuda是否配置成功。
 
-#### 4、多cuda并存
+**4、多cuda并存**
 
 多版本cuda的安装方法和上面一样，用runfile安装到另一个路径下即可。
 
@@ -216,7 +216,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_
 
 ## 四、安装cudnn
 
-#### 1、查询cudnn信息
+**1、查询cudnn信息**
 
 查询cudnn版本：
 
@@ -229,7 +229,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 dpkg -l | grep cudnn
 ```
 
-#### 2、安装cudnn
+**2、安装cudnn**
 
 cudnn一样也有两种安装方式：
 
@@ -248,7 +248,7 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h/usr/local/cuda/lib64/libcudnn*
 
 ## 五、安装miniconda
 
-#### 1、下载安装miniconda
+**1、下载安装miniconda**
 
 [miniconda下载地址](https://docs.conda.io/en/latest/miniconda.html)
 
@@ -257,13 +257,13 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h/usr/local/cuda/lib64/libcudnn*
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
-#### 2、新建conda环境
+**2、新建conda环境**
 
 ```bash
 conda create --name pytorch python=3.6
 ```
 
-#### 3、设置代理
+**3、设置代理**
 
 （1）设置conda代理：[清华conda镜像](https://mirror.tuna.tsinghua.edu.cn/help/anaconda/)
 
@@ -317,7 +317,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 > # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
 > ```
 
-#### 4、常用conda命令
+**4、常用conda命令**
 
 ```bash
 # 获取版本号
@@ -350,7 +350,7 @@ conda create --name new_env_name --clone old_env_name
 conda remove --name your_env_name --all
 ```
 
-#### 5、conda、pip环境复制
+**5、conda、pip环境复制**
 
 ```bash
 # conda导出已有环境
@@ -374,7 +374,7 @@ pip install -r requirements.txt
 
 ## 六、安装pytorch
 
-#### 1、安装最新pytorch：
+**1、安装最新pytorch：**
 
 [官网链接](https://pytorch.org/)
 
@@ -382,13 +382,13 @@ pip install -r requirements.txt
 conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 ```
 
-#### 2、指定pytorch版本
+**2、指定pytorch版本:**
 
 ```bash
 conda install pytorch=1.0 torchvision cudatoolkit=10.1 -c pytorch
 ```
 
-#### 3、指定cuda版本
+**3、指定cuda版本：**
 
 ```bash
 conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
