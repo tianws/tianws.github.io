@@ -404,7 +404,7 @@ sudo apt --purge bazel
 sudo rm /etc/apt/sources.list.d/bazel.list
 ```
 
-关键是apt-key不好删除，可以安装下面的方法删除：
+关键是apt-key不好删除，可以按照下面的方法删除：
 
 ```bash
 curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key --keyring /tmp/test add -
@@ -495,3 +495,29 @@ Categories=Internet
 MimeType=application/shadowsocks
 ```
 
+## 十五、ppa删除并还原软件版本
+
+首先，安装`ppa-purge`软件：
+
+```bash
+sudo apt install ppa-purge
+```
+
+安装好后，使用`ppa-purge`来移除：
+
+```bash
+# 比如用下列命令新增了一个ppa
+sudo add-apt-repository ppa:yogarine/eclipse/ubuntu
+# 移除时用ppa-purge替换掉add-apt-repository即可，注意会连ppa安装的软件一起移除或者恢复版本
+sudo ppa-purge ppa:yogarine/eclipse/ubuntu 
+# 最后删除/etc/apt/sources.list.d下相应的list文件
+
+# 如果忘了ppa链接，可这样找回
+history | grep add-apt-repository
+```
+
+参考：
+
+- [如何通过apt-get降级软件包？](https://ubuntuqa.com/article/137.html)
+- [Ubuntu 用指令移除 PPA 儲存庫](https://www.arthurtoday.com/2011/05/ubuntu-ppa.html)
+- [NEWBIE GUIDE: HOW TO USE PPA PURGE](http://www.ubuntubuzz.com/2012/02/newbie-guide-how-to-use-ppa-purge.html)
