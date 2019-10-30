@@ -241,6 +241,9 @@ Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 --ipc                      设置ipc命名空间，共享内存可以提高进程数据的交互速度：
 							   container:<name|id>：用其他container的ipc命名空间
 							   host：用host的ipc命名空间
+							   
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \ 设置X11嵌套字以转发图形化界面
 ```
 
 **docker tag的最佳实践：**
@@ -294,4 +297,5 @@ docker tag myimage-v2.0.0 myimage:latest
 - [tag 使用最佳实践](<https://www.ibm.com/developerworks/community/blogs/132cfa78-44b0-4376-85d0-d3096cd30d3f/entry/%E9%95%9C%E5%83%8F%E5%91%BD%E5%90%8D%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5_%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%AC_Docker_%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF_18?lang=en>)
 - [Docker 常用命令与操作](<https://www.jianshu.com/p/adaa34795e64>)
 - [请教下代码放在Docker里面还是外面呢](<http://dockone.io/question/24>)
+- [Running GUI apps with Docker](http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/)
 
