@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Windows10 重装"
-subtitle:   "重装 Windows10，并保留正版系统和正版 Office"
+title:      "Windows 10 重装"
+subtitle:   "重装 Windows 10，并保留正版系统和正版 Office"
 date:       2018-07-05 10:00:00
 author:     "Tian"
 categories: Skill
@@ -15,15 +15,15 @@ tags:
 
 ## 一、重置电脑
 
-电脑是同事换下来的，预装 Windows10 和正版 office2016，我想重置电脑并保留正版系统和 office。
+电脑是同事换下来的，预装 Windows 10 和正版 Office2016，我想重置电脑并保留正版 Windows 系统和正版 Office。
 
 ### （1）查看系统版本
 
 右键点击开始菜单——系统，能看到系统版本。可以看到此电脑预装的是 64 位的「Windows 10 家庭中文版」，这也是绝大多数笔记本预装的版本。
 
-### （2）查看 Windows10 序列号
+### （2）查看 Windows 10 序列号
 
-本机的 Windows10 的序列号很容易查出来，按 `Win` + `R`，运行 `powershell`，然后执行以下命令：
+本机的 Windows 10 的序列号很容易查出来，按 `Win` + `R`，运行 `powershell`，然后执行以下命令：
 
 ```
 (Get-WmiObject -query 'select * from SoftwareLicensingService').OA3xOriginalProductKey
@@ -71,7 +71,7 @@ tags:
 
 ## 二、子系统 Ubuntu
 
-因为工作环境是 Linux，用 Windows10 的 Ubuntu 子系统能很方便地和工作机以及服务器交互。
+因为工作环境是 Linux，用 Windows 10 的 Ubuntu 子系统能很方便地和工作机以及服务器交互。
 
 打开 Microsoft Store，搜索 Ubuntu，可以免费下载。
 

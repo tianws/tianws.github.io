@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "ssh 环境配置"
+title:      "SSH 环境配置"
 subtitle:   ""
 date:       2018-06-26 10:00:00
 author:     "Tian"
@@ -13,7 +13,7 @@ tags:
     - 工具
 ---
 
-## 一、安装 server 端 ssh
+## 一、安装 server 端 SSH
 
 ```bash
 sudo apt install openssh-server 
@@ -25,11 +25,11 @@ sudo /etc/init.d/ssh start
 service ssh start
 ```
 
-## 二、配置 server 端 ssh
+## 二、配置 server 端 SSH
 
 ssh-server 配置文件位于 /etc/ssh/sshd_config，在这里可以定义 ssh 的服务端口。
 
-## 三、配置 client 端 ssh
+## 三、配置 client 端 SSH
 
 ### 1、生成密钥
 

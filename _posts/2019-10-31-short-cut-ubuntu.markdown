@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Ubuntu 快捷键和鼠标全局手势配置"
-subtitle:   ""
+subtitle:   "Unity Tweak Tool、Compiz Config Settings Manager、Easystroke"
 date:       2019-10-31 10:00:00
 author:     "Tian"
 categories: Skill
