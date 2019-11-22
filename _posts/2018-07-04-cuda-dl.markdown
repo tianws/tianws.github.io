@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "NVIDIA显卡配置"
-subtitle:   "driver、cuda、cudnn、tensorflow安装详细记录"
+title:      "NVIDIA 显卡配置"
+subtitle:   "驱动、CUDA、cuDNN、TensorFlow 安装详细记录"
 date:       2018-07-04 10:00:00
 author:     "Tian"
 categories: Skill
@@ -12,9 +12,9 @@ tags:
     - 环境配置
 ---
 
-##  一、安装driver、cuda
+##  一、安装驱动、CUDA
 
-**1、 确保机器有支持cuda的GPU**
+**1、 确保机器有支持 CUDA 的 GPU**
 
 ```bash
 lspci | grep -i nvidia
@@ -23,15 +23,15 @@ lspci | grep -i nvidia
 01:00.1 Audio device: NVIDIA Corporation Device 10f1 (rev a1)
 ```
 
-如果没有输出，执行下面命令更新PCI硬件database，再执行上面命令。
+如果没有输出，执行下面命令更新 PCI 硬件 database，再执行上面命令。
 
 ```bash
 update-pciids
 ```
 
-支持cuda的GPU列表见这个[链接](https://developer.nvidia.com/cuda-gpus)。
+支持 CUDA 的 GPU 列表见这个 [链接](https://developer.nvidia.com/cuda-gpus)。
 
-**2、确保机器有支持的Linux版本**
+**2、确保机器有支持的 Linux 版本**
 
 ```bash
 uname -m && cat /etc/*release
@@ -54,9 +54,9 @@ VERSION_CODENAME=xenial
 UBUNTU_CODENAME=xenial
 ```
 
-根据输出选择cuda。
+根据输出选择 CUDA。
 
-**3、确保机器安装了gcc**
+**3、确保机器安装了 GCC**
 
 ```bash
 gcc --version
@@ -67,15 +67,15 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
-报错的话说明没装gcc，安装gcc就好。
+报错的话说明没装 GCC，安装 GCC 就好。
 
-**4、确保机器有正确的Kernel Headers并安装了Development Packages**
+**4、确保机器有正确的 Kernel Headers 并安装了 Development Packages**
 
-安装驱动的时候需要正确的Kernel Headers和Development Packages。
+安装驱动的时候需要正确的 Kernel Headers 和 Development Packages。
 
-Runfile安装文件不会去验证package；Deb安装文件会验证，如果没有安装的话Deb会尝试安装。然而，它会安装最新的packages，可能和你正在使用的kernel不符。因此，最好在安装cuda驱动，或者任何时候改变kernel版本之前，手动确保正确版本的kernel header和development package。
+Runfile 安装文件不会去验证 Package；Deb 安装文件会验证，如果没有安装的话 Deb 会尝试安装。然而，它会安装最新的 Packages，可能和你正在使用的 Kernel 不符。因此，最好在安装 CUDA 驱动，或者任何时候改变 Kernel 版本之前，手动确保正确版本的 Kernel Header 和 Development Package。
 
-查看当前kernel版本：
+查看当前 Kernel 版本：
 
 ```bash
 uname -r
@@ -83,7 +83,7 @@ uname -r
 4.13.0-45-generic
 ```
 
-**如果系统更新了kernel版本，执行下面的命令确保正确的kernel header和development package被安装，否则，驱动可能不工作**
+**如果系统更新了 Kernel 版本，执行下面的命令确保正确的 Kernel Header 和 Development Package 被安装，否则，驱动可能不工作**
 
 ```bash
 sudo apt-get install linux-headers-$(uname -r)
@@ -91,39 +91,39 @@ sudo apt-get install linux-headers-$(uname -r)
 
 **5、选择安装方式**
 
-官方有两种安装cuda的方式，一种是用对应系统的包管理器（对Ubuntu系统来讲就是Deb包），另一种是用runfile包，可能的话推荐用包管理器安装，这样方便管理和安装依赖。
+官方有两种安装 CUDA 的方式，一种是用对应系统的包管理器（对 Ubuntu 系统来讲就是 Deb 包），另一种是用 Runfile 包，可能的话推荐用包管理器安装，这样方便管理和安装依赖。
 
-**6、下载NVIDIA CUDA Toolkit**
+**6、下载 NVIDIA CUDA Toolkit**
 
-在NVIDIA[官网](https://developer.nvidia.com/cuda-toolkit-archive)下载cuda。
+在  [Nvidia 官网](https://developer.nvidia.com/cuda-toolkit-archive) 下载 CUDA。
 
-因为[TensorFlow1.8](https://www.tensorflow.org/install/)指定了cuda版本为9.0，cudnn版本为v7.0，否则要自己编译安装，为了方便，我们用TF1.8指定的版本。
+因为 [TensorFlow1.8](https://www.tensorflow.org/install/) 指定了 CUDA 版本为 9.0，cuDNN 版本为 v7.0，否则要自己编译安装，为了方便，我们用 TF1.8 指定的版本。
 
-*MD5认证*
+*MD5 认证*
 
 ```bash
 md5sum <file>
 ```
 
- MD5 checksum 在[这里](https://developer.download.nvidia.com/compute/cuda/9.2/Prod/docs/sidebar/md5sum.txt)。
+ MD5 checksum 在 [这里](https://developer.download.nvidia.com/compute/cuda/9.2/Prod/docs/sidebar/md5sum.txt)。
 
 **7、解决冲突**
 
-在安装cuda之前，应该卸载掉之前安装的cuda。
+在安装 CUDA 之前，应该卸载掉之前安装的 CUDA。
 
-卸载Toolkit runfile installation:
+卸载 Toolkit runfile installation:
 
 ```bash
 sudo /usr/local/cuda-X.Y/bin/uninstall_cuda_X.Y.pl
 ```
 
-卸载Driver runfile installation:
+卸载 Driver runfile installation:
 
 ```bash
 sudo /usr/bin/nvidia-uninstall
 ```
 
-卸载Deb installation:
+卸载 Deb installation:
 
 ```bash
 sudo yum remove <package_name>                      # Redhat/CentOS
@@ -132,7 +132,7 @@ sudo zypper remove <package_name>                   # OpenSUSE/SLES
 sudo apt-get --purge remove <package_name>          # Ubuntu
 ```
 
-**8、安装driver、cuda**
+**8、安装驱动、CUDA**
 
 ```bash
 sudo dpkg -i cuda-repo-<distro>_<version>_<architecture>.deb # Install repository meta-data
@@ -148,12 +148,12 @@ sudo apt-get install cuda # Install CUDA
 （1）必做
 
 ```bash
-export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}} # 添加环境变量到.bashrc
-# 如果用runfile安装，还需要添加LD_LIBRARY_PATH
-## 64位系统
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}} # 添加环境变量到 .bashrc
+# 如果用 runfile 安装，还需要添加 LD_LIBRARY_PATH
+## 64 位系统
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64\
 ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-## 32位系统
+## 32 位系统
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib\
 ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
@@ -166,13 +166,13 @@ cat /proc/driver/nvidia/version # Verify the Driver Version
 cd <dir> && make -j8#  Compiling the Examples
 ./deviceQuery # Running the Binaries
 ./bandwidthTest 
-## output 显卡信息和最后'Result = PASS'说明测试通过
+## output 显卡信息和最后 'Result = PASS' 说明测试通过
 ```
 
 （3）其他
 
 ```bash
-## 如果安装出现循环登录或者黑屏，可以尝试CTRL+ALT+F1下卸载NVIDIA驱动
+## 如果安装出现循环登录或者黑屏，可以尝试 CTRL+ALT+F1 下卸载 Nvidia 驱动
 sudo apt-get remove --purge nvidia-*
 sudo apt-get autoremove
 echo "nouveau" | sudo tee -a /etc/modules
@@ -180,15 +180,15 @@ echo "nouveau" | sudo tee -a /etc/modules
 
 **10、参考**
 
-[cuda安装官方文档](http://developer.download.nvidia.com/compute/cuda/9.0/Prod/docs/sidebar/CUDA_Installation_Guide_Linux.pdf)
+- [CUDA 官方安装文档](http://developer.download.nvidia.com/compute/cuda/9.0/Prod/docs/sidebar/CUDA_Installation_Guide_Linux.pdf)
 
-[博客](https://gist.github.com/alexlee-gk/76a409f62a53883971a18a11af93241b)
+- [博客](https://gist.github.com/alexlee-gk/76a409f62a53883971a18a11af93241b)
 
-## 二、安装cudnn
+## 二、安装 cuDNN
 
-### （1）下载cudnn7.0
+### （1）下载 cuDNN7.0
 
-下载地址：[cudnn下载官网](https://developer.nvidia.com/rdp/cudnn-archive)
+下载地址：[cuDNN 下载官网](https://developer.nvidia.com/rdp/cudnn-archive)
 
 ### （2）安装
 
@@ -199,7 +199,7 @@ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 
-## 若sudo ldconfig提示不是符号链接，可用以下示例方法解决
+## 若 sudo ldconfig 提示不是符号链接，可用以下示例方法解决
 sudo ldconfig -v | grep cudnn
 sudo ln -sf /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so.7 /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so
 sudo ln -sf /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so.7.0.5 /usr/local/cuda-9.0/targets/x86_64-linux/lib/libcudnn.so.7
@@ -219,13 +219,13 @@ make clean && make
 
 ### （3）参考
 
-[cudnn安装官方文档](https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/Doc/cuDNN-Installation-Guide)
+- [cuDNN 官方安装文档](https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/Doc/cuDNN-Installation-Guide)
 
-## 三、安装tensorflow
+## 三、安装 TensorFlow
 
-### （1）miniconda
+### （1）Miniconda
 
-下载地址：[conda官网](https://conda.io/miniconda.html)
+下载地址：[Conda官网](https://conda.io/miniconda.html)
 
 ### （2）libcupti-dev 库
 
@@ -245,7 +245,7 @@ sudo apt-get install -y --allow-downgrades libnvinfer-dev libcudnn7-dev=7.0.5.15
 
 **重要提示**：为了兼容预编译的 `tensorflow-gpu` 软件包，请使用 TensorRT 的 Ubuntu **14.04** 软件包（如上所示），即使要安装到 Ubuntu 16.04 系统中也不例外。
 
-要从源代码编译 TensorFlow-TensorRT 集成模块（而不是使用预编译的二进制文件），请参阅[模块文档](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/tensorrt#using-tensorrt-in-tensorflow)。要详细了解 TensorRT 安装说明，请参阅 [NVIDIA 的 TensorRT 文档](http://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)。
+要从源代码编译 TensorFlow-TensorRT 集成模块（而不是使用预编译的二进制文件），请参阅 [模块文档](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/tensorrt#using-tensorrt-in-tensorflow)。要详细了解 TensorRT 安装说明，请参阅 [NVIDIA 的 TensorRT 文档](http://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)。
 
 为避免在以后的系统升级过程中出现 cuDNN 版本冲突，您可以将 cuDNN 版本保持为 7.0.5：
 
@@ -259,7 +259,7 @@ sudo apt-mark hold libcudnn7 libcudnn7-dev
 sudo apt-mark unhold libcudnn7 libcudnn7-dev
 ```
 
-如果您已安装前述软件包的旧版本，请升级到指定版本。如果升级不可行，您仍然可以运行支持 GPU 的 TensorFlow，但前提是您[从源代码安装 TensorFlow](https://www.tensorflow.org/install/install_sources)。
+如果您已安装前述软件包的旧版本，请升级到指定版本。如果升级不可行，您仍然可以运行支持 GPU 的 TensorFlow，但前提是您 [从源代码安装 TensorFlow](https://www.tensorflow.org/install/install_sources)。
 
 ### （4）TensorFlow
 
@@ -270,7 +270,7 @@ source activate tensorflow
  (tensorflow)$ pip install --ignore-installed --upgrade tfBinaryURL
 ```
 
-其中 `*tfBinaryURL*` 是 [TensorFlow Python 软件包的网址](https://www.tensorflow.org/install/install_linux#the_url_of_the_tensorflow_python_package)。例如，以下命令将针对 Python 3.4 安装仅支持 CPU 的 TensorFlow 版本：
+其中 `tfBinaryURL` 是 [TensorFlow Python 软件包的网址](https://www.tensorflow.org/install/install_linux#the_url_of_the_tensorflow_python_package)。例如，以下命令将针对 Python 3.4 安装仅支持 CPU 的 TensorFlow 版本：
 
 ```
  (tensorflow)$ pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.8.0-cp34-cp34m-linux_x86_64.whl
@@ -292,8 +292,8 @@ print(sess.run(hello))
 Hello, TensorFlow!
 ```
 
-如果系统输出一条错误消息而不是问候语，请参阅[常见的安装问题](https://www.tensorflow.org/install/install_linux#common_installation_problems)。
+如果系统输出一条错误消息而不是问候语，请参阅 [常见的安装问题](https://www.tensorflow.org/install/install_linux#common_installation_problems)。
 
 ### （6）参考
 
-[tensorflow官网](https://www.tensorflow.org/install/install_linux)
+- [TensorFlow官网](https://www.tensorflow.org/install/install_linux)

@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      "Ubuntu深度学习环境全配置"
-subtitle:   "driver、cuda、cudnn、conda、pytorch、代理、多cuda并存"
+title:      "Ubuntu 深度学习环境全配置"
+subtitle:   "驱动、CUDA、cuDNN、Conda、PyTorch、代理、多CUDA并存"
 date:       2019-10-16 10:00:00
 author:     "Tian"
 categories: Skill
-header-img: "img/post-bg-terminal.jpg"
+header-img: "img/post-bg-ubuntu.jpg"
 header-mask: 0.7
 catalog: true
 tags:
@@ -16,17 +16,17 @@ typora-root-url: ../
 
 ## 一、前言
 
-之前写过一篇[NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/)，主要参考官方文档，用包管理器的方式来安装显卡驱动和cuda。
+之前写过一篇 [NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/)，主要参考官方文档，用包管理器的方式来安装显卡驱动和CUDA。
 
-但是这种方法不够灵活，配置自己的机器没问题，如果要在多人共用的服务器上，遇到下列情况时，不好处理：
+但是这种方法不够灵活，配置自己的机器没问题，如果要在多人共用的服务器上，有下列的需求或情况时，不好处理：
 
-1. 多版本cuda并存，并不影响其他用户
-2. 无sudo权限，安装cuda
+1. 多版本 CUDA 并存，不影响其他用户
+2. 无 sudo 权限，安装 CUDA
 3. 使用机器已安装的显卡驱动
 
 这一篇主要记录下针对以上的情况，如何快速稳定地配置深度学习环境。
 
-## 二、安装driver
+## 二、安装驱动
 
 一般服务器供应商会帮你安装好驱动。如果驱动可用，可以跳过这一节；如果别人安装的驱动不满足要求，用这节的方法可以快速稳定地安装显卡驱动。
 
@@ -44,7 +44,7 @@ lspci -vnn | grep VGA
 01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP106 [GeForce GTX 1060 6GB] [10de:1c03] (rev a1) (prog-if 00 [VGA controller])
 ```
 
-输出显卡型号为`[GeForce GTX 1060 6GB]`。
+输出显卡型号为 `[GeForce GTX 1060 6GB]`。
 
 查看显卡驱动版本：
 
@@ -52,7 +52,7 @@ lspci -vnn | grep VGA
 # 查看已有显卡驱动版本
 lspci -k | grep -EA3 'VGA|3D|Display'
 
-# 查看NAVIDIA驱动版本
+# 查看 NAVIDIA 驱动版本
 nvidia-settings --version
 # or
 cat /proc/driver/nvidia/version
@@ -64,34 +64,34 @@ cat /proc/driver/nvidia/version
 
 ![01](/img/in-post/2019-10-16-cuda-dl-2/01.png)
 
-推荐先卸载所有NVIDIA驱动。
+推荐先卸载所有 NVIDIA 驱动。
 
 卸载驱动命令：
 
 ```bash
-# 卸载驱动runfile方式安装的驱动
+# 卸载驱动 runfile 方式安装的驱动
 sudo /usr/bin/nvidia-uninstall 
 
-# 卸载Deb方式安装的驱动
+# 卸载 Deb 方式安装的驱动
 sudo apt-get --purge remove nvidia* 
 sudo apt-get autoremove
 ```
 
-确保驱动卸载干净后，可以安装我们的驱动了。（可用`nvidia-smi`测试驱动是否可调用）
+确保驱动卸载干净后，可以安装我们的驱动了。（可用 `nvidia-smi` 测试驱动是否可调用）
 
 **3、安装驱动**
 
-[这篇文章](https://blog.csdn.net/tjuyanming/article/details/80862290)总结的很好，安装驱动有三种方法：
+[这篇文章](https://blog.csdn.net/tjuyanming/article/details/80862290) 总结的很好，安装驱动有三种方法：
 
-- 使用标准Ubuntu仓库进行自动化安装
-- 使用PPA仓库进行自动化安装
-- 使用官方的NVIDIA驱动进行手动安装（需要禁用Nouveau）
+- 使用标准 Ubuntu 仓库进行自动化安装
+- 使用 PPA 仓库进行自动化安装
+- 使用官方的 NVIDIA 驱动进行手动安装（需要禁用 Nouveau）
 
-其实还有第四种，就是CUDA Toolkit自带驱动，不过版本是固定的。
+其实还有第四种，就是 CUDA Toolkit 自带驱动，不过版本是固定的。
 
 这里推荐用第一种方法来安装，这种方法最简单。
 
-（1）检测你的NVIDIA显卡型号和推荐的驱动程序的模型。
+（1）检测你的 NVIDIA 显卡型号和推荐的驱动程序的模型。
 
 在命令行中输入如下命令：
 
@@ -111,15 +111,15 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 driver   : intel-microcode - distro free
 ```
 
-从输出结果可以看到，目前系统已连接Nvidia GeFrand GTX 680显卡，建议安装驱动程序是 nvidia-384版本的驱动。
+从输出结果可以看到，目前系统已连接 Nvidia GeFrand GTX 680 显卡，建议安装驱动程序是 nvidia-384 版本的驱动。
 
-> 注意：在一些server版的Ubuntu中，没有`ubuntu-drivers`命令，可以按下列流程安装：
+> 注意：在一些 server 版的 Ubuntu 中，没有 `ubuntu-drivers` 命令，可以按下列流程安装：
 >
 > ```bash
 > sudo apt-get install ubuntu-drivers-common 
-> # 可访问外网
+> # 可访问外网，则直接添加 ppa
 > # sudo add-apt-repository ppa:graphics-drivers/ppa 
-> # 或者用国内反代访问
+> # 网络不好，则用国内反代添加 ppa
 > sudo add-apt-repository https://launchpad.proxy.ustclug.org/graphics-drivers/ppa/ubuntu 
 > ```
 >
@@ -137,52 +137,52 @@ sudo apt install nvidia-340
 
 安装结束，重启系统，就完成了。
 
-## 三、安装cuda
+## 三、安装 CUDA
 
-在以前的文章[NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/)中说过，安装cuda有两种方法：
+在以前的文章 [NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/) 中说过，安装 CUDA 有两种方法：
 
-1. 用对应系统的包管理器（对Ubuntu系统来讲就是Deb包）
-2. 用runfile包
+1. 用对应系统的包管理器（对 Ubuntu 系统来讲就是 Deb 包）
+2. 用 runfile 文件
 
-[官方文档](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)推荐用包管理器安装，但是为了解决前言中列出的问题，本文推荐用runfile包安装。
+[官方文档](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html) 推荐用包管理器安装，但是为了解决前言中列出的问题，本文推荐用 runfile 文件安装。
 
-**1、查询cuda信息**
+**1、查询 CUDA 信息**
 
-查询cuda版本：
+查询 CUDA 版本：
 
 ```bash
 nvcc -V
 dpkg -l | grep cuda
 ```
 
-查询cuda安装位置：
+查询 CUDA 安装位置：
 
 ```bash
 which nvcc
 ```
 
-cuda兼容性列表：
+CUDA 兼容性列表：
 
 ![02](/img/in-post/2019-10-16-cuda-dl-2/02.png)
 
-> 注意：用本文的安装方式可以多cuda共存，不需要卸载已有cuda
+> 注意：用本文的安装方式可以多 CUDA 共存，不需要卸载已有 CUDA
 
-卸载cuda命令：
+卸载 CUDA 命令：
 
 ```bash
-# 卸载runfile方式安装的cuda
+# 卸载 runfile 方式安装的 CUDA
 sudo /usr/local/cuda-X.Y/bin/uninstall_cuda_X.Y.pl 
 
-# 卸载Deb方式安装的cuda
+# 卸载 Deb 方式安装的 CUDA
 sudo apt-get --purge remove cuda 
 sudo apt-get autoremove
 ```
 
-**2、安装cuda**
+**2、安装 CUDA**
 
-（1）下载cuda
+（1）下载 CUDA
 
-[cuda官网](https://developer.nvidia.com/cuda-toolkit)下载cuda，注意选择`runfile[local]`文件。
+[CUDA 官网](https://developer.nvidia.com/cuda-toolkit) 下载 CUDA，注意选择 `runfile[local]` 文件。
 
 （2）执行安装命令
 
@@ -192,72 +192,72 @@ sh cuda_xxx_linux.run
 
 说明：
 
-1. 选择不安装驱动、安装cuda、不安装sample
-2. cuda安装目录自定义，但是如果安装到系统路径，需要sudo执行
+1. 选择不安装驱动、安装 CUDA、不安装sample
+2. CUDA 安装目录自定义，但是如果安装到系统路径，需要 sudo 执行
 
 **3、设置环境变量**
 
-将以下内容添加到`~/.bashrc`或者`~/.zshenv`中：
+将以下内容添加到 `~/.bashrc` 或者 `~/.zshenv` 中：
 
 ```bash
-# /usr/local/cuda-10.0换成对应cuda安装路径
+# /usr/local/cuda-10.0 换成对应 CUDA 安装路径
 export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 
-`source`一下修改的文件，然后执行`nvcc -V`，看cuda是否配置成功。
+`source` 一下修改的文件，然后执行 `nvcc -V`，看 CUDA 是否配置成功。
 
-**4、多cuda并存**
+**4、多 CUDA 并存**
 
-多版本cuda的安装方法和上面一样，用runfile安装到另一个路径下即可。
+多版本 CUDA 的安装方法和上面一样，用 runfile 安装到另一个路径下即可。
 
-切换cuda版本时，修改环境变量的cuda路径，或者用软链接的方式修改软链接，就可以切换了。
+切换 CUDA 版本时，修改环境变量的 CUDA 路径，或者用软链接的方式修改软链接，就可以切换了。
 
-## 四、安装cudnn
+## 四、安装 cuDNN
 
-**1、查询cudnn信息**
+**1、查询 cuDNN 信息**
 
-查询cudnn版本：
+查询 cuDNN 版本：
 
 ```bash
-# tar方式安装的cudnn
-# /usr/local/cuda换成cuda安装路径
+# tar方式安装的 cuDNN
+# /usr/local/cuda 换成 cuda 安装路径
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 
-# Deb方式安装的cudnn
+# Deb方式安装的 cuDNN
 dpkg -l | grep cudnn
 ```
 
-**2、安装cudnn**
+**2、安装 cuDNN**
 
-cudnn一样也有两种安装方式：
+cuDNN 一样也有两种安装方式：
 
-1. 通过tar压缩包安装
-2. 通过Deb包管理器安装
+1. 通过 tar 压缩包安装
+2. 通过 Deb 包管理器安装
 
-本文推荐用tar压缩包安装。
+本文推荐用 tar 压缩包安装。
 
 ```bash
 tar -xzvf cudnn-9.0-linux-x64-v7.tgz
-# /usr/local/cuda换成cuda安装路径
+# /usr/local/cuda 换成 cuda 安装路径
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h/usr/local/cuda/lib64/libcudnn*
 ```
 
-## 五、安装miniconda
+## 五、安装 Miniconda
 
-**1、下载安装miniconda**
+**1、下载安装 Miniconda**
 
-[miniconda下载地址](https://docs.conda.io/en/latest/miniconda.html)
+[Miniconda 下载地址](https://docs.conda.io/en/latest/miniconda.html)
 
 ```bash
 # 按照提示安装
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
-**2、新建conda环境**
+**2、新建 conda 环境**
 
 ```bash
 conda create --name pytorch python=3.6
@@ -265,7 +265,7 @@ conda create --name pytorch python=3.6
 
 **3、设置代理**
 
-（1）设置conda代理：[清华conda镜像](https://mirror.tuna.tsinghua.edu.cn/help/anaconda/)
+（1）设置 conda 代理：[清华 conda 镜像](https://mirror.tuna.tsinghua.edu.cn/help/anaconda/)
 
 ```bash
 vim ~/.condarc
@@ -286,10 +286,10 @@ custom_channels:
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 ```
 
-（2）设置pip代理：[清华pypi镜像](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)
+（2）设置 pip 代理：[清华 pypi 镜像](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)
 
 ```bash
-# 用镜像升级pip
+# 用镜像升级 pip
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 # 配置镜像
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -298,10 +298,10 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 ```
 
-> （3）可选：[Ubuntu清华镜像](https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/)
+> （3）可选：[Ubuntu 清华镜像](https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/)
 >
 > ```bash
-> # 备份/etc/apt/sources.list，替换为下面内容
+> # 备份 /etc/apt/sources.list，替换为下面内容
 > # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 > deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
 > # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
@@ -317,7 +317,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 > # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
 > ```
 
-**4、常用conda命令**
+**4、常用 conda 命令**
 
 ```bash
 # 获取版本号
@@ -325,7 +325,7 @@ conda -V
 
 # 创建环境
 conda create --name your_env_name
-# 创建指定python版本的环境
+# 创建指定 python 版本的环境
 conda create --name your_env_name python=3.6
 # 创建包含某些包的环境
 conda create --name your_env_name python=3.5 numpy scipy
@@ -350,7 +350,7 @@ conda create --name new_env_name --clone old_env_name
 conda remove --name your_env_name --all
 ```
 
-**5、conda、pip环境复制**
+**5、conda、pip 环境复制**
 
 ```bash
 # conda导出已有环境
@@ -366,15 +366,19 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
-在环境移植的过程中，如果想要在不联网的情况下直接复制别的机器或者自己的环境，可以将env下面对应的环境直接进行拷贝，（只适用于anacoda大版本相近anaconda2与3应该是不行的因为对应路径就已经有了变化），直接将整个环境复制然后全部拷贝到新环境的路径文件夹中。
+在环境移植的过程中，如果想要在不联网的情况下直接复制别的机器或者自己的环境，可以将 env 下面对应的环境直接进行拷贝，（只适用于 anacoda 大版本相近 anaconda2 与 3 应该是不行的因为对应路径就已经有了变化），直接将整个环境复制然后全部拷贝到新环境的路径文件夹中。
 
 > 注意：
 >
-> 直接拷贝到本机时候link文件是不会被拷贝下来的 会使得环境失效 然后解决方案是 通过tar进行压缩之后将环境压缩包拷贝到新的机器文件夹下面 解压即可 如果想改变环境名字 直接更改环境对应的文件夹名字即可。
+> 直接拷贝到本机时候 link 文件是不会被拷贝下来的 会使得环境失效 然后解决方案是 通过 tar 进行压缩之后将环境压缩包拷贝到新的机器文件夹下面 解压即可 如果想改变环境名字 直接更改环境对应的文件夹名字即可。
 
-## 六、安装pytorch
+---
 
-**1、安装最新pytorch：**
+更新：conda 环境迁移见新博文[「Conda环境迁移」](https://tianws.github.io/skill/2019/10/18/conda-move/)。
+
+## 六、安装 PyTorch
+
+**1、安装最新 PyTorch：**
 
 [官网链接](https://pytorch.org/)
 
@@ -382,13 +386,13 @@ pip install -r requirements.txt
 conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 ```
 
-**2、指定pytorch版本:**
+**2、指定 PyTorch 版本:**
 
 ```bash
 conda install pytorch=1.0 torchvision cudatoolkit=10.1 -c pytorch
 ```
 
-**3、指定cuda版本：**
+**3、指定 CUDA 版本：**
 
 ```bash
 conda install pytorch torchvision cudatoolkit=9.0 -c pytorch

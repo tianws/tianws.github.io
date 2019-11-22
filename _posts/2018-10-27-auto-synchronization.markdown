@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Linux目录监控与自动同步"
-subtitle:   "rsync、inotify的介绍与使用"
+title:      "Linux 目录监控与自动同步"
+subtitle:   "rsync、inotify 的介绍与使用"
 date:       2018-10-27 10:00:00
 author:     "Tian"
 categories: Skill
@@ -15,9 +15,9 @@ tags:
 
 ## 需求
 
-开发工作在本机工作上完成，写的代码通过Pycharm自动同步到服务器上，然后通过ssh和tmux在命令行远程执行。
+开发工作在本机工作上完成，写的代码通过 PyCharm 自动同步到服务器上，然后通过 ssh 和 tmux 在命令行远程执行。
 
-但是Pycharm是单向自动同步的，无法把服务器上训练的权重和summary文件自动同步回本机，如果实现了这个功能有两点好处：
+但是 PyCharm 是单向自动同步的，无法把服务器上训练的权重和 summary 文件自动同步回本机，如果实现了这个功能有两点好处：
 
 （1）完整备份：在本机有完整的代码和权重备份，切换服务器方便。
 
@@ -27,20 +27,20 @@ tags:
 
 -------
 
-*2018-11-14更新:[Linux挂载远程目录](http://127.0.0.1:4000/skill/2018/11/14/remote-filesystem/)的方法能更完美的满足需求*
+*2018-11-14 更新: [Linux挂载远程目录](http://127.0.0.1:4000/skill/2018/11/14/remote-filesystem/) 的方法能更完美的满足需求*
 
 -------
 
-**rsync+inotify-tools**
+**rsync + inotify-tools**
 
-rsync的目的是实现本地主机和远程主机上的文件同步(包括本地推到远程，远程拉到本地两种同步方式)，也可以实现本地不同路径下文件的同步，但不能实现远程路径1到远程路径2之间的同步(scp可以实现)。
+rsync 的目的是实现本地主机和远程主机上的文件同步(包括本地推到远程，远程拉到本地两种同步方式)，也可以实现本地不同路径下文件的同步，但不能实现远程路径 1 到远程路径 2 之间的同步( scp 可以实现)。
 
-inotify-tools 是为linux下inotify文件监控工具提供的一套c的开发接口库函数，同时还提供了一系列的命令行工具，这些工具可以用来监控文件系统的事件。
+inotify-tools 是为 linux 下 inotify 文件监控工具提供的一套 c 的开发接口库函数，同时还提供了一系列的命令行工具，这些工具可以用来监控文件系统的事件。
 
 ## 安装
 
 ```bash
-# rsync系统自带
+# rsync 系统自带
 sudo apt install inotify-tools
 ```
 
@@ -59,7 +59,7 @@ rsync -az --delete --exclude="*.swp" --exclude="*.swx" $watch_dir $push_to:$dest
  
 inotifywait -mrq -e delete,close_write,moved_to,moved_from,isdir --timefmt '%Y-%m-%d %H:%M:%S' --format '%w%f:%e:%T' $watch_dir \
 --exclude=".*.swp" >>$log_dir/inotifywait.log &
-pid="$!" # Shell最后运行的后台Process的PID
+pid="$!" # Shell 最后运行的后台 Process 的 PID
 trap 'echo I am going down, so killing off my processes..$pid; kill $pid; exit' SIGHUP SIGINT SIGQUIT SIGTERM # 程序退出时结束子进程
 
 while true;do
@@ -79,11 +79,11 @@ done
 
 ## 参考
 
-[rsync和inotify系列教程](https://www.cnblogs.com/f-ck-need-u/p/7220009.html)
+- [rsync和inotify系列教程](https://www.cnblogs.com/f-ck-need-u/p/7220009.html)
 
-[sersync：基于 rsync + inotify 实现数据实时同步](https://linux.cn/article-6032-1.html)
+- [sersync：基于 rsync + inotify 实现数据实时同步](https://linux.cn/article-6032-1.html)
 
-[在脚本中使用 trap](https://www.ibm.com/developerworks/cn/aix/library/au-usingtraps/index.html)
+- [在脚本中使用 trap](https://www.ibm.com/developerworks/cn/aix/library/au-usingtraps/index.html)
 
-[Linux 自动监控文件目录变化并同步](https://www.jianshu.com/p/f387b45f0f1d)
+- [Linux 自动监控文件目录变化并同步](https://www.jianshu.com/p/f387b45f0f1d)
 

@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "常用IDE的配置"
-subtitle:   "PyCharm、CLion设置和使用"
+title:      "PyCharm、CLion 的设置和使用"
+subtitle:   ""
 date:       2019-04-23 10:00:00
 author:     "Tian"
 categories: Skill
@@ -13,7 +13,7 @@ tags:
     - 工具
 ---
 
-我主要的开发语言是python和C++，一般写代码用的工具是Jetbrains家的PyCharm和CLion。这两个IDE快捷键和操作技巧都相似，这篇博客我用PyCharm作为例子，介绍下使用这些工具常用的一些技巧。
+我主要的开发语言是 Python 和 C++，一般写代码用的工具是 JetBrains 家的 PyCharm 和 CLion。这两个 IDE 快捷键和操作技巧都相似，这篇博客我用 PyCharm 作为例子，介绍下使用这些工具常用的一些技巧。
 
 ## [Install](<https://www.jetbrains.com/help/pycharm/installation-guide.html?section=Linux#toolbox>)
 
@@ -29,11 +29,11 @@ tags:
 
 1. 关闭碍眼的波浪线
 
-   右下角的人头按钮，选择`Syntax`级别的即可。
+   右下角的人头按钮，选择 `Syntax` 级别的即可。
 
 2. 文件头注释
 
-   `Setting -> Editor -> File and Code Templates -> Python Script`
+   Setting -> Editor -> File and Code Templates -> Python Script
 
    ```bash
    #!/usr/bin/env python3
@@ -53,21 +53,21 @@ tags:
 
    Setting -> Editor -> General -> Mouse -> Change font size (Zoom) with Ctrl + Mouse Wheel
 
-   开启后`Ctrl+鼠标滚轮`可以调节编辑器字体大小。
+   开启后 `Ctrl+鼠标滚轮` 可以调节编辑器字体大小。
 
 5. 字体样式及其他
 
    - IDE样式：Setting -> Appearance & Behavior -> Appearance -> UI Options -> Theme
 
-     推荐`Darcula`
+     推荐 `Darcula`
 
    - 字体：Setting -> Editor -> Font
 
-     字体推荐`DejaVu Sans Mono`
+     字体推荐 `DejaVu Sans Mono`
 
    - 编辑器样式：Setting -> Editor -> Color Scheme -> Scheme
 
-     推荐`Darcula`或者`Monokai`
+     推荐 `Darcula` 或者 `Monokai`
 
    其他设置选项可以看看[官方文档](<https://www.jetbrains.com/help/pycharm/settings-preferences-dialog.html>)
 
@@ -75,19 +75,19 @@ tags:
 
    Setting -> Editor -> Auto import -> Python -> Show import popup
 
-   或者右下角人头`Import popup`
+   或者右下角人头 `Import popup`
    
 7. 设置同步
 
    Setting -> IDE Setting Sync
 
-   需要JetBrains账号，同步设置到服务器上。
+   需要 JetBrains 账号，同步设置到服务器上。
    
 8. 插件
 
-   - .ignore：生成.gitignore文件
+   - .ignore：生成 .gitignore 文件
    - Key promoter X：提示快捷键
-   - Git Commit Template：git commit message规范
+   - Git Commit Template：git commit message 规范
    - Statistic：代码统计
    - Translation：翻译
    - Rainbow Brackets：括号着色
@@ -98,11 +98,11 @@ tags:
 
 1. 代码模板
 
-   `Ctrl+J`：开启代码模板，有许多预设的模板，比如main、for循环等。
+   `Ctrl+J`：开启代码模板，有许多预设的模板，比如 main、for 循环等。
 
 2. 格式化代码
 
-   `Ctrl+Alt+L`：将代码格式化成`PEP8`python编码规范的代码，简单好用。
+   `Ctrl+Alt+L`：将代码格式化成 `PEP8` python 编码规范的代码，简单好用。
 
 3. 误删文件找回
 
@@ -110,23 +110,23 @@ tags:
 
 4. 用书签快速定位
 
-   `Ctrl+Shift+n`：打上书签，标记为n
+   `Ctrl+Shift+n`：打上书签，标记为 n
 
-   `Ctrl+n`：跳转到标记为n的书签
+   `Ctrl+n`：跳转到标记为 n 的书签
 
    `Shift+F11`：查看书签列表
 
-5. console命令行调试
+5. console 命令行调试
 
-   Debug栏 -> Python Shell按钮
+   Debug 栏 -> Python Shell 按钮
 
    可以获取程序运行中所有的变量的值，也可以重新赋值。
 
 6. Import 优化
 
-   `Ctrl+Alt+O`：自动删除冗余的import语句
+   `Ctrl+Alt+O`：自动删除冗余的 import 语句
 
-7. Surround With代码
+7. Surround With 代码
 
    `Ctrl+Alt+T`：选择包围代码的语句
 
@@ -144,7 +144,7 @@ tags:
 
 10. 搜索
 
-    双击`Shift`搜索一切
+    双击 `Shift` 搜索一切
 
 11. 导航
 
@@ -166,7 +166,7 @@ tags:
 
     1. 拼写提示：
 
-       `Ctrl+Space`启动拼写提示，包括点号之后的成员提示。
+       `Ctrl+Space`：启动拼写提示，包括点号之后的成员提示。
 
        使用提示：
 
@@ -180,7 +180,7 @@ tags:
 
     3. 智能提示
 
-       `Alt+Enter`：相当于点击右边的小灯泡，可以按照提示导入模块、插入docString等
+       `Alt+Enter`：相当于点击右边的小灯泡，可以按照提示导入模块、插入 docString 等
 
 ## 参考
 

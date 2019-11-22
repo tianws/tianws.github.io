@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "多VPS线路负载均衡"
-subtitle:   "Haproxy的介绍与使用"
+title:      "用 Haproxy 实现多 VPS 线路负载均衡"
+subtitle:   ""
 date:       2019-07-11 00:00:00
 author:     "Tian"
 categories: Skill
@@ -15,11 +15,11 @@ tags:
 
 ## 方案
 
-使用机场或者有多个小鸡的人，某个线路故障了，就得手动切换ss线路，实在太麻烦了，能不能自动负载均衡，使用可用的VPS呢？
+使用机场或者有多个小鸡的人，某个线路故障了，就得手动切换 ss 线路，实在太麻烦了，能不能自动负载均衡，使用可用的 VPS 呢？
 
-答案是肯定的，这就是今天的主角——Haproxy。
+答案是肯定的，这就是今天的主角—— Haproxy。
 
-但是有个前提，每个ss的密码和加密方式必须一样，才可以用haproxy。
+但是这个方案有个前提，那就是每个 ss 的密码和加密方式必须一样。
 
 ## 安装
 
@@ -85,26 +85,26 @@ backend shadowsocks-out
 
 - **defaults**：默认配置，也是一些全局配置
 
-- **listen**：监听配置，我在`1111`端口配置了http监控页面，访问`ip:1111/status`，认证用户名和密码都是`admin`，具体含义参考博客  [haproxy监控页面和页面详细参数](https://www.centos.bz/2018/01/haproxy监控页面-和页面详细参数/)
+- **listen**：监听配置，我在 `1111` 端口配置了 http 监控页面，访问 `ip:1111/status`，认证用户名和密码都是 `admin`，具体含义参考博客[「haproxy监控页面和页面详细参数」](https://www.centos.bz/2018/01/haproxy监控页面-和页面详细参数/)
 
-- **frontend**：前端配置，Shadowsocks数据流从这里进入，流向指定后端，注意这里的端口号，即为ss客户端的输入端口
+- **frontend**：前端配置，Shadowsocks 数据流从这里进入，流向指定后端，注意这里的端口号，即为 ss 客户端的输入端口
 
-- **backend**：后端配置，`balance`指定负载平衡方式，每个服务器写为一个server行，server支持域名或IP。如果使用域名，重启服务出现问题，可以参考博客  [解决 Haproxy 用 Systemd 启动失败的问题](https://www.solarck.com/systemd-wait-network-online.html)。
+- **backend**：后端配置，`balance` 指定负载平衡方式，每个服务器写为一个 server 行，server 支持域名或 IP。如果使用域名，重启服务出现问题，可以参考博客[「解决 Haproxy 用 Systemd 启动失败的问题」](https://www.solarck.com/systemd-wait-network-online.html)。
 
-> 负载平衡方式只有简单的几种，复杂的需要查文档，可以参考[关于haproxy负载均衡的算法整理](https://my.oschina.net/BambooLi/blog/506397)
+> 负载平衡方式只有简单的几种，复杂的需要查文档，可以参考[「关于haproxy负载均衡的算法整理」](https://my.oschina.net/BambooLi/blog/506397)
 >
 > roundrobin：简单轮询，该算法是动态的，对于实例启动慢的服务器权重会在运行中调整
 >
-> static-rr：根据权重分配，权重在后端server中设置
+> static-rr：根据权重分配，权重在后端 server 中设置
 >
 > leastconn：根据服务器最少连接分配，这个模式适合长连接应用
 
 ## 使用
 
-启动haproxy：
+启动 haproxy：
 
 ```bash
-sudo service haproxy start|stop|status|reload|restart|force-reload # 控制haproxy的运行
+sudo service haproxy start|stop|status|reload|restart|force-reload # 控制 haproxy 的运行
 ```
 
 修改shadowsocks配置：
@@ -121,7 +121,7 @@ sudo service haproxy start|stop|status|reload|restart|force-reload # 控制hapro
 }
 ```
 
-Haproxy会将多个ss线路进行负载均衡整合，也即用haproxy宿主机一个ss线路，代替了原来多个ss线路，这样就不用手动选择了。
+Haproxy 会将多个 ss 线路进行负载均衡整合，也即用 haproxy 宿主机一个 ss 线路，代替了原来多个 ss 线路，这样就不用手动选择了。
 
 ## 客户端
 

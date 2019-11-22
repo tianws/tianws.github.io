@@ -13,7 +13,7 @@ tags:
     - 工具
 ---
 
-## 一、用md5sum校验文件完整性
+## 一、用 md5sum 校验文件完整性
 
 #### 命令选项
 
@@ -21,21 +21,21 @@ tags:
 md5sum
 -b 以二进制模式读入文件内容
 -t 以文本模式读入文件内容
--c 根据已生成的md5值，对现存的文件进行校验
+-c 根据已生成的 md5 值，对现存的文件进行校验
 -w 当校验不正确时给出警告信息。
 --status 校验完成后，不生成错误或正确的提示信息，可以通过命令的返回值来判断
 ```
 
 #### 使用举例
 
-1. 生成文件md5值
+1. 生成文件 md5 值
 
    ```bash
    md5sum data
    0axxxxxxxxx data
    ```
 
-2. 使用通配符对多个文件进行md5
+2. 使用通配符对多个文件进行 md5
 
    ```bash
    md5sum *
@@ -43,7 +43,7 @@ md5sum
    14dxxxxxx data2
    ```
 
-3. md5值重定向
+3. md5 值重定向
 
    ```bash
    # 单个文件重定向
@@ -57,7 +57,7 @@ md5sum
    md5sum data3 >> d.md5
    ```
 
-4. md5校验
+4. md5 校验
 
    ```bash
    # 显示校验信息
@@ -75,14 +75,14 @@ md5sum
 
 #### 特殊说明
 
-> 1) `md5sum`是校验文件内容，与文件名是否相同无关
+> 1) `md5sum` 是校验文件内容，与文件名是否相同无关
 >
-> 2) `md5sum`逐像素校验，所以文件越大，校验时间越长
+> 2) `md5sum` 逐像素校验，所以文件越大，校验时间越长
 
 #### 参考
 
-- [Linux命令详解：md5sum命令](<https://blog.51cto.com/xiangpang/1711603>)
-- [md5sum命令](<http://man.linuxde.net/md5sum>)
+- [Linux 命令详解：md5sum 命令](<https://blog.51cto.com/xiangpang/1711603>)
+- [md5sum 命令](<http://man.linuxde.net/md5sum>)
 
 ## 二、终端查看电脑信息
 
@@ -91,6 +91,7 @@ md5sum
 - screenfetch
 - neofetch
 - hwinfo --short
+- hardinfo（图形化）
 
 还有一些其他的，[参考](<https://wiki.archlinux.org/index.php/List_of_applications/Utilities#System_information_viewers>)。
 

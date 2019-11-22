@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "SSH环境配置"
-subtitle:   "ssh的安装与配置"
+title:      "ssh 环境配置"
+subtitle:   ""
 date:       2018-06-26 10:00:00
 author:     "Tian"
 categories: Skill
@@ -13,11 +13,11 @@ tags:
     - 工具
 ---
 
-## 一、安装ssh-server端
+## 一、安装 server 端 ssh
 
 ```bash
 sudo apt install openssh-server 
-ps -e | grep ssh # 若看到sshd说明ssh-server启动了
+ps -e | grep ssh # 若看到 sshd 说明 ssh-server 启动了
 
 # 若没有，可以这样启动
 sudo /etc/init.d/ssh start
@@ -25,11 +25,11 @@ sudo /etc/init.d/ssh start
 service ssh start
 ```
 
-## 二、配置server端ssh
+## 二、配置 server 端 ssh
 
-ssh-server配置文件位于/etc/ssh/sshd_config，在这里可以定义ssh的服务端口。
+ssh-server 配置文件位于 /etc/ssh/sshd_config，在这里可以定义 ssh 的服务端口。
 
-## 三、配置client端ssh
+## 三、配置 client 端 ssh
 
 ### 1、生成密钥
 
@@ -44,7 +44,7 @@ vim ~/.ssh/config
 ```
 
 ```vim
-# 本机的ssh配置
+# 本机的 ssh 配置
 Host vps
   User root
   Hostname 45.76.5.158
@@ -53,7 +53,7 @@ Host vps
 ```
 
 ```vim
-# 服务器的ssh配置
+# 服务器的 ssh 配置
 Host tianws-pc                                                              
   HostName 172.22.52.49
   Port 22
@@ -71,10 +71,10 @@ Host *
 ### 3、免密码登录
 
 ```bash
-ssh-copy-id user@host # 将密钥复制到远程主机，并追加到远程帐号的d将密钥复制到远程主机，并追加到远程账号的~/.ssh/authorized_keys文件中。
+ssh-copy-id user@host # 将密钥复制到远程主机，并追加到远程帐号的d将密钥复制到远程主机，并追加到远程账号的 ~/.ssh/authorized_keys 文件中。
 ```
 
-### 4、改hosts
+### 4、改 hosts
 
 ```bash
 sudo vim /etc/hosts

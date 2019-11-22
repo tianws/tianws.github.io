@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "mIoU源码解析"
-subtitle:   "TensorFlow和Pytorch源码解析"
+title:      "MIoU 源码解析"
+subtitle:   "TensorFlow 和 PyTorch 源码解析"
 date:       2018-10-30 00:00:00
 author:     "Tian"
 categories: Skill
@@ -14,13 +14,13 @@ tags:
 typora-root-url: ../
 ---
 
-## mIOU定义
+## MIoU 定义
 
-Mean Intersection over Union(MIoU，均交并比)，为语义分割的标准度量。其计算两个集合的交集和并集之比，在语义分割问题中，这两个集合为真实值（ground truth）和预测值（predicted segmentation）。这个比例可以变形为TP（交集）比上TP、FP、FN之和（并集）。在每个类上计算IoU，然后取平均。
+Mean Intersection over Union（MIoU，均交并比）为语义分割的标准度量。其计算两个集合的交集和并集之比，在语义分割问题中，这两个集合为真实值（ground truth）和预测值（predicted segmentation）。这个比例可以变形为 TP（交集）比上 TP、FP、FN 之和（并集）。在每个类上计算 IoU，然后取平均。
 
 $$MIoU=\frac{1}{k+1}\sum^{k}_{i=0}{\frac{p_{ii}}{\sum_{j=0}^{k}{p_{ij}+\sum_{j=0}^{k}{p_{ji}-p_{ii}}}}}$$
 
-$p_{ij}$表示真实值为$i$，被预测为$j$的数量。
+$p_{ij}$ 表示真实值为 $i$，被预测为 $j$ 的数量。
 
 #### 直观理解
 
@@ -29,11 +29,11 @@ $p_{ij}$表示真实值为$i$，被预测为$j$的数量。
 红色圆代表真实值，黄色圆代表预测值。橙色部分为两圆交集部分。
 
 - MPA（Mean Pixel Accuracy，均像素精度）：计算橙色与红色圆的比例；
-- MIoU：计算两圆交集（橙色部分）与两圆并集（红色+橙色+黄色）之间的比例，理想情况下两圆重合，比例为1。
+- MIoU：计算两圆交集（橙色部分）与两圆并集（红色+橙色+黄色）之间的比例，理想情况下两圆重合，比例为 1。
 
-## Tensorflow源码解析
+## TensorFlow源码解析
 
-Tensorflow主要用`tf.metrics.mean_iou`来计算mIoU，下面解析源码：
+TensorFlow 主要用 `tf.metrics.mean_iou` 来计算 MIoU，下面解析源码：
 
 #### 第一步：计算混淆矩阵
 
@@ -49,7 +49,7 @@ def confusion_matrix(labels, predictions, num_classes=None, dtype=dtypes.int32,
                      name=None, weights=None): 
     # 例子：labels =     [0, 1, 2, 0, 3]
     #      predictions =[0, 1, 1, 3, 3]
-    if num_classes is None: # 不指定类别个数，就以labels或者predictions最大的指定,即4
+    if num_classes is None: # 不指定类别个数，就以 labels 或者 predictions 最大的指定,即4
       num_classes = math_ops.maximum(math_ops.reduce_max(predictions),
                                      math_ops.reduce_max(labels)) + 1 
     else:
@@ -73,17 +73,17 @@ def confusion_matrix(labels, predictions, num_classes=None, dtype=dtypes.int32,
     # indices = [[0,0],[1,1],[2,1],[0,3],[3,3]]
     values = (array_ops.ones_like(predictions, dtype)
               if weights is None else weights)
-    # 对应位置的values，若不指定，则全为1
+    # 对应位置的 values，若不指定，则全为 1
     cm_sparse = sparse_tensor.SparseTensor(
         indices=indices, values=values, dense_shape=math_ops.to_int64(shape))
-    # 稀疏张量，指定indices位置为指定value，其他位置为0
-    # 多次指定一个位置，value为多次相加的结果
+    # 稀疏张量，指定 indices 位置为指定 value，其他位置为 0
+    # 多次指定一个位置，value 为多次相加的结果
     zero_matrix = array_ops.zeros(math_ops.to_int32(shape), dtype)
 
     return sparse_ops.sparse_add(zero_matrix, cm_sparse)
 ```
 
-SparseTensor例子：
+SparseTensor 例子：
 
 ```python
 import tensorflow as tf
@@ -97,7 +97,7 @@ sess.run(r)
 #       [0, 0, 0, 0]], dtype=int32)
 ```
 
-#### 第二步：计算mIoU
+#### 第二步：计算 MIoU
 
 ```python
 def compute_mean_iou(total_cm, name):
@@ -128,23 +128,23 @@ def compute_mean_iou(total_cm, name):
   return result
 ```
 
-通过`tf.metrics.mean_iou`的API可以得到mIoU，但并没有把各类IoU释放出来，为了计算各类IoU，可以修改上面的代码，获取IoU中间结果，也可以用weight的方式变相计算。
+通过 `tf.metrics.mean_iou` 的API可以得到 MIoU，但并没有把各类 IoU 释放出来，为了计算各类 IoU，可以修改上面的代码，获取 IoU 中间结果，也可以用 weight 的方式变相计算。
 
-基本思路就是把只保留一类的IoU，其他类IoU置零，然后最后将`mIoU * num_classes`就可以了。
+基本思路就是把只保留一类的 IoU，其他类 IoU 置零，然后最后将 `MIoU * num_classes` 就可以了。
 
 ```python
 tp_position = tf.equal(tf.to_int32(labels), tf.to_int32(predictions))
 label_0_weight = tf.where((tp_position & tf.not_equal(labels, 0)), tf.zeros_like(labels),
                                   tf.ones_like(labels))
-## 混淆矩阵对角线上只保留一类非0，其他类都置0
+## 混淆矩阵对角线上只保留一类非 0，其他类都置 0
 metric_map['IOU/class_0_iou'] = tf.metrics.mean_iou(
             predictions, labels, dataset.num_classes, weights=label_0_weight)
-## 结果是0类IoU/num_classes
+## 结果是 0 类 IoU / num_classes
 ```
 
-## Pytorch源码解析
+## PyTorch 源码解析
 
-Pytorch基本计算思路和上面是一样的，代码很简洁，就不过多介绍了。
+PyTorch 基本计算思路和上面是一样的，代码很简洁，就不过多介绍了。
 
 ```python
 class IOUMetric:
@@ -180,11 +180,11 @@ class IOUMetric:
 
 ## 参考
 
-[混淆矩阵是什么意思？](混淆矩阵是什么意思？)
+- [混淆矩阵是什么意思？](混淆矩阵是什么意思？)
 
-[tf.metrics相关API](https://zhuanlan.zhihu.com/p/43404874)
+- [tf.metrics相关API](https://zhuanlan.zhihu.com/p/43404874)
 
-[论文笔记-基于深度学习的图像语义分割技术概述之5.1度量标准](https://blog.csdn.net/u014593748/article/details/71698246)
+- [论文笔记-基于深度学习的图像语义分割技术概述之5.1度量标准](https://blog.csdn.net/u014593748/article/details/71698246)
 
 
 

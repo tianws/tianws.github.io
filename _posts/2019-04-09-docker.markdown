@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Docker的安装和配置"
-subtitle:   "Docker和Nvidia-Docker的安装"
+title:      "Docker 和 Nvidia-Docker 的安装"
+subtitle:   ""
 date:       2019-04-09 10:00:00
 author:     "Tian"
 categories: Skill
@@ -25,7 +25,7 @@ tags:
 - Bionic 18.04 (LTS)
 - Xenial 16.04 (LTS)
 
-Docker CE 支持`x86_64`(或者`amd64`)，`armhf`，`arm64`，`s390x` (IBM Z), 和 `ppc64le` (IBM Power) 架构。
+Docker CE 支持 x86_64（或者 amd64）、armhf、arm64、s390x（IBM Z）和 ppc64le（IBM Power）架构。
 
 **卸载旧版本**
 
@@ -43,7 +43,7 @@ $ sudo apt-get remove docker docker-engine docker.io containerd runc
 
 您可以通过不同方式安装 Docker CE，具体取决于您的需求：
 
-- 大多数用户[设置 Docker 的镜像仓库](https://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)并从中进行安装，从而可以轻松完成安装和升级任务。这是推荐方法。
+- 大多数用户 [设置 Docker 的镜像仓库](https://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository) 并从中进行安装，从而可以轻松完成安装和升级任务。这是推荐方法。
 - 一些用户下载 DEB 软件包并手动进行安装，然后完全由手动管理升级。在某些情况（例如，在不能访问互联网的隔离系统中安装 Docker）下，这很有用。
 
 #### 使用镜像仓库进行安装
@@ -146,17 +146,17 @@ $ sudo apt-get remove docker docker-engine docker.io containerd runc
 
    此命令将下载一个测试镜像并在容器中运行它。容器运行时，它将输出一条参考消息并退出。
 
-Docker CE 已安装并且正在运行。您需要使用 `sudo` 运行 Docker 命令。继续执行 [Linux 安装后步骤](https://docs.docker-cn.com/engine/installation/linux/docker-ce/linux-postinstall/)以允许非特权用户运行 Docker 命令，以及了解其他可选配置步骤。
+Docker CE 已安装并且正在运行。您需要使用 `sudo` 运行 Docker 命令。继续执行 [Linux 安装后步骤](https://docs.docker-cn.com/engine/installation/linux/docker-ce/linux-postinstall/) 以允许非特权用户运行 Docker 命令，以及了解其他可选配置步骤。
 
 **升级 DOCKER CE**
 
-如需升级 Docker CE，首先运行 `sudo apt-get update`，然后按照[安装说明](https://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#install-docker)执行操作，并选择您要安装的新版本。
+如需升级 Docker CE，首先运行 `sudo apt-get update`，然后按照 [安装说明](https://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#install-docker) 执行操作，并选择您要安装的新版本。
 
 #### 从软件包进行安装
 
 如果您无法使用 Docker 镜像仓库安装 Docker CE，可以下载适用于您的版本的 `.deb` 文件，并手动进行安装。每次要升级 Docker CE 时，您都需要下载一个新文件。
 
-1. 转至　[`https://download.docker.com/linux/ubuntu/dists/`](https://download.docker.com/linux/ubuntu/dists/) ，选择您的 Ubuntu 版本（`lsb_release -cs`c查看），浏览至 `pool/stable/`，然后选择 `amd64`, `armhf`, `arm64`, `ppc64el`或者 `s390x`。下载适用于您想要安装的`.deb`文件。
+1. 转至 [`https://download.docker.com/linux/ubuntu/dists/`](https://download.docker.com/linux/ubuntu/dists/) ，选择您的 Ubuntu 版本（`lsb_release -a`查看），浏览至 `pool/stable/`，然后选择 `amd64`, `armhf`, `arm64`, `ppc64el` 或者 `s390x`。下载适用于您想要安装的`.deb`文件。
 
    > **注**：如需安装**nightly**软件包，请将 URL 中的词 `stable` 更改为 `nightly`。
 
@@ -188,11 +188,11 @@ Docker CE 已安装并且正在运行。您需要使用 `sudo` 运行 Docker 命
    ```
 
 
-Docker CE 已安装并且正在运行。您需要使用 `sudo` 运行 Docker 命令。继续执行[Linux 的安装后步骤](https://docs.docker-cn.com/engine/installation/linux/linux-postinstall/)以允许非特权用户运行 Docker 命令，以及了解其他可选配置步骤。
+Docker CE 已安装并且正在运行。您需要使用 `sudo` 运行 Docker 命令。继续执行 [Linux 的安装后步骤](https://docs.docker-cn.com/engine/installation/linux/linux-postinstall/) 以允许非特权用户运行 Docker 命令，以及了解其他可选配置步骤。
 
 5. 升级 DOCKER CE
 
-如需升级 Docker CE，请下载较新的软件包文件并重复上述[安装过程](https://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#install-from-a-package)，指向新文件。
+如需升级 Docker CE，请下载较新的软件包文件并重复上述 [安装过程](https://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#install-from-a-package)，指向新文件。
 
 ## 卸载 Docker CE
 
@@ -246,14 +246,14 @@ Docker CE 已安装并且正在运行。您需要使用 `sudo` 运行 Docker 命
 
    此命令将下载一个测试镜像并在容器中运行它。容器运行时，它将输出一条参考消息并退出。
 
-   如果你之前已经用`sudo`执行过Docker CLI命令，你可能看到如下错误，这个错误表明`~/.docker/`文件夹已经被用错误的权限创建。
+   如果你之前已经用 `sudo` 执行过Docker CLI命令，你可能看到如下错误，这个错误表明 `~/.docker/` 文件夹已经被用错误的权限创建。
 
    ```bash
    WARNING: Error loading config file: /home/user/.docker/config.json -
    stat /home/user/.docker/config.json: permission denied
    ```
 
-   要解决这个问题，要么删除`~/.docker`文件夹（这个文件夹会自动生成，但是之前的配置会丢失），或者用下列命令修改权限：
+   要解决这个问题，要么删除 `~/.docker` 文件夹（这个文件夹会自动生成，但是之前的配置会丢失），或者用下列命令修改权限：
 
    ```bash
    $ sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
@@ -276,7 +276,7 @@ $ sudo systemctl enable docker
 $ sudo systemctl disable docker
 ```
 
-如果您需要添加 HTTP 代理，请为 Docker 运行时文件设置另一个目录或分区，请参阅[定制您的 systemd Docker 守护进程选项](https://docs.docker-cn.com/engine/admin/systemd/)。
+如果您需要添加 HTTP 代理，请为 Docker 运行时文件设置另一个目录或分区，请参阅 [定制您的 systemd Docker 守护进程选项](https://docs.docker-cn.com/engine/admin/systemd/)。
 
 `upstart`
 
@@ -297,24 +297,24 @@ $ sudo chkconfig docker on
 - [官方文档](<https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 - [用下载deb的方式来安装docker](<http://note.qidong.name/2018/07/install-docker-with-deb/>)
 
-# 二、 Nvidia-Docker
+# 二、Nvidia-Docker
 
 ## 先决条件
 
-运行安装nvidia-docker 2.0需要以下先决条件：
+运行安装 nvidia-docker 2.0 需要以下先决条件：
 
 1. GNU/Linux x86_64 with kernel version > 3.10
 2. Docker >= 1.12
 3. NVIDIA GPU with Architecture > Fermi (2.1)
 4. [NVIDIA drivers](http://www.nvidia.com/object/unix.html) ~= 361.93 (untested on older versions)
 
-你的GPU驱动可能限制你能运行的CUDA镜像 (见 [CUDA requirements](https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements))
+你的 GPU 驱动可能限制你能运行的 CUDA 镜像 (见 [CUDA requirements](https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements))
 
 Docker CE 支持`x86_64`(或者`amd64`)，`armhf`，`arm64`，`s390x` (IBM Z), 和 `ppc64le` (IBM Power) 架构。
 
-## 卸载nvidia-docker 1.0
+## 卸载 nvidia-docker 1.0
 
-在继续下一步之前，必须完全卸载nvidia-docker 1.0版本。而且必须`stop`和`remove`所有的nvidia-docker 1.0启动的容器。
+在继续下一步之前，必须完全卸载 nvidia-docker 1.0 版本。而且必须 `stop` 和 `remove` 所有的 nvidia-docker 1.0 启动的容器。
 
 **Ubuntu distributions**
 
@@ -323,15 +323,15 @@ docker volpeizhiume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps 
 sudo apt-get purge nvidia-docker
 ```
 
-## 安装nvidia-docker 2.0
+## 安装 nvidia-docker 2.0
 
-**确保你已经安装了[NVIDIA驱动](<https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#how-do-i-install-the-nvidia-driver>)和[docker](<https://docs.docker.com/install/>)支持的[版本](<https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#which-docker-packages-are-supported>)**（见上面的先决条件）
+**确保你已经安装了 [NVIDIA驱动](<https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#how-do-i-install-the-nvidia-driver>) 和 [docker](<https://docs.docker.com/install/>) 支持的 [版本](<https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#which-docker-packages-are-supported>)**（见上面的先决条件）
 
-**如果你有修改`/etc/docker/daemon.json`，`nvidia-docker2`可能会覆盖它**
+**如果你有修改 `/etc/docker/daemon.json`，`nvidia-docker2` 可能会覆盖它**
 
 **Ubuntu distributions**
 
-1. 按照[文档](<https://nvidia.github.io/nvidia-docker/>)安装配置Repository：
+1. 按照 [文档](<https://nvidia.github.io/nvidia-docker/>) 安装配置Repository：
 
 ```bash
 # In order to setup the nvidia-docker repository for your distribution, follow the instructions below.
@@ -347,16 +347,16 @@ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
   sudo apt-key add -
 ```
 
-2. 安装`nvidia-docker2`并且更新`Docker daemon`配置：
+2. 安装 `nvidia-docker2` 并且更新 `Docker daemon` 配置：
 
 ```bash
 sudo apt-get install nvidia-docker2
 sudo pkill -SIGHUP dockerd
 ```
 
-**使用老版本的docker**
+**使用老版本的 docker**
 
-用`apt-cache madison nvidia-docker2 nvidia-container-runtime` 或者 `yum search --showduplicates nvidia-docker2 nvidia-container-runtime` 列出可用的版本，然后在安装时指定版本，例如：
+用 `apt-cache madison nvidia-docker2 nvidia-container-runtime` 或者 `yum search --showduplicates nvidia-docker2 nvidia-container-runtime` 列出可用的版本，然后在安装时指定版本，例如：
 
 ```bash
 sudo apt-get install -y nvidia-docker2=2.0.1+docker1.12.6-1 nvidia-container-runtime=1.1.0+docker1.12.6-1
@@ -364,7 +364,7 @@ sudo apt-get install -y nvidia-docker2=2.0.1+docker1.12.6-1 nvidia-container-run
 
 ## 验证
 
-使用时必须选择`nvidia`作为runtime：
+使用时必须选择 `nvidia` 作为runtime：
 
 ```bash
 docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
@@ -372,5 +372,5 @@ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 
 ## 参考
 
-[官方文档](<https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(version-2.0)>)
+- [官方文档](<https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(version-2.0)>)
 

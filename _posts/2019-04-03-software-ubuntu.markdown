@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Ubuntu设置"
-subtitle:   "Ubuntu常用软件和设置"
+title:      "Ubuntu 常用软件和设置"
+subtitle:   ""
 date:       2019-04-03 10:00:00
 author:     "Tian"
 categories: Skill
@@ -22,7 +22,7 @@ tags:
 
 - Windows：[V2RayN](<https://github.com/233boy/v2ray/wiki/V2RayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B>)
 
-- MacOS：[V2RayX](<https://github.com/Cenmrev/V2RayX/releases>) :
+- MacOS：[V2RayX](<https://github.com/Cenmrev/V2RayX/releases>) 
 
    `brew cask install v2rayx`
 
@@ -37,7 +37,7 @@ service v2ray start
 
 **（2）proxychains-ng**
 
-下载[安装包](<https://github.com/rofl0r/proxychains-ng/releases>)
+下载 [安装包](<https://github.com/rofl0r/proxychains-ng/releases>)
 
 ```bash
 # 安装
@@ -49,12 +49,12 @@ make
 
 # 配置
 sudo vim /etc/proxychains.conf # 编辑最后一行，其他按需编辑
-cp /etc/proxychains.conf ~/.proxychains/proxychains.conf # 如果没有root权限的话，可以把配置文件放在家目录
+cp /etc/proxychains.conf ~/.proxychains/proxychains.conf # 如果没有 root 权限的话，可以把配置文件放在家目录
 
 # 卸载
 sudo make install DESTDIR=foo
 sudo make install-config DESTDIR=foo
-## 根据foo路径删除对应文件
+## 根据 foo 路径删除对应文件
 ```
 
 **（3）PAC**
@@ -86,7 +86,7 @@ sudo apt-get install paper-icon-theme
 sudo apt install powerline
 ```
 
-bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)。
+bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config)。
 
 [参考1](https://zhuanlan.zhihu.com/p/26032793)（这个还写了很多解决Ubuntu问题的总结）、[参考2](https://www.jianshu.com/p/4bd2d9b1af41)
 
@@ -108,7 +108,7 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - peek：gif录制软件
 
-- synergy：键鼠共享软件 [安装方法](<https://tianws.github.io/skill/2019/04/20/synergy/>)
+- synergy：键鼠共享软件 [安装使用方法](<https://tianws.github.io/skill/2019/04/20/synergy/>)
 
 - motrix：下载软件
 
@@ -122,19 +122,19 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 
 - Indicator Stickynotes：便签
 
-- 网易云音乐：官方客户端 推荐[1.0.0版本](http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb)
+- 网易云音乐：官方客户端 推荐 [1.0.0版本](http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb)
 
-- flameshot：截图软件 [安装方法](<https://mithun.co/software/install-flameshot-on-ubuntu-16-04/>)
+- flameshot：截图软件 [安装方法](https://github.com/lupoDharkael/flameshot)
 
   设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
   
-- station：网页聚合软件（同类型的还有franz和rambox）
+- station：网页聚合软件（同类型的还有 franz 和 rambox）
 
 - imagine：图片压缩软件
 
 - picGo：图片上传软件
 
-- gpick：取色工具（同类型还有gcolor2和pick）
+- gpick：取色工具（同类型还有 gcolor2 和 pick）
 
 - pomodoro-indicator：番茄钟插件
 
@@ -143,6 +143,14 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
   sudo apt-get update
   sudo apt-get install pomodoro-indicator
   ```
+  
+- hardinfo：系统配置查询软件
+
+- mailspring：邮件客户端
+
+  > 将旧机器 ~/.thunderbird 文件夹拷贝到新机器，可以无缝转移 thunderbird 邮箱的设置和邮件。
+
+- dukto：局域网传输工具
 
 #### 2、命令行软件
 
@@ -176,7 +184,7 @@ bash、tmux、vim、range等美化见[config](https://github.com/tianws/config)�
 ## install zsh
 sudo apt install zsh # install zsh
 zsh --version # Expected result: zsh 5.1.1 or more recent.
-cat /etc/shells # 检查有没有zsh 没有的话执行 `sudo sh -c "echo $(which zsh) >> /etc/shells"`
+cat /etc/shells # 检查有没有 zsh 没有的话执行 `sudo sh -c "echo $(which zsh) >> /etc/shells"`
 chsh -s $(which zsh) # Make zsh your default shell
 # Log out and login back again to use your new default shell.
 echo $SHELL # Expected result: /bin/zsh or similar.
@@ -191,7 +199,7 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 **美化**
 
 ```bash
-## 自定义zsh主题
+## 自定义 zsh 主题
 cd ~/.oh-my-zsh
 mkdir custom/themes
 cp themes/robbyrussell.zsh-theme custom/themes/
@@ -219,7 +227,7 @@ If you are in you are in your $HOME, this will be replaced by ~.
 %{$fg_bold[red]%}　# 加粗
 %{$reset_color%}　# 重置颜色
 
-## powerlevel9k主题也不错，如果屏幕大可以尝试。
+## powerlevel9k 主题也不错，如果屏幕大可以尝试。
 ```
 
 **插件和设置**
@@ -242,29 +250,29 @@ z -x ## 删除无效路径
 vim ~/.zshrc
 ## 最后添加下面几行
 unsetopt correct_all # 关闭自动修正
-unsetopt AUTO_CD # 关闭自动cd
-setopt noautomenu  # 关闭选择模式，选择模式下ctrl + f(forward) / b(backward) / p(previous) / n(next)左右上下
+unsetopt AUTO_CD # 关闭自动 cd
+setopt noautomenu  # 关闭选择模式，选择模式下 ctrl + f(forward) / b(backward) / p(previous) / n(next) 左右上下
 setopt nomenucomplete
-source /etc/zsh_command_not_found # zsh提示
+source /etc/zsh_command_not_found # zsh 提示
 ```
 
 ## 五、PT站
 
 ```bash
-# 买的vps有ipv6地址，可以登录一些高校PT站
-## 比如北邮PT站 https://bt.byr.cn/
+# 买的 vps 有 ipv6 地址，可以登录一些高校 PT 站
+## 比如北邮 PT 站 https://bt.byr.cn/
 ##　用学校邮箱可以申请
 
-# vps开启ipv6
-## ssr开启ipv6
-## config里设置
+# vps 开启 ipv6
+## ssr 开启 ipv6
+## config 里设置
 "server": "0.0.0.0",
 "server_ipv6": "::",
 
-# ubuntu下用Deluge
+# ubuntu 下用 Deluge
 sudo apt install deluge
 sudo apt install deluged # 程序提示报错，所以再安了这个
-## 设置里面把DHT关掉，否则key容易被盗
+## 设置里面把 DHT 关掉，否则key容易被盗
 ## 设置对应的代理即可
 ```
 
@@ -282,30 +290,30 @@ pavucontrol
 
 ## 七、快捷键设置
 
-参考：[Ubuntu 16.04安装IntelliJ IDEA时快捷键冲突设置](https://www.cnblogs.com/EasonJim/p/7858021.html)
+参考：[「Ubuntu 16.04 安装 IntelliJ IDEA 时快捷键冲突设置」](https://www.cnblogs.com/EasonJim/p/7858021.html)
 
 解决快捷键冲突可以有如下方法：
 
-1、直接修改IDEA的，但是不建议这么干，因为多平台时，或者去到另外一台电脑时，统一的快捷键能更快的适应新的开发环境。
+1、直接修改 IDEA 的，但是不建议这么干，因为多平台时，或者去到另外一台电脑时，统一的快捷键能更快的适应新的开发环境。
 
 2、通过修改系统默认的快捷键。
 
 3、就这两种方式，对于哪种好一些，这个需要自己去权衡。
 
-一、下面是Ubuntu下的快捷键冲突：
+一、下面是 Ubuntu 下的快捷键冲突：
 
-- 禁用阴影窗口操作，分配给Ctrl+Alt+S（设置对话框）
-- 更改或禁用锁定屏幕操作，分配给Ctrl+Alt+L（重新格式化代码）
-- 更改或禁用启动终端操作，分配给Ctrl+Alt+T（环绕）（这个虽然经常使用，可以改成Ctrl+G）
-- 更改或禁用切换到工作区操作，分配给Ctrl+Alt+Arrow Keys（导航，Ctrl+Alt+Shift+Arrow Keys一起屏蔽）
-- 禁用移动窗口动作，分配给Alt+F7（查找用法）
-- 更改或禁用调整窗口操作，分配给Alt+F8（评估表达式） 
+- 禁用阴影窗口操作，分配给 Ctrl+Alt+S（设置对话框）
+- 更改或禁用锁定屏幕操作，分配给 Ctrl+Alt+L（重新格式化代码）
+- 更改或禁用启动终端操作，分配给 Ctrl+Alt+T（环绕）（这个虽然经常使用，可以改成 Ctrl+G）
+- 更改或禁用切换到工作区操作，分配给 Ctrl+Alt+Arrow Keys（导航，Ctrl+Alt+Shift+Arrow Keys 一起屏蔽）
+- 禁用移动窗口动作，分配给 Alt+F7（查找用法）
+- 更改或禁用调整窗口操作，分配给 Alt+F8（评估表达式） 
 
-修改方法：系统设置->键盘->快捷键，找到上面对应的快捷键去掉。
+修改方法：系统设置 -> 键盘 -> 快捷键，找到上面对应的快捷键去掉。
 
 二、修改搜狗输入法：
 
-- 代码提示分配给Ctrl+空格（打开输入法）（关掉，直接使用Ctrl+Shift进行切换打开）
+- 代码提示分配给 Ctrl+空格（打开输入法）（关掉，直接使用 Ctrl+Shift 进行切换打开）
 - Ctrl+Shift+F（简繁切换）
 - Ctrl+,（切换搜狗输入法）
 - Ctrl+5（重新载入配置）
@@ -316,8 +324,8 @@ pavucontrol
 - Ctrl+Alt+P（切换嵌入预编辑字符串）
 - Shift+Tab（上一个候选词）
 - Tab（下一个候选词）
-- Ctrl+Alt+H（切换单词提示，在键盘-汉语设置）
-- Ctrl+Alt+N（但钱输入内容加入用户词典，在键盘-汉语设置）
+- Ctrl+Alt+H（切换单词提示，在键盘 - 汉语设置）
+- Ctrl+Alt+N（当前输入内容加入用户词典，在键盘 - 汉语设置）
 
 三、其它
 
@@ -331,9 +339,9 @@ sudo vim /usr/share/lightdm/lightdm.conf.d/50-guest-wrapper.conf
 reboot
 ```
 
-## 九、apt找不到arm64源
+## 九、apt 找不到 arm64 源
 
-同事的笔记本安装了arm64架构的软件，导致`sudo apt update`的时候出现以下问题：
+同事的笔记本安装了 arm64 架构的软件，导致 `sudo apt update` 的时候出现以下问题：
 
 ```bash
 N: Skipping acquire of configured file 'non-free/binary-arm64/Packages' as repository 'http://repository.spotify.com stable InRelease' doesn't support architecture 'arm64'
@@ -357,13 +365,13 @@ i386
 arm64
 ```
 
-我的正常的主机，第二条只有`i386`，没有`arm64`，这个是导致问题的原因。
+我的正常的主机，第二条只有 `i386`，没有 `arm64`，这个是导致问题的原因。
 
-方法一：删除`arm64`架构（没有试过）
+方法一：删除 `arm64` 架构（没有试过）
 
 ```bash
 sudo dpkg --remove-architecture arm64
-# 如果有下面的error，说明有arm64的软件存在
+# 如果有下面的 error，说明有 arm64 的软件存在
 # dpkg: error: cannot remove architecture 'arm64' currently in use by the database
 ## 可以查找并删除软件
 dpkg -l | grep arm64
@@ -375,7 +383,7 @@ sudo apt clean
 sudo apt update
 ```
 
-方法二：修改apt源（推荐）
+方法二：修改 apt 源（推荐）
 
 ```bash
 sudo vim /etc/apt/sources.list
@@ -387,9 +395,9 @@ sudo apt clean
 sudo apt update
 ```
 
-## 十、apt-key删除
+## 十、apt-key 删除
 
-添加私有apt源常常要如下操作：
+添加私有 apt 源常常要如下操作：
 
 ```bash
 echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
@@ -404,7 +412,7 @@ sudo apt --purge bazel
 sudo rm /etc/apt/sources.list.d/bazel.list
 ```
 
-关键是apt-key不好删除，可以按照下面的方法删除：
+关键是 apt-key 不好删除，可以按照下面的方法删除：
 
 ```bash
 curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key --keyring /tmp/test add -
@@ -418,32 +426,32 @@ sub   4096R/43FF45F9 2016-05-24 [有效至：2020-05-23]
 sudo apt-key del 48457EE0
 ```
 
-## 十一、将文件中的tab转换为空格
+## 十一、将文件中的 tab 转换为空格
 
-1、使用sed:
+1、使用 sed:
 
-`sed -i 's/^I/    /g' filename`，其中`^I`是在命令行中输入`<Ctrl-V><Tab>`来键入，将所有tab替换为4个空格。
+`sed -i 's/^I/    /g' filename`，其中 `^I` 是在命令行中输入 `<Ctrl-V><Tab>` 来键入，将所有 tab 替换为 4 个空格。
 
-2、使用expand和unexpand命令：
+2、使用 expand 和 unexpand 命令：
 
 ```bash
-expand -t 4 filename > newfile    #将文件中的tab扩展为4个空格。
-unexpand -t 4 filename > newfile  #将文件中的空格还原为tab。
+expand -t 4 filename > newfile    #将文件中的 tab 扩展为 4 个空格。
+unexpand -t 4 filename > newfile  #将文件中的空格还原为 tab。
 ```
 
-3、使用vim:
+3、使用 vim:
 
-（1）用vim替换命令：
+（1）用 vim 替换命令：
 
-`:%s/^I/    /g`，同样是输入`<Ctrl-V><Tab>`来键入`^I`，同样将所有tab替换为4个空格。
+`:%s/^I/    /g`，同样是输入 `<Ctrl-V><Tab>` 来键入 `^I`，同样将所有 tab 替换为 4 个空格。
 
 （2）用vim retab命令：
 
 ```bash
-# tab替换为空格
-:set ts=4 # ts是tabstop的缩写，设TAB宽4个空格
+# tab 替换为空格
+:set ts=4 # ts 是 tabstop 的缩写，设 TAB 宽4个空格
 :set expandtab
-:%retab! #加!是用于处理非空白字符之后的tab，即替换所有的tab，不加!则只处理行首的tab
+:%retab! # 加 ! 是用于处理非空白字符之后的 tab，即替换所有的 tab，不加 ! 则只处理行首的 tab
 
 # 空格替换为tab
 :set ts=4
@@ -451,7 +459,7 @@ unexpand -t 4 filename > newfile  #将文件中的空格还原为tab。
 :%retab!
 ```
 
-（3）对于新文件，在.vimrc中添加以下代码，重启vim即可按tab产生4个空格：
+（3）对于新文件，在 .vimrc 中添加以下代码，重启 vim 即可按 tab 产生 4 个空格：
 
 ```bash
 set ts=4
@@ -475,10 +483,10 @@ echo -e "\033[?25l"  # 隐藏光标
 echo -e "\033[?25h"  # 显示光标
 ```
 
-## 十四、为APPImage程序创建快捷方式
+## 十四、为 APPImage 程序创建快捷方式
 
 ```bash
-sudo vim /usr/share/applications/shoadowsocks.desktop # 以shoadowsocks举例
+sudo vim /usr/share/applications/shoadowsocks.desktop # 以 shoadowsocks 举例
 
 # 编辑
 [Desktop Entry]
@@ -495,24 +503,24 @@ Categories=Internet
 MimeType=application/shadowsocks
 ```
 
-## 十五、ppa删除并还原软件版本
+## 十五、删除 ppa 并还原软件版本
 
-首先，安装`ppa-purge`软件：
+首先，安装 `ppa-purge` 软件：
 
 ```bash
 sudo apt install ppa-purge
 ```
 
-安装好后，使用`ppa-purge`来移除：
+安装好后，使用 `ppa-purge` 来移除：
 
 ```bash
-# 比如用下列命令新增了一个ppa
+# 比如用下列命令新增了一个 ppa
 sudo add-apt-repository ppa:yogarine/eclipse/ubuntu
-# 移除时用ppa-purge替换掉add-apt-repository即可，注意会连ppa安装的软件一起移除或者恢复版本
+# 移除时用 ppa-purge 替换掉 add-apt-repository 即可，注意会连 ppa 安装的软件一起移除或者恢复版本
 sudo ppa-purge ppa:yogarine/eclipse/ubuntu 
-# 最后删除/etc/apt/sources.list.d下相应的list文件
+# 最后删除 /etc/apt/sources.list.d 下相应的 list 文件
 
-# 如果忘了ppa链接，可这样找回
+# 如果忘了 ppa 链接，可这样找回
 history | grep add-apt-repository
 ```
 
@@ -521,3 +529,4 @@ history | grep add-apt-repository
 - [如何通过apt-get降级软件包？](https://ubuntuqa.com/article/137.html)
 - [Ubuntu 用指令移除 PPA 儲存庫](https://www.arthurtoday.com/2011/05/ubuntu-ppa.html)
 - [NEWBIE GUIDE: HOW TO USE PPA PURGE](http://www.ubuntubuzz.com/2012/02/newbie-guide-how-to-use-ppa-purge.html)
+

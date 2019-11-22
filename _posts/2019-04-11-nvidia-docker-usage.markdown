@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Docker的使用"
-subtitle:   "安装示例和常用命令"
+title:      "Docker 的使用"
+subtitle:   "Ubuntu 安装示例和常用命令"
 date:       2019-04-11 10:00:00
 author:     "Tian"
 categories: Skill
@@ -15,13 +15,13 @@ tags:
 
 ## 一、Install
 
-`Docker CE`和`Nvidia-Docker`的详细安装步骤见[前述博文](<https://tianws.github.io/skill/2019/04/09/docker/>)。
+`Docker CE` 和 `Nvidia-Docker` 的详细安装步骤见 [前述博文](<https://tianws.github.io/skill/2019/04/09/docker/>)。
 
-如果程序要在Ubuntu 16.04 x86_64系统运行，可按下列步骤安装。
+如果程序要在 Ubuntu 16.04 x86_64 系统运行，可按下列步骤安装。
 
-### 1. 安装docker
+### 1. 安装 docker
 
-下载[docker安装包](<https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/>)，经过测试的版本为`containerd.io_1.2.5-1_amd64.deb`、`docker-ce-cli_18.09.4~3-0~ubuntu-xenial_amd64.deb                                     `、`docker-ce_18.09.4_3-0_ubuntu-xenial_amd64.deb`
+下载 [docker安装包](<https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/>)，经过测试的版本为 `containerd.io_1.2.5-1_amd64.deb`、`docker-ce-cli_18.09.4~3-0~ubuntu-xenial_amd64.deb                                     `、`docker-ce_18.09.4_3-0_ubuntu-xenial_amd64.deb`
 
 ```bash
 sudo apt update
@@ -38,11 +38,11 @@ docker run --rm hello-world
 sudo systemctl enable docker
 ```
 
->提速docker hub：
+>提速 docker hub：
 >
->国内docker hub下载很慢，可以通过配置镜像的方式提速。[参考](<https://www.cnblogs.com/stulzq/p/8628019.html>)
+>国内 docker hub 下载很慢，可以通过配置镜像的方式提速。[参考](<https://www.cnblogs.com/stulzq/p/8628019.html>)
 >
->本文使用[阿里云镜像加速服务](<https://cr.console.aliyun.com/>)
+>本文使用 [阿里云镜像加速服务](<https://cr.console.aliyun.com/>)
 >
 >```bash
 ># 注册阿里账户并登录
@@ -62,20 +62,20 @@ sudo systemctl enable docker
 >sudo systemctl restart docker
 >```
 
-### 2. 安装nvidia-docker
+### 2. 安装 nvidia-docker
 
 ```bash
 # 卸载可能的旧版本
 docker volpeizhiume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
 sudo apt-get purge nvidia-docker
-# 配置Repository
+# 配置 Repository
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
   sudo apt-key add -
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
   sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 sudo apt-get update
-# 安装指定版本的nvidia-docker
+# 安装指定版本的 nvidia-docker
 apt-cache madison nvidia-docker2 nvidia-container-runtime # 查看可用版本
 sudo apt-get install -y nvidia-docker2=2.0.3+docker18.09.4-1 nvidia-container-runtime=2.0.0+docker18.09.4-1
 ```
@@ -84,7 +84,7 @@ sudo apt-get install -y nvidia-docker2=2.0.3+docker18.09.4-1 nvidia-container-ru
 
 ### 1. 构建镜像
 
-参考[caffe Dockerfile](<https://github.com/BVLC/caffe/tree/master/docker/gpu>)、[pytorch Dockerfile](<https://github.com/pytorch/pytorch/blob/master/docker/pytorch/Dockerfile>)、[maskrcnn Dockerfile](<https://github.com/facebookresearch/maskrcnn-benchmark/blob/master/docker/Dockerfile>)编写我们的Dockerfile。
+参考 [Caffe Dockerfile](<https://github.com/BVLC/caffe/tree/master/docker/gpu>)、[PyTorch Dockerfile](<https://github.com/pytorch/pytorch/blob/master/docker/pytorch/Dockerfile>)、[maskrcnn-benchmark Dockerfile](<https://github.com/facebookresearch/maskrcnn-benchmark/blob/master/docker/Dockerfile>) 编写我们的Dockerfile。
 
 ```bash
 # Dockerfile
@@ -106,7 +106,7 @@ RUN apt-get update -y \
 #  && /miniconda.sh -b -p /miniconda \
 #  && rm /miniconda.sh
 
-# Install Miniconda \下载太慢，通过add的方式拷贝过去
+# Install Miniconda \下载太慢，通过 add 的方式拷贝过去
 ADD Miniconda3-latest-Linux-x86_64.sh /miniconda.sh
 
 RUN chmod +x /miniconda.sh \
@@ -143,15 +143,15 @@ WORKDIR /segmentation-dependence
 >```
 
 ```bash
-# pull基础镜像
+# pull 基础镜像
 docker pull nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
-# build镜像
+# build 镜像
 docker build -t segmentation docker/
 # 导出镜像并压缩
 docker save segmentation | gzip > segmentation-latest.tar.gz
 # 加载镜像命令
 docker load -i segmentation-latest.tar.gz
-# 可以结合ssh和pv命令，写一个命令完成从一个机器将镜像迁移到另一个机器，而且带进度条
+# 可以结合 ssh 和 pv 命令，写一个命令完成从一个机器将镜像迁移到另一个机器，而且带进度条
 docker save <镜像名> | bzip2 | pv | ssh <用户名>@<主机名> 'cat | docker load'
 ```
 
@@ -246,7 +246,7 @@ Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 -v /tmp/.X11-unix:/tmp/.X11-unix \ 设置X11嵌套字以转发图形化界面
 ```
 
-**docker tag的最佳实践：**
+**docker tag 的最佳实践：**
 
 假设我们现在发布了一个镜像 myimage，版本为 v1.9.1。那么我们可以给镜像打上四个 tag：1.9.1、1.9、1 和 latest。
 
