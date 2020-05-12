@@ -353,16 +353,16 @@ conda remove --name your_env_name --all
 **5、conda、pip 环境复制**
 
 ```bash
-# conda导出已有环境
+# conda 导出已有环境
 conda env export > environment.yaml
 # 导入环境
 conda env create -f environment.yaml
 ```
 
 ```bash
-# pip导出已有环境
+# pip 导出已有环境
 pip freeze > requirements.txt
-# pip导入环境
+# pip 导入环境
 pip install -r requirements.txt
 ```
 

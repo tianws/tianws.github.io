@@ -118,6 +118,8 @@ bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config
 
 - albert：快捷启动软件
 
+- utools：快捷启动软件，插件更丰富
+
 - tusk：印象笔记非官方客户端
 
 - Indicator Stickynotes：便签
@@ -149,8 +151,14 @@ bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config
 - mailspring：邮件客户端
 
   > 将旧机器 ~/.thunderbird 文件夹拷贝到新机器，可以无缝转移 thunderbird 邮箱的设置和邮件。
+  >
+  > 将旧机器 ~/.config/Mailspring 文件夹拷贝到新机器，也许也可以无缝转移邮箱的设置和邮件？
 
 - dukto：局域网传输工具
+
+- clipto.pro：剪切板同步工具
+
+- sylashy：自动换壁纸工具
 
 #### 2、命令行软件
 
@@ -530,3 +538,20 @@ history | grep add-apt-repository
 - [Ubuntu 用指令移除 PPA 儲存庫](https://www.arthurtoday.com/2011/05/ubuntu-ppa.html)
 - [NEWBIE GUIDE: HOW TO USE PPA PURGE](http://www.ubuntubuzz.com/2012/02/newbie-guide-how-to-use-ppa-purge.html)
 
+## 十六、连接 airpods pro
+
+1. 安装 bluez 蓝牙堆栈
+
+   ```bash
+   sudo apt install bluez*
+   ```
+
+2. 在 `/etc/bluetooth/main.conf` 中设置 `ControllerMode = bredr`
+
+3. `sudo /etc/init.d/bluetooth restart`
+
+4. 尝试再次配对
+
+参考：
+
+- [配对Apple Airpods作为耳机](https://www.it-swarm.net/zh/sound/配对apple-airpods作为耳机/961146368/)

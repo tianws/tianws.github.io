@@ -14,7 +14,7 @@ tags:
 typora-root-url: ../
 ---
 
-> 内容来自 [conda官方博文](https://www.anaconda.com/moving-conda-environments/)
+> 内容来自 [Conda官方博文](https://www.anaconda.com/moving-conda-environments/)
 
 Conda 是著名的包管理器和虚拟环境管理器。
 

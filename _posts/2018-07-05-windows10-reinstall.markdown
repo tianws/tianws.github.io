@@ -83,7 +83,41 @@ tags:
 
 在 Ubuntu 的状态栏右键点击，可以在默认值或者属性里设置字体和颜色。
 
-## 三、参考链接
+## 三、软件推荐
+
+- Adobe Acrobat Reader DC：PDF阅读器
+- Bandizip：压缩软件
+- Copytranslator：翻译软件
+- PotPlayer：播放器
+- Everything：搜索软件
+- EV录屏：录屏软件
+- Free Download Manager：下载软件
+- Honeyview：看图软件
+- 火绒：安全软件
+- iSlide Tools：PPT 插件
+- 坚果云：网盘同步盘
+- MEGA：网盘同步盘
+- 荐片：影音软件
+- Mircosoft To Do：清单软件
+- ShareX：截图软件
+- Snipaste：截图软件
+- FSCapture：长截图软件
+- Synergy：键鼠切换 KVM 软件
+- TeamViewer：远程桌面共享软件
+- Xmind：思维导图软件
+- 小丸工具箱：视频图片压缩软件
+- HandBrake：视频压缩转码
+- 印象笔记：笔记软件
+- OneNote：笔记软件
+- Zotero：文献管理软件
+- geek uninstall：软件卸载
+- v2rayN：科学上网
+- softDownloader：软件下载
+- Inpaint：图片去水印
+- SubRenamer：字幕批量重命名
+- Typora：Makedown 编辑器
+
+## 四、参考链接
 
 - [参考](https://www.jianshu.com/p/92ccdc138b46)
 
