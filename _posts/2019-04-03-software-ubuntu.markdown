@@ -555,3 +555,24 @@ history | grep add-apt-repository
 参考：
 
 - [配对Apple Airpods作为耳机](https://www.it-swarm.net/zh/sound/配对apple-airpods作为耳机/961146368/)
+
+## 十七、Windows 和 Ubuntu 双系统时间异常
+
+1. 为什么会异常
+
+   装了ubuntu双系统后回到windows，可能会发现自己windows的系统时间错了，大概会慢8小时的样子(不同地区不一样)。简单来说就是因为ubuntu和windows计算时间的方式不一样。ubuntu是将UTC(协调世界时，本初子午线时间)记录在机器时间。ubuntu显示时间时将机器时间+8得到北京时间，显示在时间栏。windows将当地时间（例如，北京时间）直接保存到机器中，直接调用机器时间，直接显示。然后当ubuntu将本初子午线时间同步到你的机器时间后，这个机器时间加8正好就是北京时间。你再回到windows，windows把这个机器时间当作当地时间直接显示出来，就比北京慢了8小时。
+
+2. 解决方案
+
+   ```bash
+   # 安装ntpdate：
+   sudo apt-get install ntpdate
+   
+   # 设置校正服务器：
+   sudo ntpdate time.windows.com
+   
+   # 设置硬件时间为本地时间：
+   sudo hwclock --localtime --systohc
+   ```
+
+   
