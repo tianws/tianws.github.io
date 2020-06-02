@@ -17,7 +17,7 @@ tags:
 
 想象一下这样的场景，某天，你登上你常用的服务器，打算运行一下你早已开发调试完成的程序，但是和以往不同的是，这一次你一运行，就报了一大堆的错误。你各种排查，最后发现服务器上，你程序依赖的库的版本被同事给改了，所以你的程序无法运行了。而你还不能擅自改回来，因为改动后同事的程序就没法运行了。
 
-另一个场景，某天，你好不容易实现了一个新的想法，兴冲冲地想去训练一下看看，你登上你常用的服务器，发现显卡资源全都被占满了。于是你马不停蹄地向另一台空闲的服务器上迁移你的项目，等你废了九牛二虎之力，在另一台服务器上重新配置了环境、传输了数据集、拷贝了代码，并做完了完整性校验。然后发现这台服务器又被另一个同事占满了，只剩你面对终端凌乱。
+另一个场景，某天，你好不容易实现了一个新的想法，兴冲冲地想去训练一下看看，你登上你常用的服务器，发现显卡资源全都被占满了。等？等是不可能等的。于是你马不停蹄地向另一台空闲的服务器上迁移你的项目，等你花了大半天的时间，废了九牛二虎之力，在另一台服务器上重新配置了环境、传输了数据集、拷贝了代码，并做完了完整性校验。然后发现这台服务器又被另一个同事占满了，只剩你面对终端凌乱。
 
 你吸取了教训，在所有的服务器上都配置了环境，放上了常用的数据集和代码，这下哪台服务器空闲我就用哪台总没问题了吧。但是随着时间的推移，你自己也分不清各台服务器上的代码，哪份是最新的，哪份是弃置的了。更严重的是，每台服务器上你都保存了一份数据集，占用了大量的磁盘空间，导致部门服务器的磁盘空间不足，经常要你清理。
 
@@ -44,15 +44,15 @@ tags:
 
 这些文章的 Docker 配置方式相似，我也从这些文章中受益良多，但是他们的配置方式不能满足我的需求，主要体现在：
 
-1. 权限管理混乱：在这些文章里，docker 容器里的进程是用 root 用户运行的，而且这个 root 用户即为服务器的 root，合适的条件下，这些进程有权限控制宿主机中的一切，这是非常危险的；另外，外界查询这些进程的启动用户都为 root，有一定的匿名性，不方便管理；还有以 root 运行进程，经常会导致文件读写权限的问题，很不方便；
+1. 以 root 权限运行：在这些文章里，docker 容器里的进程是用 root 用户运行的，而且这个 root 用户即为服务器的 root，合适的条件下，这些进程有权限控制宿主机中的一切，这是非常危险的；另外，外界查询这些进程的启动用户都为 root，有一定的匿名性，不方便管理；还有以 root 运行进程，经常会导致文件读写权限的问题，很不方便；
 2. 没有图形化转发配置：我是做 CV 的，我的程序在 docker 里运行，有时候我们想通过以图形化展示的方式看看中间结果，但是这些文章中的配置方法没有进行图形化转发；
 3. 复用性不够：这些文章的 docker 配置是在已有的容器中操作的，没有写 dockerfile，时间长了做了哪些操作可能就忘了，不好复现，而且如果容器丢失，所有操作都要再来一遍；
 
 下面就跟着我一起来配置 docker 吧。
 
-docker 和 nvidia-docker 的安装和基本操作，本文不会介绍，请参考官方文档或者其他资料，这里给两个链接：[docker install](https://docs.docker.com/engine/install/)、[nvidia-docker quickstart](https://github.com/NVIDIA/nvidia-docker)。
+docker 和 nvidia-docker 的安装和基本操作，本文不会介绍，请参考官方文档或者其他资料，这里给两个官网链接：[docker install](https://docs.docker.com/engine/install/)、[nvidia-docker quickstart](https://github.com/NVIDIA/nvidia-docker)。
 
-我们选择 dockerfile 来配置 docker 镜像，这样方便维护我们的镜像。连接 docker 容器的方式我们选择 ssh ，这样可以远程连接更多的IDE，使用的时候把 docker 容器当作一个独立的服务器来用就可以了。
+我们选择 dockerfile 来配置 docker 镜像，这样方便维护我们的镜像。连接 docker 容器的方式我们选择 ssh ，这样可以适配更多的 IDE并且更灵活，使用的时候把 docker 容器当作一个独立的服务器来用就可以了。
 
 #### 1、dockerfile 制作
 
@@ -102,7 +102,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 **（5）apt 安装常用软件**
 
-为了用 ssh 连接我们的容器，我们需要安装 `openssh-server`；为了方便权限管理，我们需要安装 `sudo`；其他常用的软件可以根据个人习惯在这一步一起安装了。最后 `rm -rf /var/lib/apt/lists/*` 是为了删掉 apt 的缓存。
+为了用 ssh 连接我们的容器，我们需要安装 `openssh-server`；为了方便权限管理，我们需要安装 `sudo`；其他常用的软件可以根据个人习惯在这一步一起安装了。最后 `rm -rf /var/lib/apt/lists/*` 是为了删掉 apt 的缓存以减小镜像大小。
 
 ```dockerfile
 # apt安装常用软件
@@ -144,7 +144,7 @@ EXPOSE 22
 
 **（7）新建用户替代 root 并用 fixuid 管理 uid**
 
-具体的原理可以参考我之前的博客：[Docker 容器内用户管理]()，在这里我直接使用文章中的 dockerfile：
+具体的原理可以参考我之前的博客：[Docker 容器内用户管理](https://tianws.github.io/skill/2020/05/29/docker-uid-setting/)，在这里我直接使用文章中的 dockerfile：
 
 ```dockerfile
 # 新建用户并用 fixuid 管理 uid
@@ -198,16 +198,16 @@ RUN ranger --copy-config=all && \
 
 **（10）ENTRYPOINT 和 CMD**
 
-最后就是 dockerfile 中的 ENTRYPOINT 和 CMD了，在 docker 容器启动的时候，会自动运行 ENTRYPOINT 和 CMD 的命令，如果 `docker run` 的时候指定了命令，该命令会作为参数接在 ENTRYPOINT 后，并替换 dockerfile 里 CMD 的命令。
+最后就是 dockerfile 中的 `ENTRYPOINT` 和 `CMD`了，在 docker 容器启动的时候，会自动运行 `ENTRYPOINT` 和 `CMD` 的命令，如果 `docker run` 的时候指定了命令，该命令会作为参数接在 `ENTRYPOINT` 后，并替换 dockerfile 里 `CMD` 的命令。
 
-这里我们在 ENTRYPOINT 中配置 fixuid 命令，它会结合 `-u` 参数帮我们管理用户 uid。在 CMD 命令中默认启动 ssh 服务，并用 zsh 持久化，这样就不用像其他文章中那样手动进入容器里启动 ssh 服务了。
+这里我们在 `ENTRYPOINT` 中配置 `fixuid` 命令，它会结合 `-u` 参数帮我们管理用户 uid。在 `CMD` 命令中默认启动 ssh 服务，并用 `zsh` 持久化，这样就不用像其他文章中那样手动进入容器里启动 ssh 服务了。
 
 ```dockerfile
 ENTRYPOINT ["fixuid"]
 CMD echo ${PASSWD} | sudo -S service ssh start && /bin/zsh
 ```
 
-完整的 dockerfile 见[链接]()。
+完整的 dockerfile 见[链接](https://github.com/tianws/config/blob/master/dockerfile/pytorch1.5-cuda10.1-cudnn7.dockerfile)。
 
 #### 2、构建 docker 镜像
 
@@ -260,7 +260,7 @@ ssh -X docker@dd -p 49154
 
 然后就可以登陆一台个人专属的“服务器”了，这个服务器已经提前配置好了需要的软件和工具，并且和宿主机的系统环境隔离，无论我们对容器系统环境做什么操作，都不会影响宿主服务器的系统。
 
-而且通过 ssh 的 X11 图形转发，我们甚至可以在本机浏览 docker 容器里的 firefox 浏览器。
+而且通过 ssh 的 X11 图形转发，我们甚至可以在本机使用 docker 容器里的 firefox 浏览器。
 
 #### 5、环境复用
 
@@ -271,9 +271,9 @@ ssh -X docker@dd -p 49154
 2. 用 docker save 命令把镜像打包，再在宿主机上用 docker load 加载即可，也可以结合 ssh 和 pv 命令，一个命令完成从一台机器到另一台机器的迁移：
 
    ```bash
-   # # 导出镜像并压缩
+   # 导出镜像并压缩
    docker save  imageName:tag | gzip > imageName-tag.tar.gz
-   # 加载镜像命令
+   # 加载镜像
    gunzip -c  imageName-tag.tar.gz | docker load
    # 可以结合 ssh 和 pv 命令，一个命令完成从一个机器将镜像迁移到另一个机器，而且带进度条
    docker save <镜像名> | bzip2 | pv | ssh <用户名>@<主机名> 'cat | docker load'
