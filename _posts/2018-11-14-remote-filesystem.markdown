@@ -42,7 +42,7 @@ typora-root-url: ../
 
 #### 方案一：SSHFS
 
-SSH 和 SCP 大家都用过，SSHFS 也和他们是一个「部门」的，他可以让我们通过 SSH 文件传输协议（SFTP）挂载远程的文件系统并且在本地机器上和远程的目录进行交互。
+SSH 和 SCP 大家都用过，SSHFS 也和他们是一个「部门」的，他可以让我们通过 SSH 文件传输协议（SFTP）挂载远程的文件系统并且在本地机器上和远程的目录进行交互。具体用法可以参考[这篇](https://wiki.archlinux.org/index.php/SSHFS_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))。
 
 使用方法很简单：
 
@@ -63,14 +63,15 @@ df -hT
 # 永久挂载远程文件系统
 sudo vim /etc/fstab
 # 添加至最后一行，确保服务器之间允许 ssh 无密码登录
-sshfs#tianws@103:/home/tianws ~/sshfs/103 fuse.sshfs defaults 0 0 
-# 如果服务器配置为基于 ssh 秘钥的认证方式，加入下行
-sshfs#tianws@103:/home/tianws ~/sshfs/103 fuse.sshfs IdentityFile=~/.ssh/id_rsa defaults 0 0
+sshfs#tianws@103:/home/tianws ~/sshfs/103 fuse.sshfs defaults,auto,allow_other,_netdev,IdentityFile=/home/tianws/.ssh/id_rsa 0 0 
+
 # 更新 fstab 文件使修改生效
 sudo mount -a
 
 # 卸载远程的文件系统
 umount ~/sshfs/103
+## 如果提示没有权限，用 fusermount
+fusermount -u ~/sshfs/103
 ```
 
 #### 方案二：NFS
@@ -109,6 +110,6 @@ sudo mount -t nfs 103:/home/tianws ~/sshfs/103
 ## 参考
 
 - [系统运维-如何使用SSHFS 通过SSH 挂载远程的Linux 文件系统或者目录](https://linux.cn/article-7855-1.html)
-
 - [Linux下挂载远程磁盘- nfs - 简书](https://www.jianshu.com/p/cc2893b2a8b8)
+- [Why is "sudo unmount" required for unmounting an sshfs-mount if it was mounted without sudo privilges?](https://superuser.com/questions/423907/why-is-sudo-unmount-required-for-unmounting-an-sshfs-mount-if-it-was-mounted-w)
 

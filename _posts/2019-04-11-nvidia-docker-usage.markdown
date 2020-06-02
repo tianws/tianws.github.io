@@ -95,10 +95,14 @@ FROM nvidia/cuda:${CUDA}-cudnn${CUDNN}-devel-ubuntu16.04
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
+# 换阿里源
+sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+
 # install basics
 RUN apt-get update -y \
- && apt-get install -y apt-utils git curl ca-certificates bzip2 cmake tree htop bmon iotop g++ \
- && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev
+ && apt-get install -y --no-install-recommends apt-utils git curl ca-certificates bzip2 cmake tree htop bmon iotop g++ \
+ && apt-get install -y --no-install-recommends libglib2.0-0 libsm6 libxext6 libxrender-dev \
+ && rm -rf /var/lib/apt/lists/*
 
 # # Install Miniconda
 # RUN curl -so /miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -175,7 +179,7 @@ alias dockerrun='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) -v $(
 ### 3. 运行程序
 
 ```bash
-dockerrun cmd args
+docker run cmd args
 ```
 
 ### 4. 常用命令

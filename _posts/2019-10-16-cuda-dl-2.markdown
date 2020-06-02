@@ -137,6 +137,17 @@ sudo apt install nvidia-340
 
 安装结束，重启系统，就完成了。
 
+> 更新：
+>
+> 如果想安装比较新的驱动，可以先加入 PPA：
+>
+> ```bash
+> sudo add-apt-repository ppa:graphics-drivers/ppa
+> sudo apt update
+> ```
+>
+> 然后再安装上面的步骤，就可以安装最新的驱动了。
+
 ## 三、安装 CUDA
 
 在以前的文章 [NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/) 中说过，安装 CUDA 有两种方法：

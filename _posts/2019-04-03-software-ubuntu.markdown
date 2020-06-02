@@ -22,11 +22,13 @@ tags:
 
 - Windows：[V2RayN](<https://github.com/233boy/v2ray/wiki/V2RayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B>)
 
-- MacOS：[V2RayX](<https://github.com/Cenmrev/V2RayX/releases>) 
+- MacOS：[V2RayX](<https://github.com/Cenmrev/V2RayX/releases>)、[V2RayU](https://github.com/yanue/V2rayU)
 
    `brew cask install v2rayx`
 
-- Linux：[v2ray](<https://www.v2ray.com/>)：
+   `brew cask install v2rayu`
+
+- Linux：[v2ray](<https://www.v2ray.com/>)：（或者图形化界面 [Qv2ray](https://qv2ray.github.io/getting-started/)）
 
 ```bash
 sudo bash go.sh -p "socks5://192.168.146.204:1080" (更新脚本 sudo bash <(curl -L -s https://install.direct/go.sh))
@@ -37,7 +39,7 @@ service v2ray start
 
 **（2）proxychains-ng**
 
-下载 [安装包](<https://github.com/rofl0r/proxychains-ng/releases>)
+下载 [安装包](<https://github.com/rofl0r/proxychains-ng/releases>)（或者直接`sudo apt install proxychains4`）
 
 ```bash
 # 安装
@@ -86,15 +88,47 @@ sudo apt-get install paper-icon-theme
 sudo apt install powerline
 ```
 
-bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config)。
+bash、tmux、vim、ranger 等美化见 [config](https://github.com/tianws/config)。
+
+ranger 另外安装 xsel、mediainfo 和 highlight 可以拓展功能。
 
 [参考1](https://zhuanlan.zhihu.com/p/26032793)（这个还写了很多解决Ubuntu问题的总结）、[参考2](https://www.jianshu.com/p/4bd2d9b1af41)
+
+---
+
+更新：Ubuntu 18.04 换了 gnome3，不用 unity 了，美化方案如下
+
+美化 gnome 需要两个工具：gnome-tweak-tool 和 chrome-gnome-shell，前者是 Gnome 的设置工具，后者可以使我们直接在 https://extensions.gnome.org/ 的网页上安装 extension。安装这两个工具的命令如下：
+
+```bash
+sudo aptitude install gnome-tweak-tool
+sudo aptitude install chrome-gnome-shell
+```
+
+确认 gnome-shell 版本后，就可以在 https://extensions.gnome.org/ 和 gnome-tweak-tool 上安装和管理拓展了。
+
+安装的拓展：
+
+- Frippery Move Clock，把时钟移到右边以给 top panel 留出位置
+- Hide Activities，隐藏左上角活动按钮，可用 `sudo aptitude install gnome-shell-extension-hide-activities` 安装
+- pixelsaver，标题栏移到 top panel 中，可用 `sudo aptitude install gnome-shell-extension-pixelsaver` 安装
+- remove dropdown arrows，隐藏右上角的箭头，可用 `sudo aptitude install gnome-shell-extension-remove-dropdown-arrows` 安装
+- Dash to dock，可设置的 Dash 栏
+- Dynamic panel transparency，top panel 自动透明
+
+重启 gnome-shell：按 Alt+F2，输入 r，按 Enter 运行。
+
+参考[这篇](https://www.cnblogs.com/youxia/p/LinuxDesktop003.html)。
+
+图标还是用 paper，主题用自带的已经很好看了。
+
+登陆界面换壁纸，参考[这篇](https://blog.csdn.net/Briliantly/article/details/84207763)。
 
 ## 三、常用软件
 
 #### 1、GUI软件
 
-- redshfit-gtk：护眼
+- redshfit-gtk：护眼（更新：18.04 自带，不需要安装了）
 
 - 搜狗拼音：输入法
 
@@ -128,7 +162,9 @@ bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config
 
 - flameshot：截图软件 [安装方法](https://github.com/lupoDharkael/flameshot)
 
-  设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Super+J`
+  设置快捷键：设置->键盘->快捷键->自定义快捷键->命令`flameshot gui`,快捷键`Ctrl+Shift+J`
+  
+  文件名编辑：%F_%H-%M-%S
   
 - station：网页聚合软件（同类型的还有 franz 和 rambox）
 
@@ -138,7 +174,7 @@ bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config
 
 - gpick：取色工具（同类型还有 gcolor2 和 pick）
 
-- pomodoro-indicator：番茄钟插件
+- pomodoro-indicator：番茄钟插件（更新：18.04 gnome 插件商店就有）
 
   ```bash
   sudo add-apt-repository ppa:atareao/atareao
@@ -159,6 +195,10 @@ bash、tmux、vim、range 等美化见 [config](https://github.com/tianws/config
 - clipto.pro：剪切板同步工具
 
 - sylashy：自动换壁纸工具
+
+- 坚果云：同步盘（18.04 采用源码安装才安装成功，要显示图标需要安装 topicons plus 插件，[参考官网回复](http://help.jianguoyun.com/?p=4793)）
+
+- MEGA：同步盘
 
 #### 2、命令行软件
 
@@ -484,6 +524,10 @@ gnome-session-properties
 
 然后设置即可。
 
+---
+
+更新：18.04 可直接在 gnome-tweak-tool 中设置。
+
 ## 十三、终端光标不显示解决方法
 
 ```bash
@@ -560,7 +604,9 @@ history | grep add-apt-repository
 
 1. 为什么会异常
 
-   装了ubuntu双系统后回到windows，可能会发现自己windows的系统时间错了，大概会慢8小时的样子(不同地区不一样)。简单来说就是因为ubuntu和windows计算时间的方式不一样。ubuntu是将UTC(协调世界时，本初子午线时间)记录在机器时间。ubuntu显示时间时将机器时间+8得到北京时间，显示在时间栏。windows将当地时间（例如，北京时间）直接保存到机器中，直接调用机器时间，直接显示。然后当ubuntu将本初子午线时间同步到你的机器时间后，这个机器时间加8正好就是北京时间。你再回到windows，windows把这个机器时间当作当地时间直接显示出来，就比北京慢了8小时。
+   ​        装了ubuntu双系统后回到windows，可能会发现自己windows的系统时间错了，大概会慢8小时的样子(不同地区不一样)。
+
+   ​        简单来说就是因为ubuntu和windows计算时间的方式不一样。ubuntu是将UTC(协调世界时，本初子午线时间)记录在机器时间。ubuntu显示时间时将机器时间+8得到北京时间，显示在时间栏。windows将当地时间（例如，北京时间）直接保存到机器中，直接调用机器时间，直接显示。然后当ubuntu将本初子午线时间同步到你的机器时间后，这个机器时间加8正好就是北京时间。你再回到windows，windows把这个机器时间当作当地时间直接显示出来，就比北京慢了8小时。
 
 2. 解决方案
 
@@ -575,4 +621,6 @@ history | grep add-apt-repository
    sudo hwclock --localtime --systohc
    ```
 
-   
+3. 参考：
+
+   - [WIN10/Ubuntu双系统常见问题](https://zhuanlan.zhihu.com/p/62303240)
