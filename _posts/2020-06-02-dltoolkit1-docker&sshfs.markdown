@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "史上最细致深度学习炼丹炉配置（一）—— docker 和 sshfs 环境配置"
+title:      "深度学习炼丹炉配置（一）—— docker 和 sshfs 环境配置"
 subtitle:   ""
 date:       2020-06-02 10:00:00
 author:     "Tian"
@@ -15,7 +15,7 @@ tags:
 
 ## 一、需求
 
-想象一下这样的场景，某天，你登上你常用的服务器，打算运行一下你早已开发调试完成的程序，但是和以往不同的是，这一次你一运行，就报了一大堆的错误。你各种排查，最后发现服务器上，你程序依赖的库的版本被同事给改了，所以你的程序无法运行了。而你还不能擅自改回来，因为改动后同事的程序就没法运行了。
+想象一下这样的场景，某天，你登上你常用的服务器，打算运行一下你早已开发调试完成的程序，但是和以往不同的是，这一次你一运行，就报了一大堆的错误。你各种排查，最后发现原因是服务器上你程序依赖的库的版本被同事给改了，，而你还不能擅自改回来，因为改动后同事的程序就没法运行了。
 
 另一个场景，某天，你好不容易实现了一个新的想法，兴冲冲地想去训练一下看看，你登上你常用的服务器，发现显卡资源全都被占满了。等？等是不可能等的。于是你马不停蹄地向另一台空闲的服务器上迁移你的项目，等你花了大半天的时间，废了九牛二虎之力，在另一台服务器上重新配置了环境、传输了数据集、拷贝了代码，并做完了完整性校验。然后发现这台服务器又被另一个同事占满了，只剩你面对终端凌乱。
 
@@ -229,8 +229,9 @@ docker build -t pytorch1.5-cuda10.1-cudnn7 -f pytorch1.5-cuda10.1-cudnn7.dockerf
 在服务器上，运行 docker run 命令：
 
 ```bash
-docker run --gpus all  -p 49154:22 -it -u $(id -u):$(id -g) -h dd-docker -v /ssd/tianws:/ssd/tianws --restart=always pytorch1.5-cuda10.1-cudnn7
+docker run --gpus all --ipc=host  -p 49154:22 -it -u $(id -u):$(id -g) -h dd-docker -v /ssd/tianws:/ssd/tianws --restart=always pytorch1.5-cuda10.1-cudnn7
 # --gpus all：启动 docker 时启用所有的 GPU 
+# --ipc=host：增加主机与容器共享内存，pytorch 需要
 # -p 49154:22：将服务器的 49154 端口映射到容器的 22 端口
 # -it：分配 tty 设备支持终端登陆并打开 STDIN，用于控制台交互
 # -u $(id -u):$(id -g)：指定容器的用户
@@ -296,7 +297,7 @@ ssh -X docker@dd -p 49154
    ```bash
    # 导出容器并压缩
    docker export <容器名> | gzip > <容器名>.tar.gz
-   # 导入容器为新的镜像并压缩
+   # 导入容器为新的镜像
    gunzip -c <容器名>.tar.gz | docker import
    # 同样结合 ssh 和 pv 命令，写一个命令完成从一个机器将容器迁移为另一个机器的镜像，而且带进度条
 docker export <容器名> | bzip2 | pv | ssh <用户名>@<主机名> 'cat | docker import'
@@ -340,12 +341,12 @@ docker volume ls
 
 ```bash
 # 原本 A 服务器上的 docker run 命令：
-docker run --gpus all  -p 49154:22 -it -u $(id -u):$(id -g) -h dd-docker --restart=always \
+docker run --gpus all --ipc=host  -p 49154:22 -it -u $(id -u):$(id -g) -h dd-docker --restart=always \
 -v /ssd/tianws:/ssd/tianws \
 pytorch1.5-cuda10.1-cudnn7
 
 # 在 B 服务器上，修改 -v 选项，原本的本地路径更改为 docker volume 名称
-docker run --gpus all  -p 49154:22 -it -u $(id -u):$(id -g) -h dd-docker --restart=always \
+docker run --gpus all --ipc=host  -p 49154:22 -it -u $(id -u):$(id -g) -h dd-docker --restart=always \
 -v dd-ssh-volume:/ssd/tianws \
 pytorch1.5-cuda10.1-cudnn7
 ```
@@ -363,4 +364,8 @@ pytorch1.5-cuda10.1-cudnn7
 如果这篇文章对你有帮助，请点一个赞，如果大家需要的话，我会再更新第二、三篇，分享我常用的 IDE（VS CODE 和 Pycharm）结合这套开发环境的配置和使用方法，搭建一个完整的炼丹炉。
 
 谢谢大家！
+
+---
+
+知乎镜像地址：[史上最细致深度学习炼丹炉配置（一）—— docker 和 sshfs 环境配置](https://zhuanlan.zhihu.com/p/145415086)
 
