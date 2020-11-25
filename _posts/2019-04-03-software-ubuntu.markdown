@@ -170,6 +170,8 @@ sudo aptitude install chrome-gnome-shell
 
 - imagine：图片压缩软件
 
+- gThumb：图片处理软件
+
 - picGo：图片上传软件
 
 - gpick：取色工具（同类型还有 gcolor2 和 pick）
