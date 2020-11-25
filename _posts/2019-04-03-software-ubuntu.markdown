@@ -216,7 +216,11 @@ sudo aptitude install chrome-gnome-shell
   # jekyll：博客
   sudo apt-get install ruby-full build-essential zlib1g-dev
   gem install jekyll bundler
-  gem install jekyll-paginate
+
+    # 测试博客
+  cd my-blog-path
+  bundle install # 根据 Gemfile 安装声明的依赖，并生成 Gemfile.lock 快照
+  bundle exec jekyll serve # 启动 jekyll serve
   ```
 
 #### 3、更多软件
