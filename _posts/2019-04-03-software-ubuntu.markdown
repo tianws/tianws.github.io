@@ -216,6 +216,7 @@ sudo aptitude install chrome-gnome-shell
   # jekyll：博客
   sudo apt-get install ruby-full build-essential zlib1g-dev
   gem install jekyll bundler
+  npm install simple-jekyll-search # jekyll search
 
     # 测试博客
   cd my-blog-path

@@ -108,3 +108,8 @@ Thanks to [*BruceZhaoR*](https://github.com/BruceZhaoR/brucezhaor.github.io)，�
 *增加播放本地视频的功能，整理了代码。*
 
 <p align="right">—— 2019.01.23，北京</p>
+---
+
+*增加 Simple-Jekyll-Search 文章搜索功能。*
+
+<p align="right">—— 2020.11.25，北京</p>
