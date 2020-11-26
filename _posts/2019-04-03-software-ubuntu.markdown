@@ -198,6 +198,8 @@ sudo aptitude install chrome-gnome-shell
 
 - sylashy：自动换壁纸工具
 
+- Beyond Compare：代码比较工具
+
 - 坚果云：同步盘（18.04 采用源码安装才安装成功，要显示图标需要安装 topicons plus 插件，[参考官网回复](http://help.jianguoyun.com/?p=4793)）
 
 - MEGA：同步盘
