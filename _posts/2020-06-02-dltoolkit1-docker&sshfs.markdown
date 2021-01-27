@@ -81,6 +81,10 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list &
 
 这样我们的 apt、conda 和 pip 就可以很快了。
 
+> tips：
+>
+> 也可以用 [oh-my-tuna](https://tuna.moe/oh-my-tuna/) 项目自动配置代理。
+
 **（3）开启终端色彩**
 
 运行 docker 容器的时候，终端命令行没有颜色，看的很不舒服啊，这是因为 docker 里默认没有配置 `TERM` 导致的，所以我们配置一下终端就有颜色了：
@@ -223,6 +227,20 @@ docker build -t pytorch1.5-cuda10.1-cudnn7 -f pytorch1.5-cuda10.1-cudnn7.dockerf
 ```
 
 然后运行 `docker images` 就可以看到生成的镜像了。
+
+> tips：
+>
+> 有时候由于众所周知的原因，github 网站可能会无法访问，那么我们上面需要访问 github 相关的命令就会报错了，解决方法为先在[ipaddress 网站](https://www.ipaddress.com/)找到对应域名的ip，然后修改hosts，参考 [这个链接](https://github.com/hawtim/blog/issues/10)。
+>
+> 但是在 dockerfile 里直接修改 /etc/hosts ，再下一条命令执行的时候，就会失效，所以我们用 --add-host来实现，即：
+>
+> ```bash
+> docker build -t pytorch1.5-cuda10.1-cudnn7 --add-host=raw.githubusercontent.com:199.232.96.133 --add-host=raw.github.com:199.232.96.133 -f pytorch1.5-cuda10.1-cudnn7.dockerfile .
+> ```
+>
+> 
+
+
 
 #### 3、运行 docker 容器
 

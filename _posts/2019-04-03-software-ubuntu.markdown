@@ -204,6 +204,8 @@ sudo aptitude install chrome-gnome-shell
 
 - MEGA：同步盘
 
+- understand：看代码工具（[注册破解](https://www.macxin.com/archives/10419.html)）
+
 #### 2、命令行软件
 
 - htop：资源管理
