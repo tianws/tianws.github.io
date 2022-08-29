@@ -206,6 +206,8 @@ sudo aptitude install chrome-gnome-shell
 
 - understand：看代码工具（[注册破解](https://www.macxin.com/archives/10419.html)）
 
+- mtPaint：看图像坐标值、颜色值的软件
+
 #### 2、命令行软件
 
 - htop：资源管理
@@ -223,7 +225,7 @@ sudo aptitude install chrome-gnome-shell
   sudo apt-get install ruby-full build-essential zlib1g-dev
   gem install jekyll bundler
   npm install simple-jekyll-search # jekyll search
-
+  
     # 测试博客
   cd my-blog-path
   bundle install # 根据 Gemfile 安装声明的依赖，并生成 Gemfile.lock 快照
