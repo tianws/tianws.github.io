@@ -208,6 +208,8 @@ sudo aptitude install chrome-gnome-shell
 
 - mtPaint：看图像坐标值、颜色值的软件
 
+- baobab：磁盘分析器
+
 #### 2、命令行软件
 
 - htop：资源管理
@@ -305,7 +307,9 @@ plugins=(.. zsh-syntax-highlighting)
 plugins=(.. colored-man-pages)
 ## z
 plugins=(.. z)
-z -x ## 删除无效路径
+z -x /PATH ## 删除无效路径
+## sudo
+plugins=(.. sudo) ## 按两下esc，首行加sudo
 
 # 设置
 vim ~/.zshrc

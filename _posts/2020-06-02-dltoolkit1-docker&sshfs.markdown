@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "深度学习炼丹炉配置（一）—— docker 和 sshfs 环境配置"
-subtitle:   ""
+title:      "深度学习炼丹炉配置（一） "
+subtitle:   "docker 和 sshfs 环境配置"
 date:       2020-06-02 10:00:00
 author:     "Tian"
 categories: Skill
@@ -318,7 +318,7 @@ ssh -X docker@dd -p 49154
    # 导入容器为新的镜像
    gunzip -c <容器名>.tar.gz | docker import
    # 同样结合 ssh 和 pv 命令，写一个命令完成从一个机器将容器迁移为另一个机器的镜像，而且带进度条
-docker export <容器名> | bzip2 | pv | ssh <用户名>@<主机名> 'cat | docker import'
+   docker export <容器名> | bzip2 | pv | ssh <用户名>@<主机名> 'cat | docker import'
    ```
    
    这种方式舍弃了镜像的所有历史信息，只保留当前容器的快照，无法维护，但是这种方式迁移的镜像体积要小很多。
