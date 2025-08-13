@@ -1,0 +1,85 @@
+---
+layout: page_wide
+title: "Portfolio"
+permalink: /portfolio/
+description: "A showcase of my projects and capabilities."
+header-img: "img/home-bg-2.jpg"
+---
+
+<div class="portfolio-container">
+
+  <div class="portfolio-title">
+    <h1>精选作品</h1>
+    <p>以下是我在自动驾驶感知领域主导和参与的核心项目。</p>
+  </div>
+
+  <!-- Project Grid: Loop through projects from the data file -->
+  <div class="project-grid">
+    {% for project in site.data.projects %}
+      <div class="project-card">
+        <div class="project-card-image" style="background-image: url('{{ site.baseurl }}{{ project.image }}')"></div>
+        <div class="project-card-content">
+          <h3 class="project-card-title">{{ project.title }}</h3>
+          <div class="project-card-tags">
+            {% for tag in project.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          <p class="project-card-description">{{ project.description }}</p>
+          <div class="project-card-footer">
+            <button class="btn" data-toggle="modal" data-target="#portfolioModal{{ project.id }}">了解更多</button>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Modals: Loop through projects again to create modals -->
+{% for project in site.data.projects %}
+<div class="modal fade" id="portfolioModal{{ project.id }}" tabindex="-1" role="dialog" aria-labelledby="portfolioModal{{ project.id }}Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="portfolioModal{{ project.id }}Label">{{ project.title }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="project-meta">
+          <div class="meta-item"><strong>我的角色:</strong> {{ project.modal_role }}</div>
+          <div class="meta-item"><strong>时间周期:</strong> {{ project.modal_period }}</div>
+        </div>
+
+        <h4>效果展示</h4>
+        <div class="visual-showcase">
+          {% if project.video %}
+            <video poster="{{ site.baseurl }}{{ project.poster }}" width="100%" loop muted controls autoplay>
+              <source src="{{ site.baseurl }}{{ project.video }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% elsif project.gallery %}
+            <div class="image-gallery">
+              {% for img in project.gallery %}
+                <img src="{{ site.baseurl }}{{ img }}" alt="Gallery Image for {{ project.title }}">
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        
+        <h4>量化成果</h4>
+        {{ project.modal_achievements | markdownify }}
+
+        <h4>主要挑战及决策</h4>
+        {{ project.modal_challenges | markdownify }}
+
+        <h4>技术栈</h4>
+        <div class="project-card-tags">
+          {% for tag in project.modal_stack %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

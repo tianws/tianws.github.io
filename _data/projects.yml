@@ -1,0 +1,80 @@
+# /_data/projects.yml
+
+- id: 1
+  title: "比亚迪APA自动泊车量产项目"
+  image: "/img/post-bg-fruit.jpg"
+  poster: "/video/poster/20230129_demo_parking.png"
+  video: "/video/20230129_demo_parking.mp4"
+  tags:
+    - "量产交付"
+    - "团队管理"
+    - "IPM"
+  description: "作为感知负责人，带领20人团队完成公司首个APA量产项目交付，实现关键技术突破与商业成功。"
+  modal_role: "大感知组负责人 & IPM模型核心研发"
+  modal_period: "2023.10 - 2024.03"
+  modal_achievements: |
+    - **项目成就:** 成功推动比亚迪宋L、海豹两款车型的APA功能量产上市，是部门首个APA量产项目，荣获公司《年度产品突破奖》。
+    - **个人技术贡献:** IPM模型在J3芯片稳定运行(10fps)，关键要素准确率/召回率 > 95%。在比亚迪验收测试中，车位识别得分**9.37分（全场最高）**。
+    - **团队管理:** 在核心骨干离职、内外部压力巨大的背景下接手，实现攻坚期内**感知组零人员流失**。
+    - **商业价值:** 成果成功演示给宝马、丰田等主机厂，为公司获取多个APA新项目奠定坚实基础。
+  modal_challenges: |
+    - **技术挑战:** 训练数据严重不足（仅7万帧）。<br>
+      **决策与方案:** 1) 自研**可导四边形IoU Loss**，车位角点精度从12cm提升至8cm。 2) 采用精细化数据策略，最大化数据效能。
+    - **管理挑战:** 客户极限施压与核心骨干离职导致的团队信心危机。<br>
+      **决策与方案:** 主动承担最大压力，缓冲对团队的负面影响；以专业沟通重塑内外部信心。
+  modal_stack:
+    - "CenterNet"
+    - "J3 PTQ量化"
+    - "鱼眼相机标定"
+    - "跨部门协同"
+
+- id: 2
+  title: "NOA车道线模型优化与部署"
+  image: "/img/post-bg-pytorch.jpg"
+  poster: "/video/poster/20230129_demo_highway.png"
+  video: "/video/20230129_demo_highway.mp4"
+  tags:
+    - "算法优化"
+    - "J6e部署"
+    - "3D车道线"
+  description: "主导3D车道线模型升级与J6e芯片量化部署，性能显著提升，成功支持北京车展NOA功能演示。"
+  modal_role: "核心开发者"
+  modal_period: "2024.01 - 2024.04"
+  modal_achievements: |
+    - **算法性能提升:** 主导模型架构由2D升级为3D，**F1指标提升7个点**，训练提速50%，推理提速20%。
+    - **量化部署成功:** 在J6e芯片完成QAT量化，板端推理时长仅**12.06ms**，精度与浮点模型持平。
+    - **功能拓展:** 新增斑马线、停止线、箭头感知能力，成功支持车展演示，吸引广汽丰田等潜在客户。
+  modal_challenges: |
+    - **挑战:** 距离车展仅剩一个月，团队缺乏J6e迁移经验，项目濒临延期。<br>
+      **关键决策:** 果断放弃在旧仓库上修改的方案。基于地平线HAT工具链，**两周内搭建全新代码仓库并复现算法**，确保项目按时交付。
+  modal_stack:
+    - "SpareDrive"
+    - "3D车道线"
+    - "J6 QAT量化"
+    - "混合精度量化"
+
+- id: 3
+  title: "端到端统一感知模型研发"
+  image: "/video/poster/20230129_demo_map.png"
+  gallery:
+    - "/img/post-bg-docker.jpg"
+    - "/img/in-post/2018-10-30-miou/mIoU.png"
+    - "/img/in-post/2018-10-30-miou/confusion_matrix.jpg"
+  tags:
+    - "端到端"
+    - "模型融合"
+    - "Transformer"
+  description: "主导设计与研发统一感知模型，融合时序与跟踪功能，为公司端到端战略构建了关键技术基线。"
+  modal_role: "项目Owner & 核心开发者"
+  modal_period: "2024.05 - 2024.06"
+  modal_achievements: |
+    - **模型能力全面超越:** 新模型在输入(5v->7v)、感知范围(80m->120m)、功能(新增时序、跟踪、端到端规划)上全面超越原分离模型。
+    - **端到端流程打通:** 成功搭建并跑通公司首个基于自有数据的一段式端到端Pipeline，为后续战略突破提供了宝贵的技术资产。
+  modal_challenges: |
+    - **挑战:** 原OD和LD模型数据/代码不兼容，且缺失时序、跟踪、鱼眼融合等关键能力。<br>
+      **关键决策:** 不基于旧模型修补，而是**全新设计和搭建统一的、面向未来的合并模型架构**，一步到位满足了端到端组的所有核心需求。
+  modal_stack:
+    - "SparseDrive"
+    - "多任务学习"
+    - "Transformer"
+    - "端到端"
