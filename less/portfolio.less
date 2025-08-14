@@ -220,6 +220,8 @@
   font-size: 1.5rem;
   margin-right: 12px;
   color: var(--primary-color);
+  /* Fallback for browsers that don't support CSS variables */
+  color: #4A69BD;
 }
 
 .visual-showcase {
@@ -244,38 +246,102 @@
     padding: 25px;
     border-radius: var(--border-radius);
     margin-top: 25px;
+    border: 1px solid #e9ecef; /* Add a light border */
 }
 
 .detail-section h4 {
     margin-bottom: 20px;
 }
 
+/* Highlight key metrics */
+.detail-section strong {
+  color: var(--primary-color);
+  /* Fallback */
+  color: #4A69BD;
+  font-weight: 700;
+}
+
+/* Improve readability for long text */
+.detail-section p {
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* === Unified & Corrected List Styling === */
+
+/* Spacing fix for Challenge/Solution sections */
+.challenge-solution-item + .challenge-solution-item {
+  margin-top: 35px;
+}
+
+.challenge-title,
+.solution-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem !important;
+  font-weight: 700;
+  margin-bottom: 0; /* Margin is now on the UL */
+}
+
+.challenge-title .fa-fw {
+  color: #868e96; /* A neutral gray for challenges */
+  margin-right: 12px;
+}
+
+.solution-title .fa-fw {
+  color: var(--primary-color);
+  /* Fallback */
+  color: #4A69BD; /* The primary blue for solutions */
+  margin-right: 12px;
+}
+
+/* Base for all lists in detail sections */
 .detail-section ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
+  list-style: none;
+  padding-left: 0;
+  margin: 15px 0 0 0;
 }
 
 .detail-section ul li {
-    padding-left: 28px;
-    position: relative;
-    margin-bottom: 15px;
-    line-height: 1.6;
-    font-size: 1.4rem;
+  padding-left: 24px;
+  position: relative;
+  margin-bottom: 12px;
+  font-size: 1.45rem;
+  line-height: 1.7;
 }
 
 .detail-section ul li:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
+/* Base for all list item icons */
 .detail-section ul li::before {
-    content: '\f00c'; /* Font Awesome check icon */
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-    top: 4px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.00em; /* Use 'em' for robust top-alignment */
+  font-size: 1.5rem;
+}
+
+/* Default icon for Achievements (h4 + ul) */
+.detail-section h4:not(.challenge-title):not(.solution-title) + ul li::before {
+  content: '\f058'; /* check-circle */
+  color: var(--primary-color); /* Blue */
+  /* Fallback */
+  color: #4A69BD;
+}
+
+/* Override for Challenge list */
+.challenge-title + .details-list li::before {
+  content: '\f146'; /* minus-square */
+  color: #B97C7C; /* A low-saturation, dusty red */
+}
+
+/* Override for Solution list */
+.solution-title + .details-list li::before {
+  content: '\f058'; /* check-circle */
+  color: #859D8D; /* A low-saturation, sage green */
 }
 
 .detail-section .project-card-tags {
