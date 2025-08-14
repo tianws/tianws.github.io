@@ -75,14 +75,28 @@ header-img: "img/home-bg-2.jpg"
 
         <!-- Achievements Section -->
         <div class="detail-section">
-          <h4><i class="fa-fw fas fa-trophy"></i> 量化成果</h4>
+          <h4><i class="fa-fw fas fa-award"></i> 核心成果</h4>
           {{ project.modal_achievements | markdownify }}
         </div>
 
-        <!-- Challenges Section -->
+        <!-- Challenges & Solution Section -->
         <div class="detail-section">
-          <h4><i class="fa-fw fas fa-brain"></i> 主要挑战及决策</h4>
-          {{ project.modal_challenges | markdownify }}
+          <div class="challenge-solution-item">
+            <h4 class="challenge-title"><i class="fa-fw fas fa-bullseye"></i> 核心挑战</h4>
+            <ul class="details-list">
+              {% for item in project.modal_challenge %}
+                <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="challenge-solution-item">
+            <h4 class="solution-title"><i class="fa-fw fas fa-key"></i> 我的对策</h4>
+            <ul class="details-list">
+              {% for item in project.modal_solution %}
+                <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
 
         <!-- Tech Stack Section -->
