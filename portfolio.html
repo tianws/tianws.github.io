@@ -45,39 +45,56 @@ header-img: "img/home-bg-2.jpg"
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <div class="project-meta">
-          <div class="meta-item"><strong>我的角色:</strong> {{ project.modal_role }}</div>
-          <div class="meta-item"><strong>时间周期:</strong> {{ project.modal_period }}</div>
-        </div>
-
-        <h4>效果展示</h4>
-        <div class="visual-showcase">
-          {% if project.video %}
-            <video poster="{{ site.baseurl }}{{ project.poster }}" width="100%" loop muted controls autoplay>
-              <source src="{{ site.baseurl }}{{ project.video }}" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          {% elsif project.gallery %}
-            <div class="image-gallery">
-              {% for img in project.gallery %}
-                <img src="{{ site.baseurl }}{{ img }}" alt="Gallery Image for {{ project.title }}">
-              {% endfor %}
-            </div>
-          {% endif %}
-        </div>
         
-        <h4>量化成果</h4>
-        {{ project.modal_achievements | markdownify }}
-
-        <h4>主要挑战及决策</h4>
-        {{ project.modal_challenges | markdownify }}
-
-        <h4>技术栈</h4>
-        <div class="project-card-tags">
-          {% for tag in project.modal_stack %}
-            <span class="tag">{{ tag }}</span>
-          {% endfor %}
+        <!-- Meta Section -->
+        <div class="project-meta">
+          <div class="meta-item"><strong><i class="fa-fw fas fa-user-tie"></i> 我的角色:</strong> {{ project.modal_role }}</div>
+          <div class="meta-item"><strong><i class="fa-fw fas fa-calendar-alt"></i> 时间周期:</strong> {{ project.modal_period }}</div>
         </div>
+
+        <!-- Visuals Section (Conditional) -->
+        {% if project.video or project.gallery %}
+        <div class="detail-section">
+          <h4><i class="fa-fw fas fa-photo-film"></i> 效果展示</h4>
+          <div class="visual-showcase">
+            {% if project.video %}
+              <video poster="{{ site.baseurl }}{{ project.poster }}" width="100%" loop muted controls autoplay>
+                <source src="{{ site.baseurl }}{{ project.video }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            {% elsif project.gallery %}
+              <div class="image-gallery">
+                {% for img in project.gallery %}
+                  <img src="{{ site.baseurl }}{{ img }}" alt="Gallery Image for {{ project.title }}">
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Achievements Section -->
+        <div class="detail-section">
+          <h4><i class="fa-fw fas fa-trophy"></i> 量化成果</h4>
+          {{ project.modal_achievements | markdownify }}
+        </div>
+
+        <!-- Challenges Section -->
+        <div class="detail-section">
+          <h4><i class="fa-fw fas fa-brain"></i> 主要挑战及决策</h4>
+          {{ project.modal_challenges | markdownify }}
+        </div>
+
+        <!-- Tech Stack Section -->
+        <div class="detail-section">
+          <h4><i class="fa-fw fas fa-cogs"></i> 技术栈</h4>
+          <div class="project-card-tags tech-tags">
+            {% for tag in project.modal_stack %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
