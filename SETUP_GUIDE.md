@@ -198,3 +198,67 @@ npm run build
 
   5.  **验证清理效果:**
       重启后，打开新终端，运行 `env | grep -i rvm`。此命令**必须没有任何输出**。如果确认环境干净，再重新执行 RVM 的安装步骤。
+
+---
+
+### 第五步：项目维护与依赖更新
+
+定期更新项目的依赖包是一个好习惯，可以获取新功能和安全修复。但这也可能引入不兼容的更新。
+
+- **建议的更新命令:**
+  ```bash
+  # 更新 Node.js 依赖
+  npm update
+  # 更新 Ruby 依赖
+  bundle update
+  ```
+- **最佳实践:**
+  在一个单独的 Git 分支（如 `dev`）上执行更新，在本地运行 `npm run dev` 并仔细测试网站各项功能，确认无误后再合并到主分支。
+
+#### 依赖更新常见问题与解决方案
+
+在执行 `bundle update` 时，你可能会遇到因版本不兼容导致的失败。
+
+##### 问题一：RubyGems 版本过低
+
+- **错误现象:**
+  ```
+  Resolving dependencies...
+  ffi-1.17.2-x86_64-linux-musl requires rubygems version >= 3.3.22, which is incompatible with the current version, 3.3.7
+  ```
+- **原因:**
+  某个 Gem 包（如 `ffi`）需要一个比你系统中安装的 RubyGems （Ruby 的包管理器）更新的版本。
+- **解决方案:**
+  更新 RubyGems。但直接更新 `gem update --system` 可能会因为需要更新版的 Ruby 而失败。此时，需要安装一个兼容当前 Ruby 版本的、较新的 RubyGems。
+  ```bash
+  # 1. 安装一个指定版本的 rubygems-update 包 (例如 3.4.22)
+  gem install rubygems-update -v 3.4.22
+
+  # 2. 运行该包来执行更新
+  update_rubygems
+  ```
+
+##### 问题二：Gem 包与 Ruby 版本不兼容
+
+- **错误现象:**
+  ```
+  sass-embedded-1.90.0-x86_64-linux-gnu requires ruby version >= 3.2, which is incompatible with the current version, ruby 3.1.2p20
+  ```
+- **原因:**
+  `bundle update` 试图安装某个 Gem 包（如此处的 `jekyll-sass-converter`）的最新版本，而这个最新版本又依赖了另一个需要更高 Ruby 版本的包（如 `sass-embedded`）。
+- **解决方案:**
+  在 `Gemfile` 文件中，明确限制导致问题的 Gem 包的版本，阻止它更新到不兼容的主版本。
+  ```ruby
+  # Gemfile
+
+  source 'https://rubygems.org'
+  gem 'jekyll-paginate'
+
+  gem "jekyll", "~> 4.0"
+  # ↓ 添加下面这行来锁定 jekyll-sass-converter 的版本在 2.x 范围
+  gem 'jekyll-sass-converter', '~> 2.1'
+  gem "rake"
+
+  gem "webrick", "~> 1.8"
+  ```
+  修改 `Gemfile` 后，再次运行 `bundle update` 即可成功。
