@@ -10,17 +10,21 @@
     },
     "bugs": "https://github.com/Huxpro/huxpro.github.io/issues",
     "devDependencies": {
-        "grunt": ">=1.5.3",
-        "grunt-banner": "~0.2.3",
-        "grunt-contrib-less": "^2.0.0",
-        "grunt-contrib-uglify": "^4.0.1",
-        "grunt-contrib-watch": "^1.1.0"
+        "less": "^4.2.0",
+        "npm-run-all": "^4.1.5",
+        "onchange": "^7.1.0",
+        "terser": "^5.24.0"
     },
     "scripts": {
         "start": "bundle exec jekyll serve -w -l --host 0.0.0.0",
-        "dev": "grunt watch & npm run start",
         "boil": "git push boilerplate boilerplate:master",
-        "push": "git push origin master --tag"
+        "push": "git push origin master --tag",
+        "build:css": "lessc --clean-css less/hux-blog.less css/hux-blog.min.css",
+        "build:js": "terser js/hux-blog.js -o js/hux-blog.min.js",
+        "build": "npm-run-all build:css build:js",
+        "watch:css": "onchange 'less/*.less' -- npm run build:css",
+        "watch:js": "onchange 'js/hux-blog.js' -- npm run build:js",
+        "dev": "npm-run-all --parallel watch:* start"
     },
     "dependencies": {
         "simple-jekyll-search": "^1.10.0"

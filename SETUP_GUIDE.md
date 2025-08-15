@@ -113,19 +113,30 @@ npm -v
 
 ---
 
-### 第三步：本地运行与调试
+### 第三步：本地运行与开发
 
-1.  **终端 1: 启动 Jekyll 服务**
-    ```bash
-    bundle exec jekyll serve --livereload
-    ```
-    在浏览器中打开 `http://localhost:4000` 即可查看。
+本项目使用 npm scripts 来自动化构建和监控文件。您只需要一个终端窗口即可开始开发。
 
-2.  **终端 2: 监控前端文件变更 (可选)**
-    如果您需要修改 `.less` 文件，需要在此终端窗口运行 `grunt watch`。
-    ```bash
-    grunt watch
-    ```
+#### 启动开发服务器
+
+在项目根目录下，运行以下命令：
+```bash
+npm run dev
+```
+
+这个命令会做以下几件事：
+*   启动 Jekyll 服务器，您可以通过 `http://localhost:4000` 访问。
+*   自动监控 `.less` 和 `.js` 文件的变化。
+*   当您修改前端文件时，会自动重新编译，并通过 LiveReload 刷新浏览器。
+
+基本上，这是一个“一站式”的开发命令。
+
+#### 手动构建
+
+如果您只想手动编译一次前端资源（CSS 和 JavaScript），而不是启动服务器，可以运行：
+```bash
+npm run build
+```
 
 ---
 
