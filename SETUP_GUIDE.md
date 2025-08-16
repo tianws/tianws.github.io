@@ -145,6 +145,7 @@ npm run build
 1.  在 `_posts` 目录下创建一个新文件。
 2.  文件名必须遵循 `YYYY-MM-DD-你的文章标题.markdown` 的格式。
 3.  添加必要的 Front Matter 信息（可参考已有文章）。
+4.  **关于图片**: 如果文章中包含图片，请将高清原图放入 `_source_images/` 相应的子目录中，然后在文章中正常引用 `img/` 目录下的路径。发布前，请务必运行 `npm run optimize:img` 命令来生成压缩后的图片。
 
 ---
 

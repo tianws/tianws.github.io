@@ -8,3 +8,8 @@ npm-debug.log
 .vscode
 .idea
 .jekyll-cache/
+
+# Generated asset directories
+img/
+img_optimized/
+img_compressed_test/
