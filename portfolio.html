@@ -58,10 +58,12 @@ header-img: "img/home-bg-2.jpg"
           <h4><i class="fa-fw fas fa-photo-film"></i> 效果展示</h4>
           <div class="visual-showcase">
             {% if project.video %}
-              <video poster="{{ site.baseurl }}{{ project.poster }}" width="100%" loop muted controls autoplay>
-                <source src="{{ site.baseurl }}{{ project.video }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="vid-wrap">
+                <video poster="{{ site.baseurl }}{{ project.poster }}" loop muted controls autoplay>
+                  <source src="{{ site.baseurl }}{{ project.video }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             {% elsif project.gallery %}
               <div class="image-gallery">
                 {% for img in project.gallery %}
