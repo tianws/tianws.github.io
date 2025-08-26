@@ -1699,21 +1699,6 @@ img::-moz-selection {
 .no-scroll {
   overflow-y: hidden;
 }
-/* Google Font */
-@font-face {
-  font-family: 'Noto Sans SC';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanssc/v38/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYw.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Noto Sans SC';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanssc/v38/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaGzjCnYw.ttf) format('truetype');
-}
 /* Custom Variables */
 :root {
   --primary-color: #4A69BD;
