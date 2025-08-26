@@ -24,7 +24,7 @@ $p_{ij}$ 表示真实值为 $i$，被预测为 $j$ 的数量。
 
 #### 直观理解
 
-![mIoU](/img/in-post/2018-10-30-miou/mIoU.png)
+{% include image.html src="/img/in-post/2018-10-30-miou/mIoU.png" alt="mIoU" %}
 
 红色圆代表真实值，黄色圆代表预测值。橙色部分为两圆交集部分。
 
@@ -39,9 +39,9 @@ TensorFlow 主要用 `tf.metrics.mean_iou` 来计算 MIoU，下面解析源码�
 
 混淆矩阵例子
 
-![confusion_matrix_1](/img/in-post/2018-10-30-miou/confusion_matrix_1.jpg)
+{% include image.html src="/img/in-post/2018-10-30-miou/confusion_matrix_1.jpg" alt="confusion_matrix_1" %}
 
-![confusion_matrix](/img/in-post/2018-10-30-miou/confusion_matrix.jpg)
+{% include image.html src="/img/in-post/2018-10-30-miou/confusion_matrix.jpg" alt="confusion_matrix" %}
 
 ```python
 # 主要代码

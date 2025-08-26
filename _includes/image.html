@@ -1,0 +1,19 @@
+{%- comment -%}
+  A reusable image include that supports WebP with fallbacks.
+  Usage: {% include image.html src="/path/to/image.jpg" alt="My alt text" %}
+{%- endcomment -%}
+
+{%- if include.src -%}
+  <picture>
+    {%- assign src_webp = include.src | replace: ".jpg", ".webp" | replace: ".jpeg", ".webp" | replace: ".png", ".webp" -%}
+    <source srcset="{{ site.baseurl }}{{ src_webp }}" type="image/webp">
+
+    {%- if include.src contains ".jpg" or include.src contains ".jpeg" -%}
+      <source srcset="{{ site.baseurl }}{{ include.src }}" type="image/jpeg">
+    {%- elsif include.src contains ".png" -%}
+      <source srcset="{{ site.baseurl }}{{ include.src }}" type="image/png">
+    {%- endif -%}
+
+    <img src="{{ site.baseurl }}{{ include.src }}" alt="{{ include.alt | default: "Blog image" }}" title="{{ include.alt | default: "Blog image" }}">
+  </picture>
+{%- endif -%}

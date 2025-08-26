@@ -22,7 +22,7 @@ typora-root-url: ../
 
 不完全统计如下：
 
-![01](/img/in-post/2019-04-20-synergy/01.png)
+{% include image.html src="/img/in-post/2019-04-20-synergy/01.png" alt="01" %}
 
 推荐软件方案：
 

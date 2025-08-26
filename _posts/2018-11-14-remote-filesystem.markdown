@@ -22,7 +22,7 @@ typora-root-url: ../
 
 
 
-![images](/img/in-post/2018-11-14-remote-filesystem/images.jpeg)
+{% include image.html src="/img/in-post/2018-11-14-remote-filesystem/images.jpeg" alt="images" %}
 
 发现了吗，在这个过程中，有三点浪费：
 

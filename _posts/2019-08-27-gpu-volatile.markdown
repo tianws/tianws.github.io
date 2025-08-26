@@ -182,7 +182,7 @@ tmpfs /tmp tmpfs size=30G 0 0
 
 **实验一：**
 
-![1](/img/in-post/2019-08-27-gpu-volatile/1.png)
+{% include image.html src="/img/in-post/2019-08-27-gpu-volatile/1.png" alt="1" %}
 
 在 hdd 硬盘上，用同样的参数、同样的数据，分别用不同的优化方法，训练两个 epoch，记录训练的时间。
 
@@ -202,7 +202,7 @@ tmpfs /tmp tmpfs size=30G 0 0
 
 **实验二：**
 
-![2](/img/in-post/2019-08-27-gpu-volatile/2.png)
+{% include image.html src="/img/in-post/2019-08-27-gpu-volatile/2.png" alt="2" %}
 
 用同样的参数、同样的数据，用默认的 dataloader，数据分别在 hdd、ssd 和 tmpfs 内存上进行训练两个 epoch，记录训练时间。
 
@@ -215,7 +215,7 @@ tmpfs /tmp tmpfs size=30G 0 0
 
 **实验三：**
 
-![3](/img/in-post/2019-08-27-gpu-volatile/3.png)
+{% include image.html src="/img/in-post/2019-08-27-gpu-volatile/3.png" alt="3" %}
 
 优化数据预处理代码，尽量用向量化代码，缩减数据传输大小，分别在 hdd 上，用默认 dataloader 训练。
 

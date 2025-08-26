@@ -39,17 +39,17 @@ sudo systemctl enable xrdp
 
 Ubuntu 自带了远程桌面软件 Remmina，新建远程桌面，按照需求填写：
 
-![01](/img/in-post/2019-10-23-remote-desktop/01.png)
+{% include image.html src="/img/in-post/2019-10-23-remote-desktop/01.png" alt="01" %}
 
 然后连接即可。
 
-![04](/img/in-post/2019-10-23-remote-desktop/04.png)
+{% include image.html src="/img/in-post/2019-10-23-remote-desktop/04.png" alt="04" %}
 
 ## Step 3：从 Windows 10 连接
 
 打开 Windows 10 自带远程桌面连接程序：
 
-![02](/img/in-post/2019-10-23-remote-desktop/02.png)
+{% include image.html src="/img/in-post/2019-10-23-remote-desktop/02.png" alt="02" %}
 
 “Module” 中选择 sesman-Xvnc，username 和 password 中填入相应的用户和密码即可。
 
@@ -102,7 +102,7 @@ Ubuntu 自带了远程桌面软件 Remmina，新建远程桌面，按照需求�
 
 4. 关闭 session
 
-   ![05](/img/in-post/2019-10-23-remote-desktop/05-1571818753923.png)
+   {% include image.html src="/img/in-post/2019-10-23-remote-desktop/05-1571818753923.png" alt="05" %}
 
    选择 Log Out 的时候，勾掉 `Save session for future logins`，即可关闭 session。
 

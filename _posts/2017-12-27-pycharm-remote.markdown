@@ -40,7 +40,7 @@ sudo snap install [pycharm-professional|pycharm-community] --classic
 
 点选右边的齿轮，选择 Add Remote...
 
-![pycharm_settings](/img/in-post/2017-12-27-pycharm-remote/pycharm_settings.png)
+{% include image.html src="/img/in-post/2017-12-27-pycharm-remote/pycharm_settings.png" alt="pycharm_settings" %}
 
 填好 ssh 登录信息，选择需要的 Python 解释器路径，OK。
 
@@ -52,7 +52,7 @@ sudo snap install [pycharm-professional|pycharm-community] --classic
 
 然后添加我们需要指定的路径即可。
 
-![path_settings](/img/in-post/2017-12-27-pycharm-remote/path_settings.png)
+{% include image.html src="/img/in-post/2017-12-27-pycharm-remote/path_settings.png" alt="path_settings" %}
 
 现在我们的程序可以用远程服务器的环境和算力运行了。
 
@@ -77,7 +77,7 @@ echo $DISPLAY # 输出 localhost:13.0
 
 点选 Run -> edit Configurations -> 添加 `DISPLAY=localhost:13.0`
 
-![x11_settings](/img/in-post/2017-12-27-pycharm-remote/x11_settings.png)
+{% include image.html src="/img/in-post/2017-12-27-pycharm-remote/x11_settings.png" alt="x11_settings" %}
 
 现在运行程序，可以在本机实时显示图像了。
 

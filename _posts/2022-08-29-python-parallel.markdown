@@ -179,7 +179,8 @@ t_map takes 9.3 seconds
 
 ## 四、结论
 
-由以上实验，可以统计各方案耗时如下：![01](/img/in-post/2022-08-29-python-parallel/01.png)
+由以上实验，可以统计各方案耗时如下：
+{% include image.html src="/img/in-post/2022-08-29-python-parallel/01.png" alt="01" %}
 
 可以总结出一下结论：
 

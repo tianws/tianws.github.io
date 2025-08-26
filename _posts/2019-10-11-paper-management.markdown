@@ -54,7 +54,7 @@ typora-root-url: ../
 
 3. 编辑-> 首选项 -> 同步 -> 设置
 
-   ![03](/img/in-post/2019-10-11-paper-management/03.png)
+   {% include image.html src="/img/in-post/2019-10-11-paper-management/03.png" alt="03" %}
 
 4. 安装 ZotFile 插件
 
@@ -64,11 +64,11 @@ typora-root-url: ../
 
    c. 配置同步
 
-   ![01](/img/in-post/2019-10-11-paper-management/01.png)
+   {% include image.html src="/img/in-post/2019-10-11-paper-management/01.png" alt="01" %}
 
    d. 配置 rename 规则：
 
-   ![02](/img/in-post/2019-10-11-paper-management/02.png)
+   {% include image.html src="/img/in-post/2019-10-11-paper-management/02.png" alt="02" %}
 
 5. 安装 **[zotero-scholar-citations](https://github.com/beloglazov/zotero-scholar-citations)**
 

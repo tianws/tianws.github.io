@@ -16,7 +16,7 @@ tags:
 
 ## 子模块简介
 
-![Git submodule workflow](https://laozhu.me/media/posts/git-submodule-tutorial/01.jpg)
+{% include image.html src="https://laozhu.me/media/posts/git-submodule-tutorial/01.jpg" alt="Git submodule workflow" %}
 
 `Git Submodule` 中文通常翻译为 Git 子模块，它允许我们在一个代码仓库中优雅的嵌套使用另外一个或多个代码仓库，从而达到减少代码重复提交，优化工作流程的目的，是内部团队和开源社区协作都非常依赖的 Git 特性。如果对 `Git Submodule` 还不甚了解，可以去看一下 [gohugoio/hugoThemes](https://github.com/gohugoio/hugoThemes)，这是 [Hugo Themes](https://themes.gohugo.io/) 官方网站的代码仓库，它就是通过 `Git Submodule` 特性整合了来自全球各地的 Hugo 主题，并保持与原主题仓库的代码同步。
 

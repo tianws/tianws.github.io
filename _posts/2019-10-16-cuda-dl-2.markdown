@@ -62,7 +62,7 @@ cat /proc/driver/nvidia/version
 
 驱动兼容性列表：
 
-![01](/img/in-post/2019-10-16-cuda-dl-2/01.png)
+{% include image.html src="/img/in-post/2019-10-16-cuda-dl-2/01.png" alt="01" %}
 
 推荐先卸载所有 NVIDIA 驱动。
 
@@ -174,7 +174,7 @@ which nvcc
 
 CUDA 兼容性列表：
 
-![02](/img/in-post/2019-10-16-cuda-dl-2/02.png)
+{% include image.html src="/img/in-post/2019-10-16-cuda-dl-2/02.png" alt="02" %}
 
 > 注意：用本文的安装方式可以多 CUDA 共存，不需要卸载已有 CUDA
 
