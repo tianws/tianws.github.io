@@ -312,3 +312,18 @@
         });
     });
 </script>
+
+<!-- Upgrade video posters to WebP if supported -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (document.documentElement.classList.contains("webp")) {
+      var videos = document.querySelectorAll("video[data-poster-webp]");
+      videos.forEach(function(video) {
+        var webpPoster = video.getAttribute("data-poster-webp");
+        if (webpPoster) {
+          video.poster = webpPoster;
+        }
+      });
+    }
+  });
+</script>

@@ -17,7 +17,18 @@ header-img: "img/home-bg-2.jpg"
   <div class="project-grid">
     {% for project in site.data.projects %}
       <div class="project-card">
-        <div class="project-card-image" style="background-image: url('{{ site.baseurl }}{{ project.image }}')"></div>
+        <div class="project-card-image">
+          <picture>
+            {%- assign img_webp = project.image | replace: ".jpg", ".webp" | replace: ".jpeg", ".webp" | replace: ".png", ".webp" -%}
+            <source srcset="{{ site.baseurl }}{{ img_webp }}" type="image/webp">
+            {% if project.image contains '.jpg' or project.image contains '.jpeg' %}
+              <source srcset="{{ site.baseurl }}{{ project.image }}" type="image/jpeg">
+            {% elsif project.image contains '.png' %}
+              <source srcset="{{ site.baseurl }}{{ project.image }}" type="image/png">
+            {% endif %}
+            <img src="{{ site.baseurl }}{{ project.image }}" alt="{{ project.title }} cover image">
+          </picture>
+        </div>
         <div class="project-card-content">
           <h3 class="project-card-title">{{ project.title }}</h3>
           <div class="project-card-tags">
@@ -58,16 +69,20 @@ header-img: "img/home-bg-2.jpg"
           <h4><i class="fa-fw fas fa-photo-film"></i> 效果展示</h4>
           <div class="visual-showcase">
             {% if project.video %}
-              <div class="vid-wrap">
-                <video poster="{{ site.baseurl }}{{ project.poster }}" loop muted controls autoplay>
-                  <source src="{{ site.baseurl }}{{ project.video }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+              {% include local_video.html src=project.video poster=project.poster %}
             {% elsif project.gallery %}
               <div class="image-gallery">
                 {% for img in project.gallery %}
-                  <img src="{{ site.baseurl }}{{ img }}" alt="Gallery Image for {{ project.title }}">
+                  <picture>
+                    {%- assign img_webp = img | replace: ".jpg", ".webp" | replace: ".jpeg", ".webp" | replace: ".png", ".webp" -%}
+                    <source srcset="{{ site.baseurl }}{{ img_webp }}" type="image/webp">
+                    {% if img contains '.jpg' or img contains '.jpeg' %}
+                      <source srcset="{{ site.baseurl }}{{ img }}" type="image/jpeg">
+                    {% elsif img contains '.png' %}
+                      <source srcset="{{ site.baseurl }}{{ img }}" type="image/png">
+                    {% endif %}
+                    <img src="{{ site.baseurl }}{{ img }}" alt="Gallery Image for {{ project.title }}">
+                  </picture>
                 {% endfor %}
               </div>
             {% endif %}

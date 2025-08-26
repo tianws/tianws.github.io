@@ -52,7 +52,7 @@ tags:
 
 拿小批量数据训练了一个模型，效果如下：
 
-{% include local_video.html src="20230129_demo_parking.mp4" poster="20230129_demo_parking.png" %}
+{% include local_video.html src="/video/20230129_demo_parking.mp4" poster="/img/video/poster/20230129_demo_parking.png" %}
 
 图像识别部分本身并没有什么难度，在测试集上很容易做到90%以上的指标，但是要落地还是有不少难度的，主要体现在一下两点：
 
@@ -73,7 +73,7 @@ tags:
 
 笔者修改了一下模型，新添了一些数据，目前在常见的停车场场景，模型的鲁棒性还不错了，开放测试效果如下：
 
-{% include local_video.html src="20230129_demo_parking2.mp4" poster="20230129_demo_parking2.png" %}
+{% include local_video.html src="/video/20230129_demo_parking2.mp4" poster="/img/video/poster/20230129_demo_parking2.png" %}
 
 
 
@@ -110,11 +110,11 @@ BEV感知架构和传统的融合方案相比，结构简洁优雅，稳定和�
 
 市区测试效果：
 
-{% include local_video.html src="20230129_demo_city.mp4" poster="20230129_demo_city.png" %}
+{% include local_video.html src="/video/20230129_demo_city.mp4" poster="/img/video/poster/20230129_demo_city.png" %}
 
 高速测试效果：
 
-{% include local_video.html src="20230129_demo_highway.mp4" poster="20230129_demo_highway.png" %}
+{% include local_video.html src="/video/20230129_demo_highway.mp4" poster="/img/video/poster/20230129_demo_highway.png" %}
 
 真值是利用高精地图、高精定位数据自动脚本生成的，环视图像是很久以前的历史数据，并没有为BEV数据单独适配。因为不需要人工标注，理论上只要有图像和定位信息，就可以快速生成无限的数据集。
 
@@ -122,7 +122,7 @@ BEV感知架构和传统的融合方案相比，结构简洁优雅，稳定和�
 
 模型使用了transformer，在车载低性能设备上部署还有难度，但是在服务器上能跑到18fps（3090GPU）可以用来自动成图，自动成图效果如下：
 
-{% include local_video.html src="20230129_demo_map.mp4" poster="20230129_demo_map.png" %}
+{% include local_video.html src="/video/20230129_demo_map.mp4" poster="/img/video/poster/20230129_demo_map.png" %}
 
 至此，这条路算是走通了，后续还有很多的工作要做：
 

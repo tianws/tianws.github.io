@@ -22,7 +22,7 @@ tags:
 
 顶着压力，我被借调到自动驾驶部，天天加班，终于在三月完成了新版车道线识别的开发工作，经过各种优化，在七月得到了自动驾驶部的认可。
 
-{% include local_video.html src="201704_version3.mp4" poster="201704_version3.png" %}
+{% include local_video.html src="/video/201704_version3.mp4" poster="/img/video/poster/201704_version3.png" %}
 
 <!-- {% include youku_video.html youku_id='XMzI3MTYyNDE4OA==' %}
 

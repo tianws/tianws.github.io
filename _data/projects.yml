@@ -3,7 +3,7 @@
 - id: 1
   title: "比亚迪APA量产项目：极限压力下的技术领导与交付"
   image: "/img/post-bg-fruit.jpg"
-  poster: "/video/poster/20230129_demo_parking.png"
+  poster: "/img/video/poster/20230129_demo_parking.png"
   video: "/video/20230129_demo_parking.mp4"
   tags:
     - "量产交付"
@@ -34,7 +34,7 @@
 - id: 2
   title: "车展NOA模型攻坚：算法优化与高效平台迁移"
   image: "/img/post-bg-pytorch.jpg"
-  poster: "/video/poster/20230129_demo_highway.png"
+  poster: "/img/video/poster/20230129_demo_highway.png"
   video: "/video/20230129_demo_highway.mp4"
   tags:
     - "算法优化"
@@ -64,7 +64,7 @@
 
 - id: 3
   title: "端到端统一感知：面向未来的架构探索与奠基"
-  image: "/video/poster/20230129_demo_map.png"
+  image: "/img/video/poster/20230129_demo_map.png"
   gallery:
     - "/img/post-bg-docker.jpg"
     - "/img/in-post/2018-10-30-miou/mIoU.png"

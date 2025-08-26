@@ -1,5 +1,15 @@
 <head>
     <meta charset="utf-8">
+    <script>
+      (function(){
+        var d=document;
+        var i=new Image();
+        i.onload=i.onerror=function(){
+          d.documentElement.classList.add(i.height==1?'webp':'no-webp');
+        };
+        i.src='data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+      })();
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="gkjYmSu9FAG9kMYJSLHbvgKy4IMn8p6CzMbOL_DqzuU" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

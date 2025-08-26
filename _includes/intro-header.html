@@ -5,10 +5,18 @@
 
 {% if include.type == 'post' %}
 <style type="text/css">
+    {%- assign _header_img = page.header-img | default: site.header-img -%}
+    {%- assign _header_img_path = site.baseurl | append: "/" | append: _header_img -%}
+    {%- assign _header_img_path_webp = _header_img_path | replace: ".jpg", ".webp" | replace: ".jpeg", ".webp" | replace: ".png", ".webp" -%}
+
     header.intro-header{
         position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
+        background-image: url('{{ _header_img_path }}');
         background: {{ page.header-bg-css }};
+    }
+
+    .webp header.intro-header{
+        background-image: url('{{ _header_img_path_webp }}');
     }
 
     {% if page.header-mask %}
@@ -91,7 +99,18 @@
 {% endif %}
 
 {% if include.type == 'page' %}
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+{%- assign _header_img = page.header-img | default: site.header-img -%}
+{%- assign _header_img_path = site.baseurl | append: "/" | append: _header_img -%}
+{%- assign _header_img_path_webp = _header_img_path | replace: ".jpg", ".webp" | replace: ".jpeg", ".webp" | replace: ".png", ".webp" -%}
+<style type="text/css">
+    header.intro-header{
+        background-image: url('{{ _header_img_path }}');
+    }
+    .webp header.intro-header{
+        background-image: url('{{ _header_img_path_webp }}');
+    }
+</style>
+<header class="intro-header">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -111,7 +130,18 @@
 {% endif %}
 
 {% if include.type == 'page_without_sidebar' %}
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+{%- assign _header_img = page.header-img | default: site.header-img -%}
+{%- assign _header_img_path = site.baseurl | append: "/" | append: _header_img -%}
+{%- assign _header_img_path_webp = _header_img_path | replace: ".jpg", ".webp" | replace: ".jpeg", ".webp" | replace: ".png", ".webp" -%}
+<style type="text/css">
+    header.intro-header{
+        background-image: url('{{ _header_img_path }}');
+    }
+    .webp header.intro-header{
+        background-image: url('{{ _header_img_path_webp }}');
+    }
+</style>
+<header class="intro-header">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
