@@ -113,3 +113,23 @@ Thanks to [*BruceZhaoR*](https://github.com/BruceZhaoR/brucezhaor.github.io)，�
 *增加 Simple-Jekyll-Search 文章搜索功能。*
 
 <p align="right">—— 2020.11.25，北京</p>
+---
+
+*增加「作品集」页面。*
+
+<p align="right">—— 2025.08.13，北京</p>
+---
+
+*使用 npm scripts 替代 Grunt 构建系统，更新项目维护文档。*
+
+<p align="right">—— 2025.08.15，北京</p>
+---
+
+*添加了 `sitemap.xml` 与 `robots.txt` 以改善搜索引擎优化（SEO）。*
+
+<p align="right">—— 2025.08.15，北京</p>
+---
+
+*建立标准化图片处理流程，自动压缩图片并生成 WebP 版本；全站启用 WebP 优化，提升网站加载性能。*
+
+<p align="right">—— 2025.08.21，北京</p>
