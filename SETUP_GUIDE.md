@@ -1,3 +1,9 @@
+---
+layout: none
+permalink: /SETUP_GUIDE.html
+hide-in-nav: true
+---
+
 # Jekyll 博客 Ubuntu 环境搭建与使用指南
 
 本指南旨在提供一个完整的、从零开始的教程，帮助您在一个全新的 Ubuntu 系统 (推荐 20.04/22.04 LTS) 上搭建、使用并维护此 Jekyll 博客项目。
