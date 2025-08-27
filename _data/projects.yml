@@ -3,7 +3,7 @@
 - id: 1
   title: "某知名车企APA量产项目：极限压力下的技术领导与交付"
   image: "/img/post-bg-fruit.jpg"
-  poster: "/img/video/poster/20230129_demo_parking.png"
+  poster: ""
   video: "/video/20230129_demo_parking.mp4"
   tags:
     - "量产交付"
@@ -34,7 +34,7 @@
 - id: 2
   title: "某国际车展NOA模型攻坚：算法优化与高效平台迁移"
   image: "/img/post-bg-pytorch.jpg"
-  poster: "/img/video/poster/20230129_demo_highway.png"
+  poster: ""
   video: "/video/20230129_demo_highway.mp4"
   tags:
     - "算法优化"
