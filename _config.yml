@@ -67,7 +67,12 @@ disqus_username: false
 netease_comment: false
 
 #来必力
-livere_username: tianws
+# livere_username: tianws
+
+# Twikoo
+twikoo:
+  enable: true
+  envId: https://wenshan-blog-twikoo.netlify.app/.netlify/functions/twikoo
 
 #valine
 # valine_comment: true

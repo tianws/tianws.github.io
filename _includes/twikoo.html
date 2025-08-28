@@ -1,0 +1,17 @@
+{% if site.twikoo.enable %}
+<!-- Twikoo 评论系统 start -->
+<div class="comment">
+    <!-- 使用官方标准 ID -->
+    <div id="twikoo"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.nocss.js"></script>
+<script>
+    twikoo.init({
+        envId: "{{ site.twikoo.envId }}",
+        // 明确指向正确的 ID
+        el: '#twikoo'
+    });
+</script>
+<!-- Twikoo 评论系统 end -->
+{% endif %}
