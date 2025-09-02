@@ -82,6 +82,16 @@
   // --- 昵称/邮箱/网址输入框 ---
   .tk-meta-input {
     margin-bottom: 10px;
+    .el-input {
+      position: relative;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+    }
+
     .el-input-group__prepend {
       background: transparent;
       border: none;
@@ -101,24 +111,27 @@
     }
 
     .el-input__inner {
-      padding-left: 75px; // 为标签和分割线留出空间
-      border-color: fade(@input-border-color, 50%);
+      padding-left: 70px;
+      border-color: @input-border-color;
     }
 
-    // 交互式分割线
-    .el-input:focus-within .el-input-group__prepend::after {
+    .el-input .el-input-group__prepend::after {
       content: '|';
       position: absolute;
-      left: 45px; // 定位在标签文字右侧
+      left: 40px;
       top: 50%;
       transform: translateY(-50%);
       color: @input-border-color;
       font-weight: 100;
-      animation: fadeIn 0.3s ease;
+      transition: color 0.2s ease-out; // [新增] 为分割线颜色变化添加过渡
     }
 
     .el-input:focus-within .el-input-group__prepend {
-      color: @input-focus-color;
+      color: @input-focus-color; // 聚焦时，标签文字变色
+    }
+
+    .el-input:focus-within .el-input-group__prepend::after {
+      color: fade(@input-focus-color, 50%);
     }
   }
 
