@@ -1,0 +1,320 @@
+// Twikoo 自定义样式文件
+// 最后更新: 2025-09-02
+// 设计理念: 柔和阴影、呼吸感留白、平滑过渡
+// 本次优化: 实现标签内嵌化设计，增加交互动效与视觉焦点，修正所有细节问题
+
+// --- 主题变量 ---
+@theme-accent-color: #0085a1; // 主题强调色 (链接、图标等)
+@subtle-border-color: #ebebeb; // 细微边框颜色 (如评论分割线)
+@input-border-color: #e5e5e5; // 输入框的默认边框颜色
+@light-text-color: #999; // 浅色文字 (用于元信息，如日期、UA)
+@content-text-color: #383838; // 评论正文文字颜色
+@input-focus-color: @theme-accent-color; // 输入框获得焦点（被点击）时的边框颜色
+@author-tag-bg: rgba(0, 133, 161, 0.1); // “博主”标签的背景色
+@form-bg-color: #fcfcfc; // 评论输入区卡片的背景色
+
+#twikoo {
+
+  // Twikoo 评论系统的总容器
+  // --- 评论输入区 ---
+  .tk-submit {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    background-color: @form-bg-color;
+    padding: 30px;
+    margin-bottom: 50px; // 与下方评论列表的间距
+    transition: all 0.3s ease-in-out; // 为所有效果添加平滑过渡
+
+    &:hover {
+      // 增强卡片悬浮时的阴影效果
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    // 统一样式，让主评论框和上方输入框都有动效
+    .el-input,
+    .el-textarea {
+      position: relative;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    // 主评论框和上方输入框在聚焦时也应用上浮和阴影效果
+    .el-input:focus-within,
+    .el-textarea:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .el-button {
+      border-radius: 4px; // [优化] 统一所有按钮圆角，与输入框保持一致
+    }
+
+    .el-button--primary {
+      color: @theme-accent-color;
+      background-color: transparent;
+      border-color: @theme-accent-color;
+      transition: all 0.3s ease;
+      &:hover {
+        color: #fff;
+        background-color: @theme-accent-color;
+        border-color: @theme-accent-color;
+      }
+    }
+
+    .el-button:not(.el-button--primary) {
+      color: @theme-accent-color;
+      background-color: transparent;
+      border-color: @input-border-color;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: @author-tag-bg;
+        color: @theme-accent-color;
+        border-color: @input-border-color;
+      }
+    }
+  }
+
+  // --- 昵称/邮箱/网址输入框 ---
+  .tk-meta-input {
+    margin-bottom: 10px;
+    .el-input-group__prepend {
+      background: transparent;
+      border: none;
+      color: @light-text-color;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 15px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      z-index: 1;
+      pointer-events: none;
+      transition: color 0.2s ease-out;
+    }
+
+    .el-input__inner {
+      padding-left: 75px; // 为标签和分割线留出空间
+      border-color: fade(@input-border-color, 50%);
+    }
+
+    // 交互式分割线
+    .el-input:focus-within .el-input-group__prepend::after {
+      content: '|';
+      position: absolute;
+      left: 45px; // 定位在标签文字右侧
+      top: 50%;
+      transform: translateY(-50%);
+      color: @input-border-color;
+      font-weight: 100;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .el-input:focus-within .el-input-group__prepend {
+      color: @input-focus-color;
+    }
+  }
+
+  // 主评论框和上方输入框的通用样式
+  .el-input__inner,
+  .el-textarea__inner {
+    border: 1px solid @input-border-color;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 0 12px;
+
+    &:focus {
+      border-color: @input-focus-color;
+      box-shadow: 0 0 0 3px rgba(0, 133, 161, 0.1);
+    }
+  }
+
+  // 主评论框的 padding 需要单独设置
+  .el-textarea__inner {
+    padding: 8px 12px;
+  }
+
+  // 淡入动画的定义
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  // --- 全局链接样式 ---
+  a {
+    color: @theme-accent-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // --- 头像 ---
+  .tk-avatar {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-right: 1rem;
+
+    .tk-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  // --- 评论列表 ---
+  .tk-comments {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  // --- 单条顶级评论 ---
+  .tk-comment {
+    display: flex;
+    align-items: flex-start;
+    background-color: transparent;
+    padding: 20px 0; // 每条评论的上下内边距
+    margin-bottom: 0;
+    border-bottom: 1px solid @subtle-border-color; // 评论之间的分割线
+  }
+
+  // --- 右侧主内容区 ---
+  .tk-main {
+    flex: 1; // 自动占据剩余所有空间
+  }
+
+  // 昵称样式
+  .tk-nick {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+
+  // 评论正文样式
+  .tk-content {
+    line-height: 1.75;
+    color: @content-text-color;
+    margin-top: 8px; // 与上方昵称/标签行的间距
+    padding: 15px;
+    border-radius: 4px; // 增加圆角以匹配其他元素
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f9f9f9; // 微妙的悬浮背景色
+    }
+
+    p {
+      margin: 0 0 1em 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // 元信息 (日期等) 的样式
+  .tk-meta {
+    font-size: 13px !important; // 使用 !important 覆盖可能存在的主题默认样式
+    color: @light-text-color !important;
+    line-height: 1.5;
+  }
+
+  // --- 二级及以下回复 ---
+  .tk-replies {
+    margin-top: 20px; // 回复区与父评论的间距
+    border-top: none;
+    padding-left: 30px; // [优化] 增加缩进，强化层级感
+    border-left: 2px dashed @subtle-border-color; // [优化] 将实线改为虚线，减少视觉干扰
+    padding-top: 0;
+
+    .tk-comment {
+      border-bottom: none; // 回复之间不再需要分割线
+      padding: 20px 0 0 0;
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+
+  // --- 特定小组件样式 ---
+  // “博主”等标签的样式
+  .tk-tag {
+    background-color: @author-tag-bg;
+    color: @theme-accent-color;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 4px 8px;
+    height: auto;
+    line-height: 1.5;
+  }
+  
+  // “点赞/回复”等操作图标
+  .tk-action-link {
+    transition: transform 0.2s ease-out; // [优化] 增加交互动效
+
+    &:hover {
+      transform: translateY(-2px); // [优化] 鼠标悬浮时轻微上浮
+
+      .tk-action-icon {
+        display: none; // 悬浮时隐藏线框图标
+      }
+      .tk-action-icon-solid {
+        display: block; // 悬浮时显示实心图标
+        color: @theme-accent-color;
+      }
+    }
+  }
+
+  // 操作系统、浏览器等信息的容器
+  .tk-extras {
+    justify-content: flex-end; // 使元信息各项靠右对齐
+    margin-top: 15px; // 与上方评论内容的间距
+  }
+
+  // 强制隐藏原生文件上传按钮
+  .tk-input-image {
+    display: none !important;
+  }
+
+  // --- 表情/OwO 面板 ---
+  .OwO-body {
+    background-color: @form-bg-color !important; // 保留!important，防止被主题样式意外覆盖
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid @subtle-border-color;
+    
+    .OwO-items {
+      height: 170px; // 稍微增加高度
+      overflow-y: scroll; // [优化] 恢复滚动条以防内容溢出
+
+      // [优化] 美化滚动条 (可选, 兼容webkit内核浏览器)
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 5px;
+      }
+    }
+  }
+}
