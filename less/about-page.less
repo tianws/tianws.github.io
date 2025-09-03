@@ -1,0 +1,92 @@
+/* About Page Specific Styles */
+
+/* 1. 顶部功能区容器 */
+.page-top-controls {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 35px; /* 与下方引言的间距 */
+}
+
+/* 2. 语言切换按钮 - 轻盈实体样式 */
+.lang-switcher-container {
+    display: flex;
+    gap: 10px;
+}
+.lang-switcher-container a {
+    color: #868e96;
+    text-decoration: none;
+    padding: 6px 16px; /* 增加水平内边距 */
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border-radius: 20px; /* 圆润的药丸形状 */
+    border: 1px solid #f1f3f5; /* 非常浅的默认边框 */
+    background-color: #f8f9fa; /* 非常浅的默认背景 */
+}
+.lang-switcher-container a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    border-color: #dee2e6;
+    background-color: #fff;
+}
+.lang-switcher-container a.active {
+    background-color: var(--primary-color, #4A69BD);
+    color: white;
+    border-color: var(--primary-color, #4A69BD);
+    box-shadow: 0 4px 12px rgba(74, 105, 189, 0.2);
+}
+
+/* 3. 叙事化统计引言段落 - 轻量卡片样式 */
+.stats-intro-paragraph {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #495057; /* 文字颜色加深，更易读 */
+    margin: 0 0 35px 0;
+    padding: 20px 25px;
+    border: 1px solid #f1f3f5; /* 细微的边框 */
+    border-radius: 8px; /* 与Twikoo评论框一致的圆角 */
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+.stats-intro-paragraph:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-color: #e9ecef;
+}
+.stats-intro-paragraph strong {
+    font-weight: 600;
+    color: var(--primary-color, #4A69BD); /* 突出数据 */
+}
+
+/* 4. 主内容与主题致谢 */
+.about-content-wrapper {
+    margin-bottom: 80px;
+}
+.theme-credit {
+    font-size: 14px;
+    color: #adb5bd;
+    margin-top: 40px;
+}
+
+/* 5. "Comments & Thoughts" 标题 - 可在任意页面复用 */
+.comment-title-container {
+    display: flex; 
+    align-items: center; 
+    text-align: center; 
+    color: #aaa;
+    font-size: 14px; 
+    margin-top: 80px; 
+    margin-bottom: 40px; 
+    font-weight: 400; 
+    letter-spacing: 1px;
+}
+.comment-title-container::before,
+.comment-title-container::after {
+    content: ''; 
+    flex: 1; 
+    border-bottom: 1px solid #eee;
+}
+.comment-title-container .comment-title-text {
+    padding: 0 1.5em; 
+    white-space: nowrap;
+}
