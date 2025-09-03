@@ -8,7 +8,7 @@ categories: Life
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
-    - 生活
+    - 博客
 ---
 
 > “Let's do it. ”

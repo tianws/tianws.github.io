@@ -9,7 +9,7 @@ header-img: "img/post-bg-ubuntu.jpg"
 header-mask: 0.4
 catalog: true
 tags:
-    - 环境配置
+    - 技术
     - Ubuntu
     - 工具
 ---

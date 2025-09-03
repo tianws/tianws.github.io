@@ -9,7 +9,9 @@ header-img: "img/post-bg-git.jpg"
 header-mask: 0.7
 catalog: true
 tags:
-    - 环境配置
+    - 技术
+    - Git
+    - 工具
 ---
 
 最近项目用到了 Git 子模块，查阅了一些资料，在此做个记录，参考的链接见文末。

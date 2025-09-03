@@ -9,7 +9,8 @@ header-img: "img/post-bg-windows.jpg"
 header-mask: 0.5
 catalog: true
 tags:
-    - 环境配置
+    - 技术
+    - 操作系统
     - Windows
 ---
 

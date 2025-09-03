@@ -9,8 +9,9 @@ header-img: "img/post-bg-jetbrans.jpg"
 header-mask: 0.5
 catalog: true
 tags:
-    - 环境配置
+    - 技术
     - 工具
+    - IDE
 ---
 
 我主要的开发语言是 Python 和 C++，一般写代码用的工具是 JetBrains 家的 PyCharm 和 CLion。这两个 IDE 快捷键和操作技巧都相似，这篇博客我用 PyCharm 作为例子，介绍下使用这些工具常用的一些技巧。

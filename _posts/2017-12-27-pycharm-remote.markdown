@@ -9,8 +9,9 @@ header-img: "img/post-bg-terminal.jpg"
 header-mask: 0.7
 catalog: true
 tags:
+    - 技术
     - 工具
-    - 环境配置
+    - IDE
 typora-root-url: ../
 ---
 

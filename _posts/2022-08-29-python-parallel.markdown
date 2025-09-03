@@ -9,7 +9,9 @@ header-img: "img/post-bg-terminal.jpg"
 header-mask: 0.8
 catalog: true
 tags:
+    - 技术
     - Python
+    - Code
 ---
 
 ## 一、前言

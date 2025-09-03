@@ -9,8 +9,9 @@ header-img: "img/post-bg-terminal.jpg"
 header-mask: 0.7
 catalog: true
 tags:
-    - 环境配置
-    - 工具
+    - 技术
+    - Linux
+    - 网络
 typora-root-url: ../
 ---
 

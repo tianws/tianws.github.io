@@ -10,6 +10,7 @@ header-mask: 0.4
 catalog: true
 tags:
     - 生活
+    - 年度总结
 ---
 
 ## 2017 总结
