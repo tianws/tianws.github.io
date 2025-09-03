@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取所有需要切换的元素
     var zhPostContainer = document.querySelector(".zh.post-container");
     var enPostContainer = document.querySelector(".en.post-container");
-    var zhCommentTitle = document.querySelector(".zh.comment-title-container");
-    var enCommentTitle = document.querySelector(".en.comment-title-container");
+    var zhCommentTitle = document.querySelector(".zh.comment-section-title");
+    var enCommentTitle = document.querySelector(".en.comment-section-title");
     
     var zhBtn = document.querySelector('a.lang-switch-btn[href="#zh"]');
     var enBtn = document.querySelector('a.lang-switch-btn[href="#en"]');
