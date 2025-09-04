@@ -330,4 +330,20 @@
       }
     }
   }
+
+  // --- 管理面板样式修复 ---
+  // [修复] 修正管理面板中输入框背景色，使其适应深色背景
+  .tk-admin {
+    .el-input__inner,
+    .el-textarea__inner {
+      color: #fff; // 确保文字是白色
+      background-color: transparent; // 背景透明
+      border-color: rgba(144, 147, 153, 0.5); // 使用一个柔和的边框色
+
+      &:focus {
+        border-color: @input-focus-color; // 保留统一的焦点色
+        box-shadow: none; // 在深色背景下，阴影效果可能不佳，移除
+      }
+    }
+  }
 }
