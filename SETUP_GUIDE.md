@@ -273,7 +273,7 @@ python3 scripts/migrate_images.py
 - **解决方案:**
   1. **安装构建工具:** 使用 Homebrew 安装 `automake` 和 `libtool`。
      ```bash
-     brew install automake libtool
+     brew install automake libtool jpeg libpng
      ```
   2. **(推荐) 清理环境:** 删除可能已损坏的 `node_modules` 目录，确保一个干净的安装环境。
      ```bash

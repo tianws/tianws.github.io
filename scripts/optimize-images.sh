@@ -14,7 +14,21 @@ find _source_images -type f \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' 
 
   # --- Task 1: Optimize original image ---
   echo "Optimizing $f -> $DEST_FILE"
-  imagemin "$f" > "$DEST_FILE"
+  
+  # === 修改開始：根據檔案類型使用特定插件 ===
+  case "$f" in
+    *.jpg|*.jpeg)
+      imagemin "$f" --plugin=mozjpeg > "$DEST_FILE"
+      ;;
+    *.png)
+      # 使用 pngquant 作為 optipng 的替代品
+      imagemin "$f" --plugin=pngquant > "$DEST_FILE"
+      ;;
+    *.gif)
+      imagemin "$f" --plugin=gifsicle > "$DEST_FILE"
+      ;;
+  esac
+  # === 修改結束 ===
 
   # --- Task 2: Create WebP version (for JPG and PNG) ---
   case "$f" in
