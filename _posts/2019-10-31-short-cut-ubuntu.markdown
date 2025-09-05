@@ -9,8 +9,8 @@ header-img: "img/post-bg-ubuntu.jpg"
 header-mask: 0.4
 catalog: true
 tags:
-    - 技术
-    - Ubuntu
+    - 环境配置
+    - Linux
     - 工具
 typora-root-url: ../
 ---

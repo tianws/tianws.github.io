@@ -10,9 +10,8 @@ header-mask: 0.4
 mathjax: true
 catalog: true
 tags:
-    - 技术
     - 深度学习
-    - Code
+    - 编程
 typora-root-url: ../
 ---
 

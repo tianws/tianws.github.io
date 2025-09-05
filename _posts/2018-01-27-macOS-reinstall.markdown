@@ -9,9 +9,7 @@ header-img: "img/post-bg-mac.jpg"
 header-mask: 0.6
 catalog: true
 tags:
-    - 技术
-    - 操作系统
-    - macOS
+    - 环境配置
 ---
 
 MacBook 用了一年多了，之前安装软件没注意，现在发现系统的环境很乱，作为有系统洁癖的人，肯定不能忍啊，重装了系统，重配了环境。

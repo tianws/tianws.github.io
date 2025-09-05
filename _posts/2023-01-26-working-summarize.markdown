@@ -10,8 +10,6 @@ header-mask: 0.8
 catalog: true
 tags:
     - 工作
-    - 年度总结
-    - 自动驾驶
 ---
 
 ## 一、前言

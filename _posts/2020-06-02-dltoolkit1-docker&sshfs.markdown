@@ -9,10 +9,9 @@ header-img: "img/post-bg-docker.jpg"
 header-mask: 0.8
 catalog: true
 tags:
-    - 技术
     - Docker
-    - 深度学习
     - 环境配置
+    - 深度学习
 ---
 
 ## 一、需求

@@ -9,9 +9,8 @@ header-img: "img/post-bg-pytorch.jpg"
 header-mask: 0.2
 catalog: true
 tags:
-    - 技术
     - 深度学习
-    - PyTorch
+    - 编程
 typora-root-url: ../
 ---
 

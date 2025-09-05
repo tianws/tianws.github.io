@@ -9,8 +9,6 @@ header-img: "img/post-bg-git.jpg"
 header-mask: 0.7
 catalog: true
 tags:
-    - 技术
-    - Git
     - 工具
 ---
 

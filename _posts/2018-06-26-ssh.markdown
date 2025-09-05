@@ -9,9 +9,8 @@ header-img: "img/post-bg-terminal.jpg"
 header-mask: 0.7
 catalog: true
 tags:
-    - 技术
+    - 环境配置
     - 网络
-    - 工具
 ---
 
 ## 一、安装 server 端 SSH

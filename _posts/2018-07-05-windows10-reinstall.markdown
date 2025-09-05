@@ -9,9 +9,7 @@ header-img: "img/post-bg-windows.jpg"
 header-mask: 0.5
 catalog: true
 tags:
-    - 技术
-    - 操作系统
-    - Windows
+    - 环境配置
 ---
 
 ## 一、重置电脑

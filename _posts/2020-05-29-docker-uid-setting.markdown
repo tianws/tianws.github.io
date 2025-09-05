@@ -9,7 +9,6 @@ header-img: "img/post-bg-docker.jpg"
 header-mask: 0.8
 catalog: true
 tags:
-    - 技术
     - Docker
     - 环境配置
 ---

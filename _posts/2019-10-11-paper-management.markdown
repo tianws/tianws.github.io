@@ -9,9 +9,7 @@ header-img: "img/post-bg-paper.jpg"
 header-mask: 0.6
 catalog: true
 tags:
-    - 技术
     - 工具
-    - 文献管理
 typora-root-url: ../
 ---
 

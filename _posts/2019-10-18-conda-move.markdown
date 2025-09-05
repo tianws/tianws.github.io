@@ -9,8 +9,7 @@ header-img: "img/post-bg-terminal.jpg"
 header-mask: 0.7
 catalog: true
 tags:
-    - 技术
-    - Python
+    - 环境配置
     - 工具
 typora-root-url: ../
 ---
