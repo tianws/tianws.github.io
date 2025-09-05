@@ -1,7 +1,7 @@
 // Twikoo 自定义样式文件
-// 最后更新: 2025-09-02
+// 最后更新: 2025-09-04
 // 设计理念: 柔和阴影、呼吸感留白、平滑过渡
-// 本次优化: 实现标签内嵌化设计，增加交互动效与视觉焦点，修正所有细节问题
+// 本次优化: 增大头像尺寸，增加交互动效，修正管理面板样式
 
 // --- 主题变量 ---
 @theme-accent-color: #0085a1; // 主题强调色 (链接、图标等)
@@ -76,6 +76,11 @@
         color: @theme-accent-color;
         border-color: @input-border-color;
       }
+    }
+    
+    // 调整表情按钮的布局，以适应新头像大小
+    .tk-row.actions {
+      margin-left: calc(38px + 1.25rem);
     }
   }
 
@@ -176,19 +181,28 @@
   }
 
   // --- 头像 ---
+  // [设计] 增大头像尺寸，提升辨识度与视觉平衡
   .tk-avatar {
-    border-radius: 50%;
+    width: 38px; // 设定一个更清晰的基准尺寸
+    height: 38px;
+    // border-radius: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-right: 1rem;
+    margin-right: 1.5rem; // 稍微增加右边距
+    flex-shrink: 0; // 防止头像在 flex 布局中被压缩
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1) rotate(5deg); // 增加有趣的悬浮效果
+    }
 
     .tk-avatar-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      // border-radius: 80%;
     }
   }
 
@@ -255,6 +269,17 @@
     padding-left: 30px; // [优化] 增加缩进，强化层级感
     border-left: 2px dashed @subtle-border-color; // [优化] 将实线改为虚线，减少视觉干扰
     padding-top: 0;
+
+    // 回复的头像稍小，以体现层级
+    .tk-avatar {
+      width: 32px;
+      height: 32px;
+    }
+
+        // 调整表情按钮的布局，以适应新头像大小
+    .tk-row.actions {
+      margin-left: calc(32px + 1.25rem);
+    }
 
     .tk-comment {
       border-bottom: none; // 回复之间不再需要分割线
@@ -326,7 +351,7 @@
       }
       &::-webkit-scrollbar-thumb {
         background: #ccc;
-        border-radius: 5px;
+        border-radius: 4px;
       }
     }
   }
