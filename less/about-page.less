@@ -5,6 +5,11 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: 35px; /* 与下方引言的间距 */
+
+    /* 在窄屏上增加与上方封面图的间距，保持与宽屏一致 */
+    @media only screen and (max-width: 767px) {
+        margin-top: 20px;
+    }
 }
 
 /* 2. 语言切换按钮 - 轻盈实体样式 */
@@ -22,6 +27,8 @@
     border-radius: 20px; /* 圆润的药丸形状 */
     border: 1px solid #f1f3f5; /* 非常浅的默认边框 */
     background-color: #f8f9fa; /* 非常浅的默认背景 */
+    min-width: 85px;
+    text-align: center;
 }
 .lang-switcher-container a:hover {
     transform: translateY(-2px);
