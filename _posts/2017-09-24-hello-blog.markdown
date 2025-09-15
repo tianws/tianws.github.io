@@ -133,3 +133,8 @@ Thanks to [*BruceZhaoR*](https://github.com/BruceZhaoR/brucezhaor.github.io)，�
 *建立标准化图片处理流程，自动压缩图片并生成 WebP 版本；全站启用 WebP 优化，提升网站加载性能。*
 
 <p align="right">—— 2025.08.21，北京</p>
+---
+
+*更换twikoo评论系统，无广告，国内正常访问。*
+
+<p align="right">—— 2025.09.05，北京</p>
