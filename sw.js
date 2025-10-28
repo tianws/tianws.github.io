@@ -34,8 +34,7 @@ const HOSTNAME_WHITELIST = [
   // "yanshuo.io",
   "cdnjs.cloudflare.com",
   "raw.githubusercontent.com/tianws/tianws.github.io/master",
-  "tianws.github.io"
-]
+  "wenshan.site"]
 const DEPRECATED_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime']
 
 

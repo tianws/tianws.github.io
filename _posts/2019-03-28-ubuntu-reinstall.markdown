@@ -122,15 +122,15 @@ done
 
 ## 五、安装 CUDA、cuDNN
 
-见 [NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/)。
+见 [NVIDIA显卡配置](https://wenshan.site/skill/2018/07/04/cuda-dl/)。
 
 ---
 
 2019 年 11 月 21 日更新：
 
-​	最新安装方法见 [Ubuntu 深度学习环境全配置](https://tianws.github.io/skill/2019/10/16/cuda-dl-2/)。
+​	最新安装方法见 [Ubuntu 深度学习环境全配置](https://wenshan.site/skill/2019/10/16/cuda-dl-2/)。
 
 ## 六、系统以及软件配置
 
-见 [Ubuntu 常用软件和设置](<https://tianws.github.io/skill/2019/04/03/software-ubuntu/>)。
+见 [Ubuntu 常用软件和设置](<https://wenshan.site/skill/2019/04/03/software-ubuntu/>)。
 

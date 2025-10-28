@@ -15,7 +15,7 @@ tags:
 
 ## 一、Install
 
-`Docker CE` 和 `Nvidia-Docker` 的详细安装步骤见 [前述博文](<https://tianws.github.io/skill/2019/04/09/docker/>)。
+`Docker CE` 和 `Nvidia-Docker` 的详细安装步骤见 [前述博文](<https://wenshan.site/skill/2019/04/09/docker/>)。
 
 如果程序要在 Ubuntu 16.04 x86_64 系统运行，可按下列步骤安装。
 

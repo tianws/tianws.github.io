@@ -149,7 +149,7 @@ EXPOSE 22
 
 **（7）新建用户替代 root 并用 fixuid 管理 uid**
 
-具体的原理可以参考我之前的博客：[Docker 容器内用户管理](https://tianws.github.io/skill/2020/05/29/docker-uid-setting/)，在这里我直接使用文章中的 dockerfile：
+具体的原理可以参考我之前的博客：[Docker 容器内用户管理](https://wenshan.site/skill/2020/05/29/docker-uid-setting/)，在这里我直接使用文章中的 dockerfile：
 
 ```dockerfile
 # 新建用户并用 fixuid 管理 uid

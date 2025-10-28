@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tianws.github.io/sitemap.xml
+Sitemap: https://wenshan.site/sitemap.xml

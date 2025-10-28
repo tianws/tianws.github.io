@@ -16,7 +16,7 @@ typora-root-url: ../
 
 ## 一、前言
 
-之前写过一篇 [NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/)，主要参考官方文档，用包管理器的方式来安装显卡驱动和CUDA。
+之前写过一篇 [NVIDIA显卡配置](https://wenshan.site/skill/2018/07/04/cuda-dl/)，主要参考官方文档，用包管理器的方式来安装显卡驱动和CUDA。
 
 但是这种方法不够灵活，配置自己的机器没问题，如果要在多人共用的服务器上，有下列的需求或情况时，不好处理：
 
@@ -150,7 +150,7 @@ sudo apt install nvidia-340
 
 ## 三、安装 CUDA
 
-在以前的文章 [NVIDIA显卡配置](https://tianws.github.io/skill/2018/07/04/cuda-dl/) 中说过，安装 CUDA 有两种方法：
+在以前的文章 [NVIDIA显卡配置](https://wenshan.site/skill/2018/07/04/cuda-dl/) 中说过，安装 CUDA 有两种方法：
 
 1. 用对应系统的包管理器（对 Ubuntu 系统来讲就是 Deb 包）
 2. 用 runfile 文件
@@ -385,7 +385,7 @@ pip install -r requirements.txt
 
 ---
 
-更新：conda 环境迁移见新博文[「Conda环境迁移」](https://tianws.github.io/skill/2019/10/18/conda-move/)。
+更新：conda 环境迁移见新博文[「Conda环境迁移」](https://wenshan.site/skill/2019/10/18/conda-move/)。
 
 ## 六、安装 PyTorch
 

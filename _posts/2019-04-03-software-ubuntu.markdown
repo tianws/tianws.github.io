@@ -142,7 +142,7 @@ sudo aptitude install chrome-gnome-shell
 
 - peek：gif录制软件
 
-- synergy：键鼠共享软件 [安装使用方法](<https://tianws.github.io/skill/2019/04/20/synergy/>)
+- synergy：键鼠共享软件 [安装使用方法](<https://wenshan.site/skill/2019/04/20/synergy/>)
 
 - motrix：下载软件
 

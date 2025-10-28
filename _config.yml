@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: tianwenshan@foxmail.com
 description: "欢迎来到我的个人博客"
 keyword: "Wenshan, Wenshan Blog, 文善的博客, 田文善, CV, DL"
-url: "https://tianws.github.io"              # your host, for absolute URL
+url: "https://wenshan.site"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/tianws/tianws.github.io.git" # you code repository
 
