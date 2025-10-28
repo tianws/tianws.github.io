@@ -82,7 +82,7 @@ twikoo:
 
 # Analytics settings
 # Baidu Analytics 
-ba_track_id: ea730223e4d6af3295e04e0f6e005c03
+ba_track_id: 271d0538a0e462821f6823f0d6ed7149
 
 # Google Analytics
 ga_track_id: 'UA-106936117-1'            # Format: UA-xxxxxx-xx
