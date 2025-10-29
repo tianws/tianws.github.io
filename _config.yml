@@ -1,6 +1,6 @@
 # Site settings
-title: Wenshan's Blog
-SEOTitle: Wenshan's Blog
+title: Wenshan Blog
+SEOTitle: 文善的博客 | Wenshan Blog
 header-img: img/home-bg.jpg
 email: tianwenshan@foxmail.com
 description: "欢迎来到我的个人博客"
@@ -92,7 +92,7 @@ ga_domain: auto
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Hey! Nice to meet you. "
+sidebar-about-description: "人生缓缓，自有答案"
 sidebar-avatar: /img/avatar_tianws.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
