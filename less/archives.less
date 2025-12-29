@@ -5,108 +5,104 @@
     padding-top: 20px;
     max-width: 800px;
     margin: 0 auto;
-}
 
-
-// Year Group Container
-.archive-group {
-    display: flex;
-    flex-direction: row; // Desktop: Side by side
-    margin-bottom: 60px;
-    position: relative;
-
-    @media screen and (max-width: 768px) {
-        flex-direction: column; // Mobile: Stacked
-        margin-bottom: 40px;
-    }
-}
-
-// Left Column: The Year
-.archive-year-label {
-    flex: 0 0 120px; // Fixed width for year
-    padding-right: 20px;
-
-    h2 {
-        display: inline-block;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        font-size: 32px;
-        font-weight: 800; // Extra Bold
-        color: rgba(0, 0, 0, 0.85);
-        margin: 0;
-        line-height: 1;
+    // Year Group Container
+    .archive-group {
+        display: flex;
+        flex-direction: row; // Desktop: Side by side
+        margin-bottom: 60px;
         position: relative;
 
-        // A subtle decorative underline or accent? 
-        // Let's keep it purely typographic for "minimalism"
+        @media screen and (max-width: 768px) {
+            flex-direction: column; // Mobile: Stacked
+            margin-bottom: 40px;
+        }
     }
 
-    @media screen and (max-width: 768px) {
-        flex: none;
-        margin-bottom: 15px;
+    // Left Column: The Year
+    .archive-year-label {
+        flex: 0 0 120px; // Fixed width for year
+        padding-right: 20px;
 
         h2 {
-            font-size: 28px;
+            display: inline-block;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 32px;
+            font-weight: 800; // Extra Bold
+            color: rgba(0, 0, 0, 0.85);
+            margin: 0;
+            line-height: 1;
+            position: relative;
         }
-    }
-}
 
-// Right Column: The List of Posts
-.archive-post-list {
-    flex: 1;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.05); // Very subtle divider
+        @media screen and (max-width: 768px) {
+            flex: none;
+            margin-bottom: 15px;
 
-    @media screen and (max-width: 768px) {
-        border-left: 2px solid rgba(0, 0, 0, 0.05);
-        padding-left: 0;
-    }
-}
-
-.archive-item {
-    position: relative;
-    padding: 15px 0 15px 30px; // Indent from the divider
-    transition: all 0.3s ease;
-
-    // Hover effect: slight movement
-    &:hover {
-        padding-left: 35px;
-
-        .post-title {
-            color: @brand-primary;
+            h2 {
+                font-size: 28px;
+            }
         }
     }
 
-    @media screen and (max-width: 768px) {
-        padding-left: 15px;
+    // Right Column: The List of Posts
+    .archive-post-list {
+        flex: 1;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-left: 1px solid rgba(0, 0, 0, 0.05); // Very subtle divider
+
+        @media screen and (max-width: 768px) {
+            border-left: 2px solid rgba(0, 0, 0, 0.05);
+            padding-left: 0;
+        }
+    }
+
+    .archive-item {
+        position: relative;
+        padding: 15px 0 15px 30px; // Indent from the divider
+        transition: all 0.3s ease;
+
+        // Hover effect: slight movement
+        &:hover {
+            padding-left: 35px;
+
+            .post-title {
+                color: @brand-primary;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            padding-left: 15px;
+
+            &:hover {
+                padding-left: 20px;
+            }
+        }
+    }
+
+    .post-meta-date {
+        display: block;
+        font-family: 'Lora', serif; // Serif for dates adds elegance
+        font-style: italic;
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 4px;
+    }
+
+    .post-title {
+        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-decoration: none;
+        line-height: 1.4;
+        transition: color 0.2s ease;
 
         &:hover {
-            padding-left: 20px;
+            text-decoration: none;
         }
-    }
-}
-
-.post-meta-date {
-    display: block;
-    font-family: 'Lora', serif; // Serif for dates adds elegance
-    font-style: italic;
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 4px;
-}
-
-.post-title {
-    display: block;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
-    text-decoration: none;
-    line-height: 1.4;
-    transition: color 0.2s ease;
-
-    &:hover {
-        text-decoration: none;
     }
 }
