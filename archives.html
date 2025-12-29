@@ -35,15 +35,16 @@ Split layout: Year on left, Posts on right.
 	{% else %}
 	{% if current_year != previous_year %}
 	</ul>
-	<!-- Start new group -->
-	<div class="archive-group">
-		<div class="archive-year-label">
-			<h2>{{ previous_year }}</h2>
-		</div>
-		<ul class="archive-post-list">
-			{% endif %}
-			{% endif %}
-
-			{% endfor %}
+</div>
+<!-- Start new group -->
+<div class="archive-group">
+	<div class="archive-year-label">
+		<h2>{{ previous_year }}</h2>
 	</div>
+	<ul class="archive-post-list">
+		{% endif %}
+		{% endif %}
+
+		{% endfor %}
+</div>
 </div>
