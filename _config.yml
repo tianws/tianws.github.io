@@ -89,6 +89,13 @@ ba_track_id: 271d0538a0e462821f6823f0d6ed7149
 # Leave empty to disable Google Analytics.
 ga_measurement_id: 'G-QPF380G0PX'
 
+# Busuanzi: keep the old domain's PV snapshot fixed; only the current domain is queried live.
+# On 2026-10-23 (+08:00), tianws.github.io returned site_pv 86587, then 86588.
+# These two checks also counted as visits, so the historical baseline is 86588 - 2.
+busuanzi_history:
+  domain: tianws.github.io
+  site_pv: 86586
+
 
 
 # Sidebar settings

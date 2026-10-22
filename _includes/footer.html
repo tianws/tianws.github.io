@@ -17,14 +17,19 @@
                     </iframe> -->
                     <br>
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        本站总访问量<span id="busuanzi_value_site_uv"></span>次
+                        <span id="busuanzi_value_site_pv" hidden aria-hidden="true"></span>
+                        本站总访问量<span id="site_total_pv" data-history-pv="{{ site.busuanzi_history.site_pv | default: 0 | escape }}"></span>次
+                        {% if site.busuanzi_history.site_pv > 0 %}
+                        <small title="包含 {{ site.busuanzi_history.domain | escape }} 的历史浏览次数">（含旧站点）</small>
+                        {% endif %}
                     </span>
                 </p>
             </div>
         </div>
     </div>
 </footer>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+<script src="{{ '/js/site-pv.js' | prepend: site.baseurl }}"></script>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
 <!-- jQuery -->
