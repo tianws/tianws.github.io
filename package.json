@@ -10,15 +10,10 @@
     },
     "bugs": "https://github.com/Huxpro/huxpro.github.io/issues",
     "devDependencies": {
-        "imagemin-cli": "^8.0.0",
-        "imagemin-gifsicle": "^7.0.0",
-        "imagemin-mozjpeg": "^10.0.0",
-        "imagemin-pngquant": "^10.0.0",
-        "imagemin-webp": "^8.0.0",
         "less": "^4.2.0",
         "less-plugin-clean-css": "^1.6.0",
         "npm-run-all": "^4.1.5",
-        "onchange": "^7.1.0",
+        "sharp": "^0.35.5",
         "terser": "^5.24.0"
     },
     "scripts": {
@@ -28,10 +23,14 @@
         "build:css": "lessc --clean-css less/hux-blog.less css/hux-blog.min.css",
         "build:js": "terser js/hux-blog.js -o js/hux-blog.min.js",
         "build": "npm-run-all build:css build:js",
-        "watch:css": "onchange 'less/*.less' -- npm run build:css",
-        "watch:js": "onchange 'js/hux-blog.js' -- npm run build:js",
-        "optimize:img": "bash scripts/optimize-images.sh",
+        "test": "node --test tests/*.test.mjs",
+        "watch:css": "node scripts/watch-assets.mjs css",
+        "watch:js": "node scripts/watch-assets.mjs js",
+        "optimize:img": "node scripts/optimize-images.mjs",
         "dev": "npm-run-all --parallel watch:* start"
+    },
+    "engines": {
+        "node": ">=22.0.0"
     },
     "dependencies": {
         "simple-jekyll-search": "^1.10.0"

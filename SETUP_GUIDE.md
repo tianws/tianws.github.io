@@ -46,7 +46,7 @@ rvm use 3.1.2 --default
 #### 第 3 步：安装 Bundler 和 Node.js
 ```bash
 # 安装 Bundler
-gem install bundler
+gem install bundler -v 2.6.9
 
 # 安装 NVM (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -54,8 +54,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 # 加载 NVM 环境 (新终端会自动加载)
 source ~/.bashrc
 
-# 安装 Node.js LTS 版本
-nvm install --lts
+# 安装 Node.js 22（项目要求 Node.js 22 或更新版本）
+nvm install 22
 ```
 
 ---
@@ -69,8 +69,8 @@ nvm install --lts
 # 安装 Homebrew (如果尚未安装)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# 安装 automake 等工具，以防后续 npm install 编译原生模块时报错
-brew install automake libtool
+# 安装 Ruby 编译工具
+brew install ruby-build
 ```
 
 #### 第 2 步：安装并配置 rbenv
@@ -98,7 +98,7 @@ rbenv install 3.1.2
 rbenv global 3.1.2
 
 # 安装 Bundler
-gem install bundler
+gem install bundler -v 2.6.9
 
 ruby -v
 # 应显示: ruby 3.1.2...
@@ -115,8 +115,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 # 加载 NVM (新终端会自动加载)
 source ~/.zshrc
 
-# 安装 Node.js LTS 版本
-nvm install --lts
+# 安装 Node.js 22（项目要求 Node.js 22 或更新版本）
+nvm install 22
 ```
 
 ---
@@ -132,7 +132,7 @@ cd tianws.github.io
 
 # 安装 Ruby 和 Node.js 依赖
 bundle install
-npm install
+npm ci
 ```
 
 #### 第 2 步：本地运行与开发
@@ -164,6 +164,7 @@ npm run build
 
 - **原图目录**: `_source_images/` (存放高质量原图，需 Git 跟踪)
 - **发布目录**: `img/` (存放压缩和转换WebP后的图片，需 Git 跟踪)
+- **处理工具**: Sharp；保留目录结构、PNG 透明度和 GIF 动画，为 JPG/PNG 生成 WebP。可用 `npm run optimize:img -- 原图目录 输出目录` 处理指定目录。
 - **工作流程**:
   1.  在 `_source_images/` 中添加或修改原图。
   2.  运行 `npm run optimize:img` 来自动处理图片并输出到 `img/`。
@@ -195,6 +196,17 @@ npm run build
 ## 第四部分：项目维护
 
 ### 1. 依赖更新
+Dependabot 按 npm、Ruby 和 GitHub Actions 分组提交安全修复，不额外创建普通版本升级 PR。安全修复由漏洞通告触发，不受配置中的月度版本检查周期限制。
+
+每个 PR 会自动执行图片处理和文件监听测试、CSS/JS 编译及 Jekyll 构建。手动更新后，也可以在本地验证：
+```bash
+npm ci
+npm test
+npm run build
+bundle install
+bundle exec jekyll build
+```
+
 定期更新项目的依赖包是一个好习惯，但建议在单独的 Git 分支上进行测试。
 ```bash
 npm update
@@ -267,19 +279,9 @@ python3 scripts/migrate_images.py
     }
   }
 
-### 问题五：`npm install` 报错 `aclocal: command not found` (macOS)
-- **错误现象:** 在执行 `npm install` 过程中，出现 `make: aclocal: Command not found` 或类似的错误提示。
-- **原因:** 这是因为项目中某个依赖（通常是需要编译的 C/C++ 原生模块）使用了 GNU Autotools 作为构建系统。macOS 默认的开发环境没有包含 `automake` 这套工具，因此缺少 `aclocal` 等关键命令。
-- **解决方案:**
-  1. **安装构建工具:** 使用 Homebrew 安装 `automake` 和 `libtool`。
-     ```bash
-     brew install automake libtool jpeg libpng
-     ```
-  2. **(推荐) 清理环境:** 删除可能已损坏的 `node_modules` 目录，确保一个干净的安装环境。
-     ```bash
-     rm -rf node_modules
-     ```
-  3. **重新安装:** 再次运行 `npm install` 即可。
-     ```bash
-     npm install
-     ```
+  ```
+
+### 问题五：图片处理依赖安装失败
+- 先运行 `node -v`，确认使用 Node.js 22 或更新版本。
+- 运行 `npm ci`，按锁文件重新安装依赖；请保留 npm 默认启用的可选依赖，Sharp 通过它们安装对应系统的二进制包。
+- `npm run optimize:img` 会在无法读取或转换图片时返回失败，并保留该图片原有的输出文件。根据错误信息检查源图片后重新运行。
