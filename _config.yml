@@ -84,9 +84,10 @@ twikoo:
 # Baidu Analytics 
 ba_track_id: 271d0538a0e462821f6823f0d6ed7149
 
-# Google Analytics
-ga_track_id: 'UA-106936117-1'            # Format: UA-xxxxxx-xx
-ga_domain: auto
+# Google Analytics 4
+# Copy the G-... measurement ID from Admin > Data streams > your web stream.
+# Leave empty to disable Google Analytics.
+ga_measurement_id: 'G-QPF380G0PX'
 
 
 
